@@ -29,3 +29,24 @@ const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 })
+
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
+
+// add authRoute, userRoute, searchRoute, userMoviesRoute, userSeriesRoute, userEpisodesRoute
+
+app.use('*', (req, res) => {
+    res.status(400).json({
+        message: 'Page not found!',
+    })
+})
+
+app.use((err, req, res, next) => {
+    console.log(err)
+    res.status(500).json({
+        error: err,
+        message: err.message,
+    })
+})
+
