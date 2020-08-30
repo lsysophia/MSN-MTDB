@@ -4,7 +4,7 @@ export default class Search extends Component {
     render() {
         return (
             <div>
-
+                Search Component
             </div>
         )
     }
