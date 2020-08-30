@@ -6,6 +6,7 @@ const session = require('express-session')
 const passport = require('passport')
 
 const authRouter = require('./routes/auth-routes')
+const userRouter = require('./routes/user-routes')
 
 const app = express()
 require('dotenv').config()
@@ -36,7 +37,8 @@ app.use('/api', (req, res) => {
     res.send('Hello World!')
 })
 
-app.get('/api/auth', authRouter)
+app.use('/api/auth', authRouter)
+app.use('/api/user', userRouter)
 // add userRoute, searchRoute, userMoviesRoute, userSeriesRoute, userEpisodesRoute
 
 app.use('*', (req, res) => {
