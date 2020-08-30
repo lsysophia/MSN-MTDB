@@ -96,3 +96,81 @@ a:visited{
   color:white;
 }
 /* HEADER END*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+section{
+  float: left;
+}
+aside{
+  float: right;
+}
+/* USER START */
+
+.user-settings{
+  display: flex;
+  flex-direction: row;
+}
+
+.container .user-page{
+  justify-content: center;
+  flex:1;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* USER END */
