@@ -14,6 +14,12 @@ usersController.index = (req, res, next) => {
     })
 }
 
+usersController.update = (req, res, next) => {
+    User.findById(req.params.id)
+    .then(()=> res.redirect('/api/user'))
+    .catch(next);
+}
+
 usersController.create = (req, res, next) => {
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(req.body.password, salt);
