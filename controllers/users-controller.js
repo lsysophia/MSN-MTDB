@@ -4,20 +4,19 @@ const User = require('../models/user.js');
 const usersController = {};
 
 usersController.index = (req, res, next) => {
-    res.json({
-        message: 'ok',
-        data: {
-            userMovies: res.locals.userMovies,
-            userSeries: res.locals.userSeries,
-            userEpisodes: res.locals.userEpisodes
-        }
-    })
-}
-
-usersController.update = (req, res, next) => {
     User.findById(req.params.id)
-    .then(()=> res.redirect('/api/user'))
-    .catch(next);
+    .then(() => {
+        res.json({
+            message: 'ok',
+            data: {
+                userMovies: res.locals.userMovies,
+                userSeries: res.locals.userSeries,
+                userEpisodes: res.locals.userEpisodes,
+                // user: WE MAY WANT TO BRING IN USER DATA????
+            }
+        })
+    })
+    .catch(next)
 }
 
 usersController.create = (req, res, next) => {
@@ -41,6 +40,21 @@ usersController.create = (req, res, next) => {
             });
         });
     })
-    .catch(next);
+    .catch(next)
 };
+
+usersController.update = (req, res, next) => {
+    User.findById(req.params.id)
+    .then(()=> res.redirect('/api/user'))
+    .catch(next)
+}
+
+userController.delete = (req, res, next) => {
+    req.user.delete()
+    .then(() => {
+        req.session.destroy();
+        // we may need to redirect inside of here to a new route
+    })
+    .catch(next)
+}
 module.exports = usersController;
