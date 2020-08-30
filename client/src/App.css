@@ -97,6 +97,29 @@ a:visited{
 }
 /* HEADER END*/
 
+section{
+  float: left;
+}
+aside{
+  float: right;
+}
+/* USER START */
+
+.user-settings{
+  display: flex;
+  flex-direction: row;
+}
+
+.container .user-page{
+  justify-content: center;
+  flex:1;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* USER END */
+=======
 .container{
   display: flex;
   flex:1;
@@ -149,3 +172,4 @@ color: black;
 }
 
 /* HOME PAGE END */
+
