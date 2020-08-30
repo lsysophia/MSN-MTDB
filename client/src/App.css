@@ -118,9 +118,18 @@ a:visited{
 }
 
 .user-box h3{
-  padding-left:20px;
-  padding-right:20px;
+  border: 1px solid white;
+  padding:10px 5px 10px 5px;
+
+  margin-left:20px;
+  margin-right:20px;
 }
+
+.user-box h3:hover{
+background:white;
+color: black;
+}
+
 
 .container .Home-page h1{
   font-size: 3em;
