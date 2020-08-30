@@ -96,3 +96,47 @@ a:visited{
   color:white;
 }
 /* HEADER END*/
+
+.container{
+  display: flex;
+  flex:1;
+}
+
+/* HOME PAGE START */
+.container .Home-page{
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.user-box{
+  display: flex;
+  flex-direction: row;
+}
+
+.user-box h3{
+  padding-left:20px;
+  padding-right:20px;
+}
+
+.container .Home-page h1{
+  font-size: 3em;
+}
+.container .Home-page h2{
+  font-size: 2em;
+}
+.container .Home-page h3{
+  font-size: 1.5em;
+}
+.container .Home-page h4{
+  font-size: 1em;
+}
+
+.container .Home-page div{
+  padding:50px;
+}
+
+/* HOME PAGE END */
