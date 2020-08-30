@@ -3,6 +3,17 @@ const User = require('../models/user.js');
 
 const usersController = {};
 
+usersController.index = (req, res, next) => {
+    res.json({
+        message: 'ok',
+        data: {
+            userMovies: res.locals.userMovies,
+            userSeries: res.locals.userSeries,
+            userEpisodes: res.locals.userEpisodes
+        }
+    })
+}
+
 usersController.create = (req, res, next) => {
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(req.body.password, salt);
