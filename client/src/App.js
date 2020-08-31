@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header'
 import User from './components/User'
 import Home from './components/Home'
+import Footer from './components/Footer'
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -11,11 +12,8 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <div className="container">
-          <User />
-          <Home />
-        </div>
-
+        <Route exact path='/' component={Home} />
+        <Footer />
       </div >
     </Router>
   );
