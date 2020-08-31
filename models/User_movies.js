@@ -35,6 +35,13 @@ class User_movies {
         .catch(err => console.log(err))
     }
 
+    static getOneForUser(user_id, userMovie_id) {
+        return db
+        .manyOrNone('SELECT * FROM user_movies WHERE user_id = $1 AND id = $2', [user_id, userMovie_id])
+        .then(movie => new this(movie[0]))
+        .catch(err => console.log(err))
+    }
+
     save() {
         return db
         .one(
@@ -47,6 +54,10 @@ class User_movies {
         )
         .then(savedMovie => Object.assign(this, savedMovie))
         .catch(err => console.log(err))
+    }
+
+    delete() {
+        return db.oneOrNone('DELETE FROM user_movies WHERE id = $1', this.id)
     }
 }
 module.exports = User_movies;
