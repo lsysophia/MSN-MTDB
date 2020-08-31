@@ -1,3 +1,5 @@
+const DB_NAME = process.env.DB_NAME 
+
 const options = {
     query: (e) => {
         console.log(e.query)
@@ -10,7 +12,7 @@ function setDatabase() {
     if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
         return pgp({
             database: DB_NAME, // ADD THE NAME TO YOUR .env FILE
-            port = 5432,
+            port: 5432,
             host: 'localhost',
         })
     }

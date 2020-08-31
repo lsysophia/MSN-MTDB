@@ -49,7 +49,7 @@ usersController.update = (req, res, next) => {
     .catch(next)
 }
 
-userController.delete = (req, res, next) => {
+usersController.delete = (req, res, next) => {
     req.user.delete()
     .then(() => {
         req.session.destroy();
