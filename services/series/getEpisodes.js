@@ -16,7 +16,7 @@ const getEpisodes = (id) => {
 			.then(parsedRes => {
 				const episodes = parsedRes.map((eachSeason) => {
 					return eachSeason.episodes.map((ep) => {
-						return {epImdbId: ep.id, epSeason: ep.season}
+						return {epImdbId: ep.id, epTitle: ep.title, epSeason: ep.season}
 					})
 				})
 					console.log(episodes)
