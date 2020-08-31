@@ -3,14 +3,13 @@ import './App.css';
 import Header from './components/Header'
 import User from './components/User'
 import Home from './components/Home'
-import Search from './components/Search'
+// import Search from './components/Search'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import Register from './components/Register'
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import fetch from 'node-fetch';
-import { json } from 'body-parser';
 
 class App extends Component {
   constructor(){
