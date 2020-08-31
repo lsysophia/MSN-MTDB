@@ -25,7 +25,7 @@ usersController.create = (req, res, next) => {
     console.log('hshdgalskdjglaist')
     console.log(req.body)
     console.log('DKJAKJSCNKAU')
-    User({
+    new User({
         username: req.body.username,
         name: req.body.name,
         email: req.body.email,
