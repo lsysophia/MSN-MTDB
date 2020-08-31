@@ -163,7 +163,7 @@ section h2{
 }
 
 /* HOME PAGE START */
-.container .Home-page{
+.Home-page{
   display: flex;
   flex-direction: column;
   flex:1;
@@ -188,23 +188,23 @@ section h2{
 .user-box h3:hover{
 background:white;
 color: black;
+cursor: pointer;
 }
 
-
-.container .Home-page h1{
+.Home-page h1{
   font-size: 3em;
 }
-.container .Home-page h2{
+.Home-page h2{
   font-size: 2em;
 }
-.container .Home-page h3{
+.Home-page h3{
   font-size: 1.5em;
 }
-.container .Home-page h4{
+.Home-page h4{
   font-size: 1em;
 }
 
-.container .Home-page div{
+.Home-page div{
   padding:50px;
 }
 
