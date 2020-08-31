@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header'
 import User from './components/User'
 import Home from './components/Home'
+import Search from './components/Search'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import Register from './components/Register'
