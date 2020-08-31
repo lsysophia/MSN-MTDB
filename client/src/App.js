@@ -89,7 +89,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header />
+          <Header logout={this.logout}/>
           <div className="container">
             <Route exact path='/' component={Home} />
             <Route exact path='/login'
@@ -102,7 +102,7 @@ class App extends Component {
             <Route exact path='/register'
               render={() => (
                 this.state.auth
-                ? <Redirect to='user' />
+                ? <Redirect to='/user' />
                 : <Register handleRegisterSubmit={this.handleRegisterSubmit} />
               )}
             />
@@ -113,8 +113,6 @@ class App extends Component {
                 : <User user={this.state.user} />
               )}
             />
-            {/* Add conditional so that logout would only show up when 
-            this.state.auth is checked out? */}
           </div>
           <Footer />
         </div >
