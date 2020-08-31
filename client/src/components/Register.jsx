@@ -7,6 +7,9 @@ class Register extends Component {
             username: '',
             password: '',
             email: '',
+            age: '',
+            genres: '',
+            name: '',
         }
         this.handleInputChange = this.handleInputChange.bind(this)
     }
@@ -39,6 +42,24 @@ class Register extends Component {
                     name="email"
                     value={this.state.email}
                     placeholder="Email"
+                    onChange={this.handleInputChange}
+                    />
+                    <input type="age"
+                    name="age"
+                    value={this.state.age}
+                    placeholder="Age"
+                    onChange={this.handleInputChange}
+                    />
+                    <input type="genres"
+                    name="genres"
+                    value={this.state.genres}
+                    placeholder="Genres"
+                    onChange={this.handleInputChange}
+                    />
+                    <input type="name"
+                    name="name"
+                    value={this.state.name}
+                    placeholder="Name"
                     onChange={this.handleInputChange}
                     />
                     <input type="submit"
