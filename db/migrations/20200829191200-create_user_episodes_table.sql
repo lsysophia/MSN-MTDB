@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS user_series (
+CREATE TABLE IF NOT EXISTS user_episodes (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     imbd_id VARCHAR(255) NOT NULL,
