@@ -48,6 +48,7 @@ const getDetailByImdbId = (id) => {
 			})
 			.then(res => res.json())
 			.then(parsedRes => {
+				// we will need the type to help our search controller
 				const title = parsedRes.title.title
 				const image = parsedRes.title.image.url
 				const startYear = parsedRes.title.seriesStartYear
