@@ -37,9 +37,9 @@ app.use('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.use('/api/auth', authRouter)
-app.use('/api/user', userRouter)
-// add userRoute, searchRoute, userMoviesRoute, userSeriesRoute, userEpisodesRoute
+app.get('/api/auth', authRouter)
+app.get('/api/user', userRouter)
+// add searchRoute, userMoviesRoute, userSeriesRoute, userEpisodesRoute
 
 app.use('*', (req, res) => {
     res.status(400).json({

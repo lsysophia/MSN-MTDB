@@ -25,7 +25,7 @@ usersController.create = (req, res, next) => {
     console.log('hshdgalskdjglaist')
     console.log(req.body)
     console.log('DKJAKJSCNKAU')
-    User.save({
+    User({
         username: req.body.username,
         name: req.body.name,
         email: req.body.email,
@@ -33,6 +33,7 @@ usersController.create = (req, res, next) => {
         genres: req.body.genres,
         password_digest: hash,
     })
+    .save()
     .then(user => {
         req.login(user, (err) => {
             if (err) return next(err);
@@ -44,7 +45,7 @@ usersController.create = (req, res, next) => {
         });
     })
     .catch(next)
-};
+}
 
 usersController.update = (req, res, next) => {
     User.findById(req.params.id)
