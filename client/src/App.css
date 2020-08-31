@@ -73,6 +73,7 @@ button::-moz-focus-inner {
   display: flex;
   flex-direction: column;
   color:white;
+
 }
 
 /* HEADER START*/
@@ -81,6 +82,7 @@ header{
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
+  margin-top:10px
 }
 
 nav ul {
@@ -90,6 +92,7 @@ nav ul {
 
 header nav ul li a{
   text-transform: uppercase;
+  padding: 10px;
 }
 
 a:visited{
@@ -103,6 +106,12 @@ section{
 aside{
   float: right;
 }
+
+.container{
+  display: flex;
+  justify-content: center;
+}
+
 /* USER START */
 
 .user-page{
@@ -201,3 +210,27 @@ color: black;
 
 /* HOME PAGE END */
 
+
+
+/* SEARCH PAGE START*/
+
+.search-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.search-results{
+  border:1px white solid;
+  padding: 50px;
+}
+.search-results li{
+margin:10px;
+cursor: pointer;
+}
+
+.search-results li:hover{
+  background-color: white;
+  color: black;
+}
+/* SEARCH PAGE END*/
