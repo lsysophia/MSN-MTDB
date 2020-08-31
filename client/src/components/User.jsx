@@ -5,17 +5,15 @@ export default class User extends Component {
         return (
             <div className="user-page">
                 <section>
-                    <h3>Username</h3>
-
+                    <h2>Username</h2>
                     <div className="user-settings">
                         <p>Log out</p>
                         <p>Edit User</p>
                     </div>
-
                 </section>
 
                 <aside>
-                    <h1>User's saved movie list</h1>
+                    <h2>User's saved movie list</h2>
                     <div>
                         List comes here
                     </div>
