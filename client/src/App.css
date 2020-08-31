@@ -114,20 +114,49 @@ aside{
 
 /* USER START */
 
+.user-page{
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  /* background-color: brown; */
+  justify-content: space-evenly;
+  
+}
+
+section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 500px;
+
+}
 .user-settings{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-.container .user-page{
+aside{
+  /* height: 500px;*/
+  width: 450px; 
+  height: 500px;
+  border:1px solid white;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  flex:1;
-  align-items: center;
-  justify-content: center;
+
+}
+aside h2{
+  text-align: center;
+  font-size: 2em;
 }
 
+section h2{
+  font-size: 2em;
+}
 
 /* USER END */
+
 .container{
   display: flex;
   flex:1;
