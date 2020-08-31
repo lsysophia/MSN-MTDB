@@ -9,7 +9,7 @@ const initialUnPack = (title) => {
 			method: 'GET',
 			headers: {
 				'x-rapidapi-host': 'imdb8.p.rapidapi.com',
-				'x-rapidapi-key': '67e8e014d2msh96d726256c2134fp15289djsna9182c6ad04a'
+				'x-rapidapi-key': process.env.API_Key
 				// process.env.API_Key
 			},
 		})
@@ -34,7 +34,7 @@ const initialUnPack = (title) => {
 
 // console.log(initialUnPack(test))
 
-// const testId = 'tt0944947'
+const testId = 'tt0944947'
 
 // second fetch by imdbId for show page
 const getDetailByImdbId = (id) => {
@@ -42,7 +42,7 @@ const getDetailByImdbId = (id) => {
 				method: 'GET',
 				headers: {
 					'x-rapidapi-host': 'imdb8.p.rapidapi.com',
-					'x-rapidapi-key': '67e8e014d2msh96d726256c2134fp15289djsna9182c6ad04a'
+					'x-rapidapi-key': process.env.API_Key
 					// process.env.API_Key
 				},
 			})
@@ -54,36 +54,56 @@ const getDetailByImdbId = (id) => {
 				const endYear = parsedRes.title.seriesEndYear
 				const genres = parsedRes.genres
 				const summary = parsedRes.plotSummary.text
-				// console.log([title, image, startYear, endYear, genres, summary])
+				console.log([title, image, startYear, endYear, genres, summary])
 			})
 			.catch(err => console.log(err))
 }
 
 // console.log(getDetailByImdbId(testId))
 
-fetch('https://imdb8.p.rapidapi.com/title/get-seasons?tconst=tt0944947', {
-	method: 'GET',
-	headers: {
-		'x-rapidapi-host': 'imdb8.p.rapidapi.com',
-		'x-rapidapi-key': '67e8e014d2msh96d726256c2134fp15289djsna9182c6ad04a'
-		// process.env.API_Key
-	},
-})
-	.then(res => res.json())
-	.then(parsedRes => {
-		const seasons = parsedRes.map((each) => {
-			return each.season
-		})
-			console.log(seasons)
-
-
-		const episodeIds = parsedRes.map((eachSeason) => {
-			eachSeason.episodes.map((ep) => {
-				return ep.id
-			})
-		})
-			console.log(episodeIds)
+const getSeasons = (id) => {
+	return fetch(`https://imdb8.p.rapidapi.com/title/get-seasons?tconst=${id}`, {
+		method: 'GET',
+		headers: {
+			'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+			'x-rapidapi-key': process.env.API_Key
+			// 
+		},
 	})
+		.then(res => res.json())
+		.then(parsedRes => {
+			const seasons = parsedRes.map((each) => {
+				return each.season
+			})
+			console.log(seasons)
+			return seasons
+		})
+		.catch(err => console.log(err))
+}
 
+console.log(getSeasons(testId))
 
+const getEpisodes = (id) => {
+	return fetch(`https://imdb8.p.rapidapi.com/title/get-seasons?tconst=${id}`, {
+			method: 'GET',
+			headers: {
+				'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+				'x-rapidapi-key': process.env.API_Key
+				// 
+			},
+		})
+			.then(res => res.json())
+			.then(parsedRes => {
+				const episodes = parsedRes.map((eachSeason) => {
+					return eachSeason.episodes.map((ep) => {
+						return {epImdbId: ep.id, epSeason: ep.season}
+					})
+				})
+					console.log(episodes)
+					return episodes
+			})
+			.catch(err => console.log(err))
+}
+
+console.log(getEpisodes(testId))
 
