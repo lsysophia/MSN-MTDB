@@ -173,3 +173,13 @@ color: black;
 
 /* HOME PAGE END */
 
+/* SHOW PAGE START */
+.show-page{
+  border: 1px solid salmon;
+}
+.add-wathclist-button{
+  border: 1px solid white;
+}
+/* SHOW PAGE END */
+
+
