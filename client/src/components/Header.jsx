@@ -11,9 +11,10 @@ export default class Header extends Component {
                 <nav>
                     <ul>
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="">Profile</Link></li>
-                        <li><Link to="">Search</Link></li>
-                        <li><Link to="">About</Link></li>
+                        <li><Link to="/user">Profile</Link></li>
+                        <li><Link to="/search">Search</Link></li>
+                        <li><Link to="/about">About</Link></li>
+                        <li onClick={() => {this.props.logout()}}>Logout</li>
                     </ul>
                     {/* Will use ternary here when we have Auth function working*/}
                 </nav>
