@@ -13,7 +13,7 @@ function App() {
         <Header />
         <div className="container">
           <User />
-          {/* <Home /> */}
+          <Home />
         </div>
 
       </div >
