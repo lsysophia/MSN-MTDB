@@ -22,7 +22,10 @@ usersController.index = (req, res, next) => {
 usersController.create = (req, res, next) => {
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(req.body.password, salt);
-    User.create({
+    console.log('hshdgalskdjglaist')
+    console.log(req.body)
+    console.log('DKJAKJSCNKAU')
+    User.save({
         username: req.body.username,
         name: req.body.name,
         email: req.body.email,

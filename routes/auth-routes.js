@@ -16,12 +16,12 @@ authRouter.get('/verify', (req, res) => {
     if (req.user) return res.status(200).json({
         message: 'ok',
         auth: true,
-        data: { user: req.user },
+        data: { user: req.user, }
     });
-    else return res.json({
+    else return res.status(404).json({
         message: 'Login failed',
         auth: false,
-        data: { user: null }
+        data: { user: null, }
     });
 });
 
@@ -30,7 +30,7 @@ authRouter.get('/logout', (req, res) => {
     res.json({
         message: 'Logged out',
         auth: false,
-        data: { user: null }
+        data: { user: null, }
     });
 });
 module.exports = authRouter;
