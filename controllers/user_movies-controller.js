@@ -3,9 +3,9 @@ const User_movies = require('../models/User_movies')
 const user_moviesController = {}
 
 user_moviesController.index = (req, res, next) => {
-    User_movies.getAllforUser(req.user.id)
+    User_movies.getAllForUser()
     .then(movies => {
-        res.locals.userMovies = movies
+        res.locals.movies = movies
         next();
     })
     .catch(next)
