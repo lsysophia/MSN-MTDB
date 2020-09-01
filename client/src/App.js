@@ -20,7 +20,7 @@ class App extends Component {
     }
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
-
+    this.logout = this.logout.bind(this)
   }
 
   componentDidMount() {
@@ -79,7 +79,6 @@ class App extends Component {
       .then(parsedRes => {
         this.setState({
           auth: parsedRes.auth,
-          user: parsedRes.data.user
         })
       }).catch(err => console.log(err))
   }
