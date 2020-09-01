@@ -42,10 +42,7 @@ class User {
             RETURNING *`,
             this
         )
-        .then(savedUser => {
-            console.log('saved??', savedUser) // not reaching this point
-            Object.assign(this, savedUser)
-        })
+        .then(savedUser => Object.assign(this, savedUser))
         .catch(err => console.log('ERROR MESSAGE', err));
     }
 
