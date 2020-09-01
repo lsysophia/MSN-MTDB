@@ -4,8 +4,13 @@ export default class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            pageStatus: 'initial',
+            list: [],
             title: '',
+            results: null,
         }
+        this.handleInputChange = this.handleInputChange.bind(this)
+        this.handleSearchSubmit =this.handleSearchSubmit.bind(this)
     }
 
     handleInputChange(e) {
@@ -19,8 +24,36 @@ export default class Search extends Component {
         evt.preventDefault()
         fetch(`api/search/${this.state.title}`, {
             method: 'POST',
-            // what else??
         })
+        .then(res => res.json())
+        .then(jsonRes => {
+            this.setState({
+                results: jsonRes.data.results,
+                pageStatus: 'results'
+            })
+        })
+        .catch(err => console.log(err))
+    }
+
+    conditionalRender() {
+        if (this.state.pageStatus === 'initial') {
+            if (this.state.list.length === 0) {
+                return <li>Loading Movies &amp; Shows</li>
+            } else {
+                return this.state.list.map(el => {
+                    return <li key={el.id}>{el.title}</li>
+                })
+            }
+        } else if (this.state.pageStatus === 'results') {
+            return this.state.results.map(el => {
+                return <li key={el.id}>
+                        <div>
+                            <img src={el.posters} />
+                            <h3>{el.title}({el.years})</h3>
+                        </div>
+                    </li>
+            })
+        }
     }
 
     render() {
@@ -34,16 +67,7 @@ export default class Search extends Component {
                 </div>
                 <div className="search-results">
                     <ul>
-                        <li>Result 1  </li>
-                        <li>Result 2 </li>
-                        <li>Result 3 </li>
-                        <li>Result 4</li>
-                        <li>Result 5</li>
-                        <li>Result 6  </li>
-                        <li>Result 7 </li>
-                        <li>Result 8 </li>
-                        <li>Result 9</li>
-                        <li>Result 10</li>
+                        {this.conditionalRender()}
                     </ul>
                 </div>
             </div>

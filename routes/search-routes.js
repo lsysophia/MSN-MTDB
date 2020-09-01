@@ -18,7 +18,7 @@ searchRouter.get('/', user_moviesController.index, user_seriesController.index, 
 })
 
 
-searchRouter.post('/:title)', initialUnPack)
+searchRouter.post('/:title([a-zA-Z]+)', initialUnPack, searchController.results)
 // searchRouter.post('/:id([0-9]+)', searchController.decide) // will need the search fetches
 
 module.exports = searchRouter

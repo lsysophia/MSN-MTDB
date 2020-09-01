@@ -11,13 +11,13 @@ const getDetailByImdbId = (req, res, next) => {
 		})
 		.then(res => res.json())
 		.then(parsedRes => {
-			const title = parsedRes.title.title
+			res.locals.title = parsedRes.title.title
 			const image = parsedRes.title.image.url
 			const startYear = parsedRes.title.seriesStartYear
 			const endYear = parsedRes.title.seriesEndYear
 			const genres = parsedRes.genres
 			const summary = parsedRes.plotSummary.text
-			console.log([title, titleType, image, startYear, endYear, genres, summary])
+			// console.log([title, titleType, image, startYear, endYear, genres, summary])
 		})
 		.catch(err => {
 			console.log(err)
