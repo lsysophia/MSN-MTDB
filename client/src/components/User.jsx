@@ -17,12 +17,11 @@ export default class User extends Component {
                     </aside>
                 </div>
                 <div className="user-settings">
-                    <h4>Log out</h4>
+                    <h4 onClick={() => { this.props.logout() }}>Log out</h4>
                     <h4><Link to='/user/edit'>Edit Info</Link></h4>
                     <h4 onClick={() => { this.props.deleteUser(this.props.user.id) }}>Delete Account</h4>
                 </div>
             </div>
-
         )
     }
 }

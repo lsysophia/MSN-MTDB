@@ -46,8 +46,8 @@ export default class Search extends Component {
             }
         } else if (this.state.pageStatus === 'results') {
             return this.state.results.map(el => {
-                return <li key={el.id}>
-                        <div>
+                return <li key={el.imdb_id}>
+                        <div onClick={() => {this.props.selectedPoster(el.id)}} className='posterDiv'>
                             <img src={el.posters} />
                             <h3>{el.title}({el.years})</h3>
                         </div>

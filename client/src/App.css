@@ -316,7 +316,6 @@ cursor: pointer;
 }
 /* REGISTER END */
 
-
 /* FOOTER START */
 footer{
   text-align: center;
@@ -331,4 +330,7 @@ footer{
   .container{
     min-width: 650px;
   }
+
+.posterDiv {
+  margin: 5%;
 }
