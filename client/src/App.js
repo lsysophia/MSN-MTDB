@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import fetch from 'node-fetch';
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       auth: false,
@@ -37,12 +37,12 @@ class App extends Component {
   handleLoginSubmit(e, data) {
     e.preventDefault()
     fetch('/api/auth/login', {
-      method: 'POST', 
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify(data), 
+      body: JSON.stringify(data),
     }).then(res => res.json())
       .then(parsedRes => {
         console.log(parsedRes)
@@ -87,30 +87,33 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header logout={this.logout}/>
+          <Header logout={this.logout} />
           <div className="container">
             <Route exact path='/' component={Home} />
             <Route exact path='/login'
               render={() => (
                 this.state.auth
-                ? <Redirect to='/user' />
-                : <Login handleLoginSubmit={this.handleLoginSubmit} />
+                  ? <Redirect to='/user' />
+                  : <Login handleLoginSubmit={this.handleLoginSubmit} />
               )}
             />
             <Route exact path='/register'
               render={() => (
                 this.state.auth
-                ? <Redirect to='/user' />
-                : <Register handleRegisterSubmit={this.handleRegisterSubmit} />
+                  ? <Redirect to='/user' />
+                  : <Register handleRegisterSubmit={this.handleRegisterSubmit} />
               )}
             />
             <Route exact path='/user'
               render={() => (
                 !this.state.auth
-                ? <Redirect to='/login' />
-                : <User user={this.state.user} />
+                  ? <Redirect to='/login' />
+                  : <User user={this.state.user} />
               )}
             />
+
+
+
           </div>
           <Footer />
         </div >
