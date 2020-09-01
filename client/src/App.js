@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import About from './components/About'
 import Search from './components/Search'
+import UserEdit from './components/UserEdit'
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import fetch from 'node-fetch';
@@ -23,6 +24,7 @@ class App extends Component {
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
     this.logout = this.logout.bind(this)
     this.deleteUser = this.deleteUser.bind(this)
+    this.handleUserEditSubmit = this.handleUserEditSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -69,6 +71,25 @@ class App extends Component {
         console.log(parsedRes)
         this.setState({
           auth: parsedRes.auth,
+          user: parsedRes.data.user,
+        })
+      }).catch(err => console.log(err))
+  }
+
+  handleUserEditSubmit(e, data, id) {
+    e.preventDefault()
+    console.log(data)
+    fetch(`/api/user/edit/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    }).then(res => res.json())
+      .then(parsedRes => {
+        this.setState({
+          //add page status change
+          // auth: parsedRes.auth,
           user: parsedRes.data.user,
         })
       }).catch(err => console.log(err))
@@ -126,10 +147,17 @@ class App extends Component {
               )}
             />
 
+            <Route exact path='/user/edit'
+              render={() => (
+                this.state.auth
+                  ? <UserEdit handleUserEditSubmit={this.handleUserEditSubmit} user={this.state.user} />
+                  : <Redirect to='/user' />
+              )}
+            />
+
             <Route exact path='/search'
               render={() => <Search search={this.state.user} />}
             />
-
 
             <Route exact path='/about'
               render={() => <About search={this.state.user} />}

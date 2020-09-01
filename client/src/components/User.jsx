@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class User extends Component {
     render() {
@@ -8,7 +9,7 @@ export default class User extends Component {
                     <h2>Username</h2>
                     <div className="user-settings">
                         <p>Log out</p>
-                        <p>Edit User</p>
+                        <p><Link to='/user/edit'>Edit Info</Link></p>
                         <p onClick={() => {this.props.deleteUser(this.props.user.id)}}>Delete Account</p>
                     </div>
                 </section>
