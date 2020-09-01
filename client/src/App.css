@@ -126,7 +126,6 @@ header a:visited{
   text-decoration: none;
 }
 /* HEADER END*/
-
 section{
   float: left;
 }
@@ -136,6 +135,7 @@ aside{
 
 .container{
   display: flex;
+  flex:1;
   justify-content: center;
   min-width: 950px;
   max-width: 1200px;
@@ -147,51 +147,57 @@ aside{
 
 .user-page{
   display: flex;
-  flex: 1;
   flex-direction: row;
-  /* background-color: brown; */
+  color: black;
   justify-content: space-evenly;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 60vh;
+}
+
+.user-page section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   
 }
 
-section{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 500px;
-
-}
 .user-settings{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  color:black;
+}
+.user-settings h4{
+  font-size: 1.25em;
 }
 
-aside{
+
+.user-page aside{
   /* height: 500px;*/
   width: 450px; 
-  height: 500px;
-  border:1px solid white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
 
 }
-aside h2{
+.user-page aside h2{
   text-align: center;
   font-size: 2em;
 }
 
-section h2{
+.user-page section h2{
   font-size: 2em;
+}
+
+.user-page .user-saved-list{
+  margin-top: 30px;
+  text-align: center;
 }
 
 /* USER END */
 
-.container{
-  display: flex;
-  flex:1;
-}
+
 
 /* HOME PAGE START */
 .Home-page{
@@ -305,3 +311,14 @@ cursor: pointer;
   cursor: auto;
 }
 /* REGISTER END */
+
+
+/* FOOTER START */
+footer{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+
+/* FOOTER END */
