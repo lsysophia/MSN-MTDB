@@ -138,7 +138,7 @@ aside{
   flex:1;
   justify-content: center;
   min-width: 950px;
-  max-width: 1200px;
+  max-width: 1200px; 
   margin: 0 auto;
   background-color: rgb(236, 234, 234);
 }
@@ -153,13 +153,23 @@ aside{
   margin-top: 50px;
   margin-bottom: 50px;
   height: 60vh;
+  /* min-width: 720px; */
 }
 
 .user-page section{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+  flex:1;
+  text-align:center;
+}
+
+.user-page aside{
+  width: 450px; 
+  display: flex;
+  flex-direction: column;
+  text-align:center;
+  flex:1;
 }
 
 .user-settings{
@@ -172,15 +182,6 @@ aside{
   font-size: 1.25em;
 }
 
-
-.user-page aside{
-  /* height: 500px;*/
-  width: 450px; 
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-
-}
 .user-page aside h2{
   text-align: center;
   font-size: 2em;
@@ -322,3 +323,9 @@ footer{
 }
 
 /* FOOTER END */
+
+@media screen and (max-width: 993px) {
+  .container{
+    min-width: 650px;
+  }
+}
