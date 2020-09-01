@@ -7,12 +7,27 @@ export default class Search extends Component {
             title: '',
         }
     }
+
+    handleInputChange(e) {
+        const name = e.currentTarget.name
+        const value = e.currentTarget.value
+        this.setState({
+            [name]: value,
+        })
+    }
+    handleSearchSubmit(evt) {
+        evt.preventDefault()
+        fetch(`api/search/${this.state.title}`)
+    }
+
     render() {
         return (
             <div className="search-page">
                 <div className="search-box">
-                    <input type="text" name="title" placeholder="Search by Title" />
-                    <input type="submit" value="Submit" />
+                    <form onSubmit={(e) => this.handleSearchSubmit(e)}>
+                        <input type="text" name="title" placeholder="Search by Title" onChange={this.handleInputChange} />
+                        <input type="submit" value="Submit" />
+                    </form>
                 </div>
                 <div className="search-results">
                     <ul>
