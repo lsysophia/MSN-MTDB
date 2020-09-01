@@ -16,8 +16,10 @@ searchController.decide = (req, res, next) => {
         res.json({
             message: 'ok',
             data: {
+                // add middleware to pick up actors if we want them
                 imdb_id: res.locals.imdb_id,
                 title: res.locals.title,
+                year: res.locals.year,
                 titleType: res.locals.titleType,
                 image: res.locals.image,
                 runTime: res.locals.runTime,

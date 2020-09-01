@@ -6,6 +6,7 @@ export default class Show extends Component {
         this.state = {
             imdb_id: this.props.selected.imdb_id,
             title: this.props.selected.title,
+            year: this.props.selected.year,
             titleType: this.props.selected.titleType,
             image: this.props.selected.image,
             runTime: this.props.selected.runTime,
@@ -19,40 +20,52 @@ export default class Show extends Component {
     }
     render() {
         return (
-            <div className="show-page">
-                <div>
-                    <article>
+            // may need a component did mount
+            <section className="show-page">
+                <article>
+                    <div>
+                        <img src={(this.props.selected) ? this.state.image : "https://images.pexels.com/photos/3150553/pexels-photo-3150553.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"} width="300px" />
+                    </div>
+                    <div>
+                        <h1>
+                            {this.state.title}({this.state.year})
+                        </h1>
                         <div>
-                            <img src={(this.props.selected) ? this.props.selected.image : "https://images.pexels.com/photos/3150553/pexels-photo-3150553.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"} width="300px" />
+                            Run Time: {this.state.runTime}
+                            Rating: {this.state.certificate.US.map(el => el.certificate)}
+                            Release Date: {this.state.releaseDate}
+                            Genres: {this.state.genres.map((el, i) => <span key={i}>{el}</span>)}
                         </div>
-                        <div>
-                            <h1>
-                                title(year)
-                                {console.log(this.state)}
-                            </h1>
-                            <h3>
-                                Meta data
-                            </h3>
-                        </div>
-                    </article>
-                    <article>
-                        <input type="submit" value="Addt to watchlist" className="add-wathclist-button" />
-                    </article>
-                    <article>
-                        <div>
-                            <h3>
-                                Details and Descriptions
+                    </div>
+                </article>
+                <article>
+                    <div>
+                        <h3>Ratings</h3>
+                        <p>{this.state.ratings}</p>
+                    </div>
+                    <input type="submit" value="Add to watchlist" className="add-wathclist-button" />
+                </article>
+                <article>
+                    <div>
+                        <h3>
+                            Summary
                         </h3>
+                        <div>
+                            {this.state.summary.text}
+                            <cite>{this.state.summary.author}</cite>
                         </div>
                         <div>
-                            <h2>
-                                Watch it at: .....
-                            </h2>
-                            <p><a>Click here to watch</a></p>
+                            {this.state.outline}
                         </div>
-                    </article>
-                </div>
-            </div>
+                    </div>
+                    <div>
+                        <h2>
+                            Watch it at: .....
+                        </h2>
+                        <p><a>Click here to watch</a></p>
+                    </div>
+                </article>
+            </section>
         )
     }
 }

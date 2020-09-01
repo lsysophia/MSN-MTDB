@@ -13,6 +13,7 @@ const getDetailByImdbId = (req, res, next) => {
 		.then(parsedRes => { 
 			res.locals.imdb_id = parsedRes.id
 			res.locals.title = parsedRes.title.title
+			res.locals.year = parsedRes.title.year
 			res.locals.titleType = parsedRes.title.titleType
 			res.locals.image = (parsedRes.title.image) ? parsedRes.title.image.url : null
 			res.locals.runTime = (parsedRes.title.runningTimeInMinutes) ? parsedRes.title.runningTimeInMinutes : null
