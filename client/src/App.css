@@ -181,6 +181,9 @@ aside{
 .user-settings h4{
   font-size: 1.25em;
 }
+.user-settings h4:hover{
+  cursor: pointer;
+}
 
 .user-page aside h2{
   text-align: center;
