@@ -9,6 +9,7 @@ import Register from './components/Register'
 import About from './components/About'
 import Search from './components/Search'
 import UserEdit from './components/UserEdit'
+import Show from './components/Show'
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import fetch from 'node-fetch';
@@ -19,6 +20,9 @@ class App extends Component {
     this.state = {
       auth: false,
       user: null,
+      selected: null,
+      fireRedirect: false,
+      redirectPath: null,
     }
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
@@ -118,6 +122,17 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
+  selectedPoster(id) {
+    fetch(`api/search/details/${id}`, {
+        method: 'POST',
+    }).then(res => res.json())
+    .then(jsonRes => {
+      this.setState({
+        selected: jsonRes
+      })
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -156,7 +171,11 @@ class App extends Component {
             />
 
             <Route exact path='/search'
-              render={() => <Search search={this.state.user} />}
+              render={() => <Search user={this.state.user} selectedPoster={this.selectedPoster} />}
+            />
+
+            <Route exact path='/show'
+              render={() => <Show selected={this.state.selected} user={this.state.user} />}
             />
 
             <Route exact path='/about'

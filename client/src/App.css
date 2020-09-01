@@ -305,3 +305,7 @@ cursor: pointer;
   cursor: auto;
 }
 /* REGISTER END */
+
+.posterDiv {
+  margin: 5%;
+}
