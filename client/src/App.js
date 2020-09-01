@@ -3,16 +3,17 @@ import './App.css';
 import Header from './components/Header'
 import User from './components/User'
 import Home from './components/Home'
-// import Search from './components/Search'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import Register from './components/Register'
+import About from './components/About'
+import Search from './components/Search'
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import fetch from 'node-fetch';
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       auth: false,
@@ -20,7 +21,7 @@ class App extends Component {
     }
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
-
+    this.logout = this.logout.bind(this)
   }
 
   componentDidMount() {
@@ -37,12 +38,12 @@ class App extends Component {
   handleLoginSubmit(e, data) {
     e.preventDefault()
     fetch('/api/auth/login', {
-      method: 'POST', 
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify(data), 
+      body: JSON.stringify(data),
     }).then(res => res.json())
       .then(parsedRes => {
         console.log(parsedRes)
@@ -79,7 +80,6 @@ class App extends Component {
       .then(parsedRes => {
         this.setState({
           auth: parsedRes.auth,
-          user: parsedRes.data.user
         })
       }).catch(err => console.log(err))
   }
@@ -94,30 +94,45 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header logout={this.logout}/>
+          <Header logout={this.logout} />
           <div className="container">
             <Route exact path='/' component={Home} />
             <Route exact path='/login'
               render={() => (
                 this.state.auth
-                ? <Redirect to='/user' />
-                : <Login handleLoginSubmit={this.handleLoginSubmit} />
+                  ? <Redirect to='/user' />
+                  : <Login handleLoginSubmit={this.handleLoginSubmit} />
               )}
             />
             <Route exact path='/register'
               render={() => (
                 this.state.auth
-                ? <Redirect to='/user' />
-                : <Register handleRegisterSubmit={this.handleRegisterSubmit} />
+                  ? <Redirect to='/user' />
+                  : <Register handleRegisterSubmit={this.handleRegisterSubmit} />
               )}
             />
             <Route exact path='/user'
               render={() => (
                 !this.state.auth
+<<<<<<< HEAD
                 ? <Redirect to='/login' />
                 : <User deleteUser={this.deleteUser} user={this.state.user} />
+=======
+                  ? <Redirect to='/login' />
+                  : <User user={this.state.user} />
+>>>>>>> b7b367f3a723985d7b895240a59ba2a05271c397
               )}
             />
+
+            <Route exact path='/search'
+              render={() => <Search search={this.state.user} />}
+            />
+
+
+            <Route exact path='/about'
+              render={() => <About search={this.state.user} />}
+            />
+
           </div>
           <Footer />
         </div >
