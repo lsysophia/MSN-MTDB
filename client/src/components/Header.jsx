@@ -6,7 +6,7 @@ export default class Header extends Component {
         return (
             <header>
                 <div className="logo">
-                    MSN - MTDB
+                    <a><Link to="/">MSN - MTDB</Link></a>
                 </div>
                 <nav>
                     <ul>
@@ -14,7 +14,7 @@ export default class Header extends Component {
                         <li><Link to="/user">Profile</Link></li>
                         <li><Link to="/search">Search</Link></li>
                         <li><Link to="/about">About</Link></li>
-                        <li onClick={() => {this.props.logout()}}>Logout</li>
+                        <li className="logout-click" onClick={() => { this.props.logout() }}>Logout</li>
                     </ul>
                     {/* Will use ternary here when we have Auth function working*/}
                 </nav>
