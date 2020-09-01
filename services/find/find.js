@@ -11,23 +11,22 @@ const initialUnPack = (req, res, next) => {
 	})
 	.then(res => res.json())
 	.then(parsedRes => {
+		console.log(parsedRes)
 		let searchRes = []
 		parsedRes.results.map(el => {
+			console.log('parsedRes', el)
 			if (el.titleType) {
-				searchRes.push(el)
+				searchRes.push({
+					imdb_id: (el.id).split('/title/')[1],
+					title: el.title,
+					titleType: el.titleType,
+					posters: (el.image) ? el.image.url : '',
+					years: el.year,
+				})
 			}
 		})
-		let searchObj = []
-		searchRes.map(el => {
-			searchObj.push({
-				imbd_id: (el.id).split('/title/')[1],
-				title: el.title,
-				titleType: el.titleType,
-				posters: el.image.url,
-				years: el.year,
-			})
-		})
-		res.locals.results = searchObj
+		res.locals.results = searchRes
+		console.log('locals', res.locals.results)
 		next()
 	})
 	.catch(err => {
