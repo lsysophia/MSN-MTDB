@@ -11,10 +11,8 @@ const initialUnPack = (req, res, next) => {
 	})
 	.then(res => res.json())
 	.then(parsedRes => {
-		console.log(parsedRes)
 		let searchRes = []
 		parsedRes.results.map(el => {
-			console.log('parsedRes', el)
 			if (el.titleType) {
 				searchRes.push({
 					imdb_id: (el.id).split('/title/')[1],
@@ -26,15 +24,12 @@ const initialUnPack = (req, res, next) => {
 			}
 		})
 		res.locals.results = searchRes
-		console.log('locals', res.locals.results)
 		next()
 	})
 	.catch(err => {
 		console.log(err)
 		next(err)
-	}
-		
-	);
+	})
 }
 module.exports = {
 	initialUnPack,

@@ -14,20 +14,19 @@ const getDetailByImdbId = (req, res, next) => {
 			res.locals.imdb_id = parsedRes.id
 			res.locals.title = parsedRes.title.title
 			res.locals.titleType = parsedRes.title.titleType
-			res.locals.image = parsedRes.title.image.url
-			res.locals.runTime = parsedRes.title.runningTimeInMinutes
-			res.locals.certificateRating = parsedRes.certificates.US.map(el => el.certificate)
-			res.locals.certificateRatingReason = parsedRes.certificates.US.map(el => el.ratingReason)
-			res.locals.ratings = parsedRes.ratings.rating
-			res.locals.genres = parsedRes.genres
-			res.locals.releaseDate = parsedRes.releaseDate
-			res.locals.summaryAuthor = parsedRes.plotSummary.author
-			res.locals.summary = parsedRes.plotSummary.text
+			res.locals.image = (parsedRes.title.image) ? parsedRes.title.image.url : null
+			res.locals.runTime = (parsedRes.title.runningTimeInMinutes) ? parsedRes.title.runningTimeInMinutes : null
+			res.locals.certificate = (parsedRes.certificates) ? parsedRes.certificates : null
+			res.locals.ratings = (parsedRes.ratings.rating) ? parsedRes.ratings.rating : null
+			res.locals.genres = (parsedRes.genres) ? parsedRes.genres : null
+			res.locals.releaseDate = (parsedRes.releaseDate) ? parsedRes.releaseDate : null
+			res.locals.summary = (parsedRes.plotSummary) ? parsedRes.plotSummary : null
+			res.locals.outline = (parsedRes.plotOutline) ? parsedRes.plotOutline.text : null
 			// WE MAY OR MAY NOT NEED BELOW ITEMS IF SEASONS FETCH COLLECT GOOD DATA
-			res.locals.episodeCount = parsedRes.numberOfEpisodes
-			res.locals.startYear = parsedRes.title.seriesStartYear
-			res.locals.endYear = parsedRes.title.seriesEndYear
-
+			res.locals.episodeCount = (parsedRes.numberOfEpisodes) ? parsedRes.numberOfEpisodes : null
+			res.locals.startYear = (parsedRes.title.seriesStartYear) ? parsedRes.title.seriesStartYear : null
+			res.locals.endYear = (parsedRes.title.seriesEndYear) ? parsedRes.title.seriesEndYear : null
+			console.log('locals HEREEEE', res.locals)
 		})
 		.catch(err => {
 			console.log(err)
