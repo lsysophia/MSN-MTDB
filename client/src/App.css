@@ -352,7 +352,6 @@ cursor: pointer;
 .technologies{  
   margin-bottom: 50px;
 }
-
 /* ABOUT END  */
 
 /* FOOTER START */
@@ -362,6 +361,9 @@ footer{
   margin-bottom: 10px;
   
 }
+.posterDiv {
+  margin: 5%;
+}
 
 /* FOOTER END */
 
@@ -369,8 +371,4 @@ footer{
   .container{
     min-width: 650px;
   }
-
-.posterDiv {
-  margin: 5%;
 }
-
