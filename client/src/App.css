@@ -88,6 +88,7 @@ header{
 header a{ 
   text-decoration: none;
 }
+
 nav ul {
   display: flex;
   color:white;
@@ -95,6 +96,10 @@ nav ul {
 
 header nav ul li a{
   text-transform: uppercase;
+}
+
+.logout-click{
+  cursor: pointer;
 }
 
 header li{
