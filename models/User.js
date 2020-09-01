@@ -32,7 +32,6 @@ class User {
     }
 
     save() {
-        console.log('THIS?', this)
         return db
         .one(
             `INSERT INTO users
@@ -43,7 +42,7 @@ class User {
             this
         )
         .then(savedUser => Object.assign(this, savedUser))
-        .catch(err => console.log('ERROR MESSAGE', err));
+        .catch(err => console.log(err));
     }
 
     update(changes) {

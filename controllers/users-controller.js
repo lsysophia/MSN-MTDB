@@ -22,9 +22,6 @@ usersController.index = (req, res, next) => {
 usersController.create = (req, res, next) => {
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(req.body.password, salt);
-    // console.log('hshdgalskdjglaist')
-    // console.log(req.body)
-    // console.log('DKJAKJSCNKAU')
     new User({
         username: req.body.username,
         name: req.body.name,
@@ -34,7 +31,6 @@ usersController.create = (req, res, next) => {
         password_digest: hash,
     }).save()
     .then(user => {
-        console.log('OVER HERE', user) // not reaching this point
         req.login(user, (err) => {
             if (err) return next(err);
             res.status(201).json({
