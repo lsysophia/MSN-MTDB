@@ -11,21 +11,21 @@ export default class About extends Component {
                     </p>
                     <h2>Technologies used for this project</h2>
                     <ul>
-                        <li><span>🖥️</span></li>
-                        <li><span>🖥️</span></li>
-                        <li><span>🖥️</span></li>
-                        <li><span>🖥️</span></li>
-                        <li><span>🖥️</span></li>
+                        <li><span role="img" aria-label="tech">🖥️</span></li>
+                        <li><span role="img" aria-label="tech">🖥️</span></li>
+                        <li><span role="img" aria-label="tech">🖥️</span></li>
+                        <li><span role="img" aria-label="tech">🖥️</span></li>
+                        <li><span role="img" aria-label="tech">🖥️</span></li>
                     </ul>
                     <p>
 
                     </p>
                     <h2>Team</h2>
-                    <h3><span>💭</span> Dream team <span>💭</span></h3>
+                    <h3><span role="img" aria-label="dream">💭</span> Dream team <span role="img" aria-label="dream">💭</span></h3>
                     <ul>
-                        <li><span>💥</span> Matthew</li>
-                        <li><span>💥</span> Sophia</li>
-                        <li><span>💥</span> Niso</li>
+                        <li><span role="img" aria-label="fire">💥</span> Matthew</li>
+                        <li><span role="img" aria-label="fire">💥</span> Sophia</li>
+                        <li><span role="img" aria-label="fire">💥</span> Niso</li>
                     </ul>
                 </article>
             </div>
