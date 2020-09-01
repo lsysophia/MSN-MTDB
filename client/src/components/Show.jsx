@@ -12,6 +12,7 @@ export default class Show extends Component {
                         <div>
                             <h1>
                                 Title (Year)
+                                {this.props.selected.title}
                             </h1>
                             <h3>
                                 Meta data
