@@ -3,28 +3,32 @@ import React, { Component } from 'react'
 export default class About extends Component {
     render() {
         return (
-            <div className="about-box">
+            <div>
                 <article>
                     <h1>MSN - MTVDB</h1>
+                    <p>
 
-                    <h2 className="technologies">Technologies used for this project</h2>
+                    </p>
+                    <h2>Technologies used for this project</h2>
                     <ul>
-                        <li>🖥️ asd</li>
-                        <li>🖥️ asdfd</li>
-                        <li>🖥️ asdfd</li>
-                        <li>🖥️ asdfd</li>
-                        <li>🖥️ asdfd</li>
+                        <li><span>🖥️</span></li>
+                        <li><span>🖥️</span></li>
+                        <li><span>🖥️</span></li>
+                        <li><span>🖥️</span></li>
+                        <li><span>🖥️</span></li>
                     </ul>
-                    <hr />
-                    <h2 className="team">Team</h2>
-                    <h3>💭 Dream team 💭</h3>
+                    <p>
+
+                    </p>
+                    <h2>Team</h2>
+                    <h3><span>💭</span> Dream team <span>💭</span></h3>
                     <ul>
-                        <li>💥 Matthew</li>
-                        <li>💥 Sophia</li>
-                        <li>💥 Niso</li>
+                        <li><span>💥</span> Matthew</li>
+                        <li><span>💥</span> Sophia</li>
+                        <li><span>💥</span> Niso</li>
                     </ul>
                 </article>
-            </div >
+            </div>
         )
     }
 }
