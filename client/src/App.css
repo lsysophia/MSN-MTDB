@@ -205,12 +205,14 @@ section h2{
   padding:10px 5px 10px 5px;
   margin-left:20px;
   margin-right:20px;
+  box-shadow: 5px 5px gray;
 }
 
 .user-box h3:hover{
 background:gray;
 color: black;
 cursor: pointer;
+box-shadow: 0px 0px;
 }
 
 .Home-page h1{
