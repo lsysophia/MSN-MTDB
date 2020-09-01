@@ -80,7 +80,7 @@ button::-moz-focus-inner {
 header{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 10px;
   margin-top:10px
 }
@@ -92,11 +92,30 @@ nav ul {
 
 header nav ul li a{
   text-transform: uppercase;
+}
+
+header li{
+  text-transform: uppercase;
   padding: 10px;
 }
 
-a:visited{
+header a{
   color:white;
+  text-decoration: none;
+}
+
+header a:visited{
+  color:white;
+  text-decoration: none;
+}
+
+.user-box a{
+  text-decoration: none;
+}
+
+.user-box a:visited{
+  color:black;
+  text-decoration: none;
 }
 /* HEADER END*/
 
@@ -110,6 +129,10 @@ aside{
 .container{
   display: flex;
   justify-content: center;
+  min-width: 950px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: rgb(236, 234, 234);
 }
 
 /* USER START */
@@ -169,7 +192,7 @@ section h2{
   flex:1;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: black;
 }
 
 .user-box{
@@ -178,15 +201,14 @@ section h2{
 }
 
 .user-box h3{
-  border: 1px solid white;
+  border: 1px solid black;
   padding:10px 5px 10px 5px;
-
   margin-left:20px;
   margin-right:20px;
 }
 
 .user-box h3:hover{
-background:white;
+background:gray;
 color: black;
 cursor: pointer;
 }
@@ -236,3 +258,39 @@ cursor: pointer;
 }
 /* SEARCH PAGE END*/
 
+/* REGISTER START */
+  .form-box{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: center;  
+}
+
+.form-box input[type="submit"]
+{
+  color: black;
+  text-transform: uppercase;
+  font-weight: 700;
+  border:1px solid black;
+}
+
+.form-box input[type="submit"]:hover
+{
+  background-color: gray;
+  color: white;  
+}
+
+.form-box input
+{
+  padding:5px 5px 5px 5px;
+  margin-bottom:5px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.form-box input[type="password"]{
+  border:1px solid black;
+  background-color: white;
+  cursor: auto;
+}
+/* REGISTER END */
