@@ -85,6 +85,9 @@ header{
   margin-top:10px
 }
 
+header a{ 
+  text-decoration: none;
+}
 nav ul {
   display: flex;
   color:white;
