@@ -316,6 +316,45 @@ cursor: pointer;
 }
 /* REGISTER END */
 
+
+/* ABOUT START */
+.about-box{
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  /* justify-content: center; */
+  color:black;
+  text-align: center;
+}
+.about-box h1
+{
+  font-size:4em;
+  margin-bottom: 30px;
+}
+.about-box h2
+{  
+  font-size:3em;
+  margin-bottom: 20px;
+
+}
+.about-box h3
+{  
+  font-size:2em;
+  margin-bottom: 20px;
+
+}
+.about-box h4
+{
+  font-size:1.25em;
+  margin-bottom: 20px;
+}
+
+.technologies{  
+  margin-bottom: 50px;
+}
+
+/* ABOUT END  */
+
 /* FOOTER START */
 footer{
   text-align: center;
@@ -334,3 +373,4 @@ footer{
 .posterDiv {
   margin: 5%;
 }
+
