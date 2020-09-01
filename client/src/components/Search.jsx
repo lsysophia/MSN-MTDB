@@ -17,7 +17,10 @@ export default class Search extends Component {
     }
     handleSearchSubmit(evt) {
         evt.preventDefault()
-        fetch(`api/search/${this.state.title}`)
+        fetch(`api/search/${this.state.title}`, {
+            method: 'POST',
+            // what else??
+        })
     }
 
     render() {
