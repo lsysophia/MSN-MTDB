@@ -3,24 +3,20 @@ import React, { Component } from 'react'
 export default class About extends Component {
     render() {
         return (
-            <div>
+            <div className="about-box">
                 <article>
                     <h1>MSN - MTVDB</h1>
-                    <p>
 
-                    </p>
-                    <h2>Technologies used for this project</h2>
+                    <h2 className="technologies">Technologies used for this project</h2>
                     <ul>
-                        <li>🖥️</li>
-                        <li>🖥️</li>
-                        <li>🖥️</li>
-                        <li>🖥️</li>
-                        <li>🖥️</li>
+                        <li>🖥️ asd</li>
+                        <li>🖥️ asdfd</li>
+                        <li>🖥️ asdfd</li>
+                        <li>🖥️ asdfd</li>
+                        <li>🖥️ asdfd</li>
                     </ul>
-                    <p>
-
-                    </p>
-                    <h2>Team</h2>
+                    <hr />
+                    <h2 className="team">Team</h2>
                     <h3>💭 Dream team 💭</h3>
                     <ul>
                         <li>💥 Matthew</li>
@@ -28,7 +24,7 @@ export default class About extends Component {
                         <li>💥 Niso</li>
                     </ul>
                 </article>
-            </div>
+            </div >
         )
     }
 }
