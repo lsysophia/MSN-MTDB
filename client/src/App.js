@@ -84,6 +84,12 @@ class App extends Component {
       }).catch(err => console.log(err))
   }
 
+  deleteUser(id) {
+    fetch(`/api/user/${id}`, {
+      method: 'DELETE'
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -109,7 +115,7 @@ class App extends Component {
               render={() => (
                 !this.state.auth
                 ? <Redirect to='/login' />
-                : <User user={this.state.user} />
+                : <User deleteUser={this.deleteUser} user={this.state.user} />
               )}
             />
           </div>
