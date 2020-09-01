@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-class Edit extends Component {
+class UserEdit extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -24,7 +24,7 @@ class Edit extends Component {
     render() {
         return (
             <div>
-                <form className="form-box" onSubmit={(e) => this.props.handleUpdates(e, this.state.id)}>
+                <form className="form-box" onSubmit={(e) => this.props.handleUserEditSubmit(e, this.state.id)}>
                     <input type="email"
                         name="email"
                         value={this.state.email}
@@ -55,3 +55,5 @@ class Edit extends Component {
     }
 
 }
+
+export default UserEdit
