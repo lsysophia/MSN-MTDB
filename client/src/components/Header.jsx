@@ -13,6 +13,9 @@ export default class Header extends Component {
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/search">Search</Link></li>
                         <li><Link to="/about">About</Link></li>
+                        {/* TEMP */}
+                        <li><Link to ="/show">Show</Link></li>
+                        {/* TEMP */}
                         {this.props.userAuth
                         ?
                         <ul> 

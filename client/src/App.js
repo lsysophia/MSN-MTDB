@@ -129,7 +129,8 @@ class App extends Component {
     }).then(res => res.json())
     .then(jsonRes => {
       this.setState({
-        selected: jsonRes
+        selected: jsonRes.data,
+        // we will need to change the page status here
       })
     })
   }

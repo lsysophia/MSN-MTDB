@@ -26,7 +26,8 @@ const getDetailByImdbId = (req, res, next) => {
 			res.locals.episodeCount = (parsedRes.numberOfEpisodes) ? parsedRes.numberOfEpisodes : null
 			res.locals.startYear = (parsedRes.title.seriesStartYear) ? parsedRes.title.seriesStartYear : null
 			res.locals.endYear = (parsedRes.title.seriesEndYear) ? parsedRes.title.seriesEndYear : null
-			console.log('locals HEREEEE', res.locals)
+			// console.log('locals HEREEEE', res.locals)
+			next()
 		})
 		.catch(err => {
 			console.log(err)
