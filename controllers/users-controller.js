@@ -22,17 +22,14 @@ usersController.index = (req, res, next) => {
 usersController.create = (req, res, next) => {
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(req.body.password, salt);
-    console.log('hshdgalskdjglaist')
-    console.log(req.body)
-    console.log('DKJAKJSCNKAU')
-    User.save({
+    new User({
         username: req.body.username,
         name: req.body.name,
         email: req.body.email,
         age: req.body.age,
         genres: req.body.genres,
         password_digest: hash,
-    })
+    }).save()
     .then(user => {
         req.login(user, (err) => {
             if (err) return next(err);
@@ -44,7 +41,7 @@ usersController.create = (req, res, next) => {
         });
     })
     .catch(next)
-};
+}
 
 usersController.update = (req, res, next) => {
     User.findById(req.params.id)

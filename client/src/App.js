@@ -61,16 +61,16 @@ class App extends Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: 'include',
       body: JSON.stringify(data),
-    }).then(res => res.json())
-      .then(parsedRes => {
-        console.log(parsedRes)
-        this.setState({
-          auth: parsedRes.auth,
-          user: parsedRes.data.user,
-        })
-      }).catch(err => console.log(err))
+    }).then(res => console.log('HERE', res))
+    // }).then(res => res.json())
+    //   .then(parsedRes => {
+    //     console.log(parsedRes)
+    //     this.setState({
+    //       auth: parsedRes.auth,
+    //       user: parsedRes.data.user,
+    //     })
+    //   }).catch(err => console.log(err))
   }
 
   logout() {

@@ -33,13 +33,13 @@ app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 })
 
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
 app.use('/api/auth', authRouter)
 app.use('/api/user', userRouter)
-// add userRoute, searchRoute, userMoviesRoute, userSeriesRoute, userEpisodesRoute
+// add searchRoute, userMoviesRoute, userSeriesRoute, userEpisodesRoute
 
 app.use('*', (req, res) => {
     res.status(400).json({
