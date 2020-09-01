@@ -122,7 +122,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header logout={this.logout} />
+          <Header logout={this.logout} userAuth={this.state.auth}/>
           <div className="container">
             <Route exact path='/' component={Home} />
             <Route exact path='/login'
@@ -143,7 +143,7 @@ class App extends Component {
               render={() => (
                 !this.state.auth
                 ? <Redirect to='/login' />
-                : <User deleteUser={this.deleteUser} user={this.state.user} />
+                : <User deleteUser={this.deleteUser} user={this.state.user} logout={this.logout} />
               )}
             />
 
