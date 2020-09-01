@@ -9,7 +9,7 @@ export default class User extends Component {
                     <div className="user-settings">
                         <p>Log out</p>
                         <p>Edit User</p>
-                        <p onClick={() => {this.props.deleteUser(props.user.id)}}>Delete Account</p>
+                        <p onClick={() => {this.props.deleteUser(this.props.user.id)}}>Delete Account</p>
                     </div>
                 </section>
 
