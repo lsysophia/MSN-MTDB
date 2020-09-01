@@ -59,6 +59,7 @@ button {
     padding: 0;
     -webkit-appearance: button; /* for input */
     cursor: pointer;
+    color: black;
 }
 input::-moz-focus-inner,
 button::-moz-focus-inner {
@@ -253,6 +254,12 @@ box-shadow: 0px 0px;
   justify-content: space-evenly;
 }
 
+.search-box{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
 .search-results{
   border:1px white solid;
   padding: 50px;
@@ -266,6 +273,17 @@ cursor: pointer;
   background-color: white;
   color: black;
 }
+
+.posterDiv img{
+  margin: 10px;
+  width: 350px;
+  height: 500px;
+}
+
+.posterDiv h3{
+  color: black;
+}
+
 /* SEARCH PAGE END*/
 
 /* REGISTER START */
@@ -306,6 +324,3 @@ cursor: pointer;
 }
 /* REGISTER END */
 
-.posterDiv {
-  margin: 5%;
-}
