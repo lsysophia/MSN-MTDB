@@ -50,17 +50,17 @@ class User {
         return db
         .oneOrNone(
             `UPDATE users SET
-            username = $/username/,
             name = $/name/,
             email = $/email/,
             age = $/age/,
-            genres = $/genres/,
-            password_digest = $/password_digest/
+            genres = $/genres/
             WHERE id = $/id/
             RETURNING *`,
             this
         )
-        .then(updatedUser => Object.assign(this, updatedUser))
+        .then(updatedUser => {
+            return Object.assign(this, updatedUser)
+        })
         .catch(err => console.log(err));
     }
 

@@ -4,7 +4,7 @@ const User = require('../models/User.js');
 const usersController = {};
 
 usersController.index = (req, res, next) => {
-    User.findById(req.params.id)
+    User.getById(req.params.id)
     .then(() => {
         res.json({
             message: 'ok',
@@ -44,8 +44,21 @@ usersController.create = (req, res, next) => {
 }
 
 usersController.update = (req, res, next) => {
-    User.findById(req.params.id)
-    .then(()=> res.redirect('/api/user'))
+    User.getById(req.params.id)
+    .then(user => {
+        return user.update({
+            name: req.body.name,
+            email: req.body.email,
+            age: req.body.age,
+            genres: req.body.genres,
+        })
+    })
+    .then(updatedUser => {
+        res.json({
+            message: 'User updated successfully!',
+            data: { updatedUser }
+        })
+    })
     .catch(next)
 }
 

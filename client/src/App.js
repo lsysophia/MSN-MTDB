@@ -76,11 +76,10 @@ class App extends Component {
       }).catch(err => console.log(err))
   }
 
-  handleUserEditSubmit(e, data) {
-    console.log(e)
+  handleUserEditSubmit(e, data, id) {
     e.preventDefault()
     console.log(data)
-    fetch(`/api/user/edit/${data.id}`, {
+    fetch(`/api/user/edit/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -88,10 +87,10 @@ class App extends Component {
         body: JSON.stringify(data),
     }).then(res => res.json())
       .then(parsedRes => {
-        console.log(parsedRes)
         this.setState({
-          auth: parsedRes.auth,
-          user: parsedRes.data.user
+          //add page status change
+          // auth: parsedRes.auth,
+          user: parsedRes.data.user,
         })
       }).catch(err => console.log(err))
   }

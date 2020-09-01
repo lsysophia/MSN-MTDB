@@ -4,11 +4,10 @@ class UserEdit extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            id: '',
-            email: '', 
-            age: '', 
-            genres: '',
-            name: '',
+            email: props.user.email, 
+            age: props.user.age, 
+            genres: props.user.genres,
+            name: props.user.name,
         }
         this.handleInputChange = this.handleInputChange.bind(this)
     }
@@ -24,30 +23,33 @@ class UserEdit extends Component {
     render() {
         return (
             <div>
-                <form className="form-box" onSubmit={(e) => this.props.handleUserEditSubmit(e, this.state.id)}>
+                <form className="form-box" onSubmit={(e) => this.props.handleUserEditSubmit(e, this.state, this.props.user.id)}>
+                    <input type="text"
+                        name="name"
+                        value={this.state.name}
+                        placeholder='Name'
+                        onChange={this.handleInputChange}
+                    />
                     <input type="email"
                         name="email"
                         value={this.state.email}
-                        placeholder={this.props.email}
+                        placeholder='Email'
                         onChange={this.handleInputChange}
                     />
                     <input type="number"
                         name="age"
                         value={this.state.age}
-                        placeholder={this.props.age}
+                        placeholder='Age'
                         onChange={this.handleInputChange}
                     />
                     <input type="text"
                         name="genres"
                         value={this.state.genres}
-                        placeholder={this.props.genres}
+                        placeholder='Genres'
                         onChange={this.handleInputChange}
                     />
-                    <input type="text"
-                        name="name"
-                        value={this.state.name}
-                        placeholder={this.props.name}
-                        onChange={this.handleInputChange}
+                    <input type="submit"
+                        value="Finish Editing"
                     />
                 </form>
             </div>
