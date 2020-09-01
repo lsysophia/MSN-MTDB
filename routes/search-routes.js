@@ -20,6 +20,6 @@ searchRouter.get('/', user_moviesController.index, user_seriesController.index, 
 
 
 searchRouter.post('/:title', initialUnPack, searchController.results)
-searchRouter.post('/details/:id)', getDetailByImdbId,  searchController.decide) // will need the search fetches
+searchRouter.post('/details/:imdb_id', getDetailByImdbId,  searchController.decide) // will need the search fetches
 
 module.exports = searchRouter
