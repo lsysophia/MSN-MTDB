@@ -1,41 +1,44 @@
 const fetch = require('node-fetch');
-// const { parse } = require('dotenv/types');
-// require('dotenv').config()
+require('dotenv').config()
 
-// const test = 'batman'
-
-// //initial fetch to get imdbid of the title
-const initialUnPack = (title) => {
-	return fetch(`https://imdb8.p.rapidapi.com/title/find?q=${title}`, {
-			method: 'GET',
-			headers: {
-				'x-rapidapi-host': 'imdb8.p.rapidapi.com',
-				'x-rapidapi-key': process.env.API_Key
-				// process.env.API_Key
-			},
+const initialUnPack = (req, res, next) => {
+	fetch(`https://imdb8.p.rapidapi.com/title/find?q=${req.params.title}`, {
+		method: 'GET',
+		headers: {
+			'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+			'x-rapidapi-key': process.env.API_Key
+		},
+	})
+	.then(res => res.json())
+	.then(parsedRes => {
+		console.log(parsedRes)
+		let searchRes = []
+		parsedRes.results.map(el => {
+			console.log('parsedRes', el)
+			if (el.titleType) {
+				searchRes.push({
+					imdb_id: (el.id).split('/title/')[1],
+					title: el.title,
+					titleType: el.titleType,
+					posters: (el.image) ? el.image.url : '',
+					years: el.year,
+				})
+			}
 		})
-		.then(res => res.json())
-		.then(parsedRes => {
-			return parsedRes.results.map((obj) => {
-				if(obj.titleType) {
-					const result = {
-						id: obj.id,
-						title: obj.title,
-						image: obj.image.url
-					}
-					console.log(result)
-					return result
-				}
-			})
-		})
-		.catch(err => 
-			console.log(err)
-		);
+		res.locals.results = searchRes
+		console.log('locals', res.locals.results)
+		next()
+	})
+	.catch(err => {
+		console.log(err)
+		next(err)
+	}
+		
+	);
 }
-
-// console.log(initialUnPack(test))
-
-module.exports = initialUnPack
+module.exports = {
+	initialUnPack,
+}
 
 
 

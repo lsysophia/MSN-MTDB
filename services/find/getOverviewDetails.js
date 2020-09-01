@@ -1,31 +1,29 @@
 const fetch = require('node-fetch');
-// require('dotenv').config()
+require('dotenv').config()
 
-const testId = 'tt0944947'
-
-const getDetailByImdbId = (id) => {
-	return fetch(`https://imdb8.p.rapidapi.com/title/get-overview-details?currentCountry=US&tconst=${id}`, {
-				method: 'GET',
-				headers: {
-					'x-rapidapi-host': 'imdb8.p.rapidapi.com',
-					'x-rapidapi-key': process.env.API_Key
-					// process.env.API_Key
-				},
-			})
-			.then(res => res.json())
-			.then(parsedRes => {
-				const title = parsedRes.title.title
-				const titleType = parsedRes.title.titleType
-				const image = parsedRes.title.image.url
-				const startYear = parsedRes.title.seriesStartYear
-				const endYear = parsedRes.title.seriesEndYear
-				const genres = parsedRes.genres
-				const summary = parsedRes.plotSummary.text
-				console.log([title, titleType, image, startYear, endYear, genres, summary])
-			})
-			.catch(err => console.log(err))
+const getDetailByImdbId = (req, res, next) => {
+	fetch(`https://imdb8.p.rapidapi.com/title/get-overview-details?currentCountry=US&tconst=${res.locals.imdb_id}`, {
+			method: 'GET',
+			headers: {
+				'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+				'x-rapidapi-key': process.env.API_Key
+			},
+		})
+		.then(res => res.json())
+		.then(parsedRes => {
+			res.locals.title = parsedRes.title.title
+			const image = parsedRes.title.image.url
+			const startYear = parsedRes.title.seriesStartYear
+			const endYear = parsedRes.title.seriesEndYear
+			const genres = parsedRes.genres
+			const summary = parsedRes.plotSummary.text
+			// console.log([title, titleType, image, startYear, endYear, genres, summary])
+		})
+		.catch(err => {
+			console.log(err)
+			next(err)
+		})
 }
-
-// console.log(getDetailByImdbId(testId))
-
-module.exports = getDetailByImdbId
+module.exports = {
+	getDetailByImdbId,
+}
