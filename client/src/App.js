@@ -22,6 +22,7 @@ class App extends Component {
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
     this.logout = this.logout.bind(this)
+    this.deleteUser = this.deleteUser.bind(this)
   }
 
   componentDidMount() {
@@ -87,7 +88,13 @@ class App extends Component {
   deleteUser(id) {
     fetch(`/api/user/${id}`, {
       method: 'DELETE'
-    })
+    }).then(res => res.json())
+    .then(() => {
+      this.setState({
+        auth: false,
+        user: null,
+      })
+    }).catch(err => console.log(err))
   }
 
   render() {
@@ -114,13 +121,8 @@ class App extends Component {
             <Route exact path='/user'
               render={() => (
                 !this.state.auth
-<<<<<<< HEAD
                 ? <Redirect to='/login' />
                 : <User deleteUser={this.deleteUser} user={this.state.user} />
-=======
-                  ? <Redirect to='/login' />
-                  : <User user={this.state.user} />
->>>>>>> b7b367f3a723985d7b895240a59ba2a05271c397
               )}
             />
 
