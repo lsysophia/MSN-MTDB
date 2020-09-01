@@ -62,15 +62,14 @@ class App extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-    }).then(res => console.log('HERE', res))
-    // }).then(res => res.json())
-    //   .then(parsedRes => {
-    //     console.log(parsedRes)
-    //     this.setState({
-    //       auth: parsedRes.auth,
-    //       user: parsedRes.data.user,
-    //     })
-    //   }).catch(err => console.log(err))
+    }).then(res => res.json())
+      .then(parsedRes => {
+        console.log(parsedRes)
+        this.setState({
+          auth: parsedRes.auth,
+          user: parsedRes.data.user,
+        })
+      }).catch(err => console.log(err))
   }
 
   logout() {
