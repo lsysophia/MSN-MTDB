@@ -126,7 +126,6 @@ header a:visited{
   text-decoration: none;
 }
 /* HEADER END*/
-
 section{
   float: left;
 }
@@ -136,9 +135,10 @@ aside{
 
 .container{
   display: flex;
+  flex:1;
   justify-content: center;
   min-width: 950px;
-  max-width: 1200px;
+  max-width: 1200px; 
   margin: 0 auto;
   background-color: rgb(236, 234, 234);
 }
@@ -147,51 +147,61 @@ aside{
 
 .user-page{
   display: flex;
-  flex: 1;
   flex-direction: row;
-  /* background-color: brown; */
+  color: black;
   justify-content: space-evenly;
-  
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 60vh;
+  /* min-width: 720px; */
 }
 
-section{
+.user-page section{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 500px;
-
+  justify-content: space-between;
+  flex:1;
+  text-align:center;
 }
+
+.user-page aside{
+  width: 450px; 
+  display: flex;
+  flex-direction: column;
+  text-align:center;
+  flex:1;
+}
+
 .user-settings{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  color:black;
+}
+.user-settings h4{
+  font-size: 1.25em;
+}
+.user-settings h4:hover{
+  cursor: pointer;
 }
 
-aside{
-  /* height: 500px;*/
-  width: 450px; 
-  height: 500px;
-  border:1px solid white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-}
-aside h2{
+.user-page aside h2{
   text-align: center;
   font-size: 2em;
 }
 
-section h2{
+.user-page section h2{
   font-size: 2em;
+}
+
+.user-page .user-saved-list{
+  margin-top: 30px;
+  text-align: center;
 }
 
 /* USER END */
 
-.container{
-  display: flex;
-  flex:1;
-}
+
 
 /* HOME PAGE START */
 .Home-page{
@@ -305,6 +315,21 @@ cursor: pointer;
   cursor: auto;
 }
 /* REGISTER END */
+
+/* FOOTER START */
+footer{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+
+/* FOOTER END */
+
+@media screen and (max-width: 993px) {
+  .container{
+    min-width: 650px;
+  }
 
 .posterDiv {
   margin: 5%;

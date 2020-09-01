@@ -30,7 +30,7 @@ export default class Show extends Component {
                         <div>
                             <h2>
                                 Watch it at: .....
-    </h2>
+                            </h2>
                             <p><a>Click here to watch</a></p>
                         </div>
                     </article>
