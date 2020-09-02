@@ -41,6 +41,7 @@ user_moviesController.delete = (req, res, next) => {
             })
         })
         .catch(next);
+}
 
 user_moviesController.create = (req, res, next) => {
     new User_movies({
