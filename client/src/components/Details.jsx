@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-export default class Show extends Component {
+export default class Details extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -20,6 +20,7 @@ export default class Show extends Component {
             seasons: this.props.selected.season.map(el => el.season),
             episodes: this.props.selected.season.map(el => el.episodes),
         }
+        this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
     
     componentDidMount() {
@@ -76,7 +77,9 @@ export default class Show extends Component {
                         <h3>Ratings</h3>
                         <p>{this.state.ratings}</p>
                     </div>
-                    <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
+                    <form onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
+                        <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
+                    </form>
                 </article>
                 <article>
                     <ul>
@@ -101,13 +104,13 @@ export default class Show extends Component {
                             return (
                                 <div key={el.id}>
                                     <h3><img src={el.icon} alt="Provider's Icon" /> {el.display_name}</h3>
-                                    <a href={el.url} target='_blank'>Watch: {this.state.title} on {el.display_name} NOW!</a>
+                                    <a href={el.url} target='_blank' rel="noopener noreferrer">Watch: {this.state.title} on {el.display_name} NOW!</a>
                                 </div>
                             )
                         })}
                     </div>
                 </article>
-            </section>
+            </section >
         )
     }
     render() {
