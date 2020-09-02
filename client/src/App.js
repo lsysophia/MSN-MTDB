@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import fetch from 'node-fetch';
+
 import './App.css';
 import Header from './components/Header'
 import User from './components/User'
@@ -11,8 +14,6 @@ import Search from './components/Search'
 import UserEdit from './components/UserEdit'
 import Show from './components/Show'
 
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import fetch from 'node-fetch';
 
 class App extends Component {
   constructor() {
@@ -137,57 +138,55 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Header logout={this.logout} userAuth={this.state.auth}/>
-          <div className="container">
-            <Route exact path='/' component={Home} />
-            <Route exact path='/login'
-              render={() => (
-                this.state.auth
-                  ? <Redirect to='/user' />
-                  : <Login handleLoginSubmit={this.handleLoginSubmit} />
-              )}
-            />
-            <Route exact path='/register'
-              render={() => (
-                this.state.auth
-                  ? <Redirect to='/user' />
-                  : <Register handleRegisterSubmit={this.handleRegisterSubmit} />
-              )}
-            />
-            <Route exact path='/user'
-              render={() => (
-                !this.state.auth
-                ? <Redirect to='/login' />
-                : <User deleteUser={this.deleteUser} user={this.state.user} logout={this.logout} />
-              )}
-            />
+      <div className="App">
+        <Header logout={this.logout} userAuth={this.state.auth}/>
+        <div className="container">
+          <Route exact path='/' component={Home} />
+          <Route exact path='/login'
+            render={() => (
+              this.state.auth
+                ? <Redirect to='/user' />
+                : <Login handleLoginSubmit={this.handleLoginSubmit} />
+            )}
+          />
+          <Route exact path='/register'
+            render={() => (
+              this.state.auth
+                ? <Redirect to='/user' />
+                : <Register handleRegisterSubmit={this.handleRegisterSubmit} />
+            )}
+          />
+          <Route exact path='/user'
+            render={() => (
+              !this.state.auth
+              ? <Redirect to='/login' />
+              : <User deleteUser={this.deleteUser} user={this.state.user} logout={this.logout} />
+            )}
+          />
 
-            <Route exact path='/user/edit'
-              render={() => (
-                this.state.auth
-                  ? <UserEdit handleUserEditSubmit={this.handleUserEditSubmit} user={this.state.user} />
-                  : <Redirect to='/user' />
-              )}
-            />
+          <Route exact path='/user/edit'
+            render={() => (
+              this.state.auth
+                ? <UserEdit handleUserEditSubmit={this.handleUserEditSubmit} user={this.state.user} />
+                : <Redirect to='/user' />
+            )}
+          />
 
-            <Route exact path='/search'
-              render={() => <Search user={this.state.user} selectedPoster={this.selectedPoster} />}
-            />
+          <Route exact path='/search'
+            render={() => <Search user={this.state.user} selectedPoster={this.selectedPoster} />}
+          />
 
-            <Route exact path='/show'
-              render={() => <Show selected={this.state.selected} user={this.state.user} />}
-            />
+          <Route exact path='/show'
+            render={() => <Show selected={this.state.selected} user={this.state.user} />}
+          />
 
-            <Route exact path='/about'
-              render={() => <About search={this.state.user} />}
-            />
+          <Route exact path='/about'
+            render={() => <About search={this.state.user} />}
+          />
 
-          </div>
-          <Footer />
-        </div >
-      </Router>
+        </div>
+        <Footer />
+      </div >
     );
   }
 }
