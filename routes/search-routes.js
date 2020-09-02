@@ -22,5 +22,4 @@ searchRouter.get('/', user_moviesController.index, user_seriesController.index, 
 
 searchRouter.post('/:title', initialUnPack, searchController.results)
 searchRouter.post('/details/:imdb_id', getDetailByImdbId, getStreamingService, searchController.decide)
-
 module.exports = searchRouter

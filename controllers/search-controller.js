@@ -12,6 +12,7 @@ searchController.results = (req, res, next) => {
 }
 
 searchController.decide = (req, res, next) => {
+    console.log('IN THE DECIDE CONTROLLER', res.locals)
     if (res.locals.titleType === 'movie') {
         res.json({
             message: 'ok',
