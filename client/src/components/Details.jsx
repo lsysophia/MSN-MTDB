@@ -20,9 +20,8 @@ export default class Details extends Component {
             seasons: this.props.selected.season.map(el => el.season),
             episodes: this.props.selected.season.map(el => el.episodes),
         }
-        this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
-    
+
     componentDidMount() {
         if (this.props.selected) {
             this.setState({
@@ -41,13 +40,13 @@ export default class Details extends Component {
                             return elem.map(ele => {
                                 if (ele.season === el) {
                                     return (
-                                        <li key={ele.id}>Ep: {ele.episode} Title: {ele.title}</li>
+                                        <li key={ele.id} onClick={() => { this.props.episodeInfo(el) }} > Ep: {ele.episode} Title: {ele.title}</li>
                                     )
                                 }
                             })
                         })}
                     </ul>
-                </li>
+                </li >
             )
         })
     }
