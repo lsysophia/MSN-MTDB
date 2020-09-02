@@ -135,7 +135,6 @@ class App extends Component {
       })
   }
 
-
   handleFormSubmit = (evt, data) => {
     evt.preventDefault();
     fetch(`api/movies/`, {
@@ -191,7 +190,7 @@ class App extends Component {
           />
 
           <Route exact path='/details'
-            render={() => (<Details user={this.state.user} selected={this.state.selected} />)}
+            render={() => (<Details user={this.state.user} selected={this.state.selected} handleFormSubmit={this.handleFormSubmit} />)}
           />
 
           <Route exact path='/about'

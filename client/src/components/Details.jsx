@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-export default class Show extends Component {
+import { Router } from 'express'
+export default class Details extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -16,12 +17,17 @@ export default class Show extends Component {
             releaseDate: this.props.selected.releaseDate,
             summary: this.props.selected.summary,
             outline: this.props.selected.outline,
+            //is_movie saved in this users account?
         }
+        this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
+
     componentDidMount() {
+        console.log('ComponentMounted', "imdbID", this.props.selected.imdb_id)
         this.setState({
             dataLoaded: true,
         })
+        console.log('ComponentMounted', "imdbID", this.state.imdb_id)
     }
 
     conditionalRender() {
@@ -49,7 +55,9 @@ export default class Show extends Component {
                         <h3>Ratings</h3>
                         <p>{this.state.ratings}</p>
                     </div>
-                    <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
+                    <form onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
+                        <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
+                    </form>
                 </article>
                 <article>
                     <div>
@@ -68,10 +76,10 @@ export default class Show extends Component {
                         <h2>
                             Watch it at: .....
                         </h2>
-                        <p><a href='/'>Click here to watch</a></p> 
+                        <p><a href='/'>Click here to watch</a></p>
                     </div>
                 </article>
-            </section>
+            </section >
         )
     }
     render() {
