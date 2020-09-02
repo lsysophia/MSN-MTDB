@@ -224,11 +224,11 @@ aside{
   padding:10px 5px 10px 5px;
   margin-left:20px;
   margin-right:20px;
-  box-shadow: 5px 5px gray;
+  box-shadow: 5px 5px rgb(232,	195,	53	);
 }
 
 .user-box h3:hover{
-background:gray;
+background:rgb(232,	195,	53	);
 color: black;
 cursor: pointer;
 box-shadow: 0px 0px;
@@ -320,10 +320,10 @@ transform: translateY(4px);
 }
 
 .posterDiv h3{
-  color: black;
+  color: rgb(232,	195,	53);
   text-align:center;
   font-size:1.2em;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 
