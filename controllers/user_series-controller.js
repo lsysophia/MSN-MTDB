@@ -18,7 +18,7 @@ user_seriesController.create = (req, res, next) => {
         ratings: req.body.ratings,
         has_watched: req.body.has_watched,
         watched_time: req.body.watched_time,
-        user_id: req.body.user_id,
+        user_id: req.user.id,
     })
         .save()
         .then(show => {

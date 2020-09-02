@@ -11,13 +11,14 @@ user_episodesController.index = (req, res, next) => {
         .catch(next)
 }
 user_episodesController.create = (req, res, next) => {
+    console.log('FINAL STOP IN', req.body)
     new User_episodes({
         title: req.body.title,
         imdb_id: req.body.imdb_id,
         ratings: req.body.ratings,
         has_watched: req.body.has_watched,
         series_id: req.body.series_id,
-        user_id: req.body.user_id,
+        user_id: req.user.id,
     })
         .save()
         .then(episode => {

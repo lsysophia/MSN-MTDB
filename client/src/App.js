@@ -140,16 +140,40 @@ class App extends Component {
 
   handleFormSubmit = (evt, data) => {
     evt.preventDefault();
-    fetch(`api/movies/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }).then(res => res.json())
+    if (data.titleType === 'movie') {
+      fetch(`api/movies/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then(res => res.json())
       .then(() => {
-        console.log('POSted')
+        <Redirect push to='/user' />
       })
+    } else if (data.titleType === 'tvSeries') {
+      fetch(`api/series/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then(res => res.json())
+      .then(() => {
+        <Redirect push to='/user' />
+      })
+    } else if (data.titleType === 'tvEpisode') {
+      fetch(`api/episodes/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then(res => res.json())
+      .then(() => {
+        <Redirect push to='/user' />
+      })
+    }
   }
 
   render() {
