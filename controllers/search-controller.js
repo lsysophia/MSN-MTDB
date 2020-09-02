@@ -12,6 +12,7 @@ searchController.results = (req, res, next) => {
 }
 
 searchController.decide = (req, res, next) => {
+    console.log('IN THE DECIDE CONTROLLER', res.locals)
     if (res.locals.titleType === 'movie') {
         res.json({
             message: 'ok',
@@ -29,6 +30,7 @@ searchController.decide = (req, res, next) => {
                 releaseDate: res.locals.releaseDate,
                 summary: res.locals.summary,
                 outline: res.locals.outline,
+                available_on: res.locals.available_on,
             }
         })
     } else if (res.locals.titleType === 'tvSeries') {
