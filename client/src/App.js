@@ -84,11 +84,11 @@ class App extends Component {
     e.preventDefault()
     console.log(data)
     fetch(`/api/user/edit/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
     }).then(res => res.json())
       .then(parsedRes => {
         this.setState({
@@ -114,31 +114,45 @@ class App extends Component {
     fetch(`/api/user/${id}`, {
       method: 'DELETE'
     }).then(res => res.json())
-    .then(() => {
-      this.setState({
-        auth: false,
-        user: null,
-      })
-    }).catch(err => console.log(err))
+      .then(() => {
+        this.setState({
+          auth: false,
+          user: null,
+        })
+      }).catch(err => console.log(err))
   }
 
   selectedPoster(id) {
     fetch(`api/search/details/${id}`, {
-        method: 'POST',
+      method: 'POST',
     }).then(res => res.json())
-    .then(jsonRes => {
-      this.setState({
-        selected: jsonRes.data,
-        fireRedirect: true,
-        redirectPath: '/details',
+      .then(jsonRes => {
+        this.setState({
+          selected: jsonRes.data,
+          fireRedirect: true,
+          redirectPath: '/details',
+        })
       })
-    })
-}
+  }
+
+  handleFormSubmit = (evt, data) => {
+    evt.preventDefault();
+    fetch(`api/movies/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).then(res => res.json())
+      .then(() => {
+
+      })
+  }
 
   render() {
     return (
       <div className="App">
-        <Header logout={this.logout} userAuth={this.state.auth}/>
+        <Header logout={this.logout} userAuth={this.state.auth} />
         <div className="container">
           <Route exact path='/' component={Home} />
           <Route exact path='/login'
@@ -158,8 +172,8 @@ class App extends Component {
           <Route exact path='/user'
             render={() => (
               !this.state.auth
-              ? <Redirect to='/login' />
-              : <User deleteUser={this.deleteUser} user={this.state.user} logout={this.logout} />
+                ? <Redirect to='/login' />
+                : <User deleteUser={this.deleteUser} user={this.state.user} logout={this.logout} />
             )}
           />
 
@@ -176,7 +190,7 @@ class App extends Component {
           />
 
           <Route exact path='/details'
-            render={() => (<Details user={this.state.user}  selected={this.state.selected} />)}
+            render={() => (<Details user={this.state.user} selected={this.state.selected} handleFormSubmit={this.handleFormSubmit} />)}
           />
 
           <Route exact path='/about'
