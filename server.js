@@ -8,6 +8,9 @@ const passport = require('passport')
 const authRouter = require('./routes/auth-routes')
 const userRouter = require('./routes/user-routes')
 const searchRouter = require('./routes/search-routes')
+const userMoviesRoute = require('./routes/user-movies-route')
+// const userSeriesRoute = require('./routes/')
+// const userEpisodesRoute = require('./routes/')
 
 const app = express()
 require('dotenv').config()
@@ -41,7 +44,9 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRouter)
 app.use('/api/user', userRouter)
 app.use('/api/search', searchRouter)
-// add userMoviesRoute, userSeriesRoute, userEpisodesRoute
+app.use('/api/movies', userMoviesRoute)
+// app.use('api/series', userSeriesRoute)
+// app.use('api/episodes', userEpisodesRoute)
 
 app.use('*', (req, res) => {
     res.status(400).json({

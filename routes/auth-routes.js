@@ -17,7 +17,7 @@ authRouter.get('/verify', (req, res) => {
         auth: true,
         data: { user: req.user, }
     });
-    else return res.status(404).json({
+    else return res.status(403).json({
         message: 'Login failed',
         auth: false,
         data: { user: null, }
