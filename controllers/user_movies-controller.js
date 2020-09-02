@@ -11,6 +11,23 @@ user_moviesController.index = (req, res, next) => {
         .catch(next)
 }
 
+user_moviesController.create = (req, res, next) => {
+    new User_movies({
+        title: req.body.title,
+        imdb_id: req.body.imdb_id,
+        ratings: req.body.ratings || null,
+        has_watched: req.body.has_watched || false,
+        watched_time: req.body.watched_time || null,
+        user_id: req.body.user_id,
+    }).save()
+        .then(movie => {
+            res.json({
+                message: 'Movie added to users saved list',
+                data: { movie }
+            })
+        }).catch(next);
+}
+
 user_moviesController.update = (req, res, next) => {
     User_movies.getById(req.params.id)
         .then(movie => {
@@ -31,7 +48,6 @@ user_moviesController.update = (req, res, next) => {
         .catch(next)
 }
 
-
 user_moviesController.delete = (req, res, next) => {
     User_movies.getById(req.params.id)
         .then(movie => movie.delete())
@@ -41,19 +57,6 @@ user_moviesController.delete = (req, res, next) => {
             })
         })
         .catch(next);
-
-user_moviesController.create = (req, res, next) => {
-    new User_movies({
-        title: req.body.title,
-        imdb_id: req.body.imdb_id,
-        user_id: req.body.user_id,
-    }).save()
-        .then(movie => {
-            res.json({
-                message: 'Movie added to users saved list',
-                data: { movie }
-            })
-        }).catch(next);
 }
 
 module.exports = user_moviesController
