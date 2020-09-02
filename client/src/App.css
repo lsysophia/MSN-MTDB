@@ -138,8 +138,8 @@ aside{
   display: flex;
   flex:1;
   justify-content: center;
-  min-width: 950px;
-  max-width: 1200px; 
+  min-width: 60vw;
+  max-width: 90vw; 
   margin: 0 auto;
   background-color: rgb(236, 234, 234);
 }

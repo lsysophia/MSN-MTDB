@@ -8,7 +8,7 @@ export default class About extends Component {
                 <article>
                     <h1>MSN - MTVDB</h1>
                     <p>
-                        Welcome to our web-app! This is a platform where you would be able to search for movies and tv shows that you have in mind, keep track of what you have watched and what you want to watch, 
+                        Welcome to our web-app! This is a platform where you would be able to search for movies and tv shows that you have in mind, keep track of what you have watched and what you want to watch,
                         submit your own ratings for each title, and most importantly, you'll be able to know on which platform you can watch it without jumping through all the hoops that is the search engine!
                         We hope you like this app!
                     </p><br></br>
@@ -21,8 +21,6 @@ export default class About extends Component {
                     <p>
                         If you would like to register in order to enjoy the full function of our application, please register <Link to='/register'>Here</Link>
                     </p><br></br>
-
-
                     <h2>Technologies used for this project</h2>
                     <ul>
                         <li><span role="img" aria-label="tech">Express JS</span></li>
@@ -32,7 +30,6 @@ export default class About extends Component {
                         <li><span role="img" aria-label="tech">🖥️</span></li>
                     </ul>
                     <p>
-
                     </p>
                     <h2>Team</h2>
                     <h3><span role="img" aria-label="dream">💭</span> Dream team <span role="img" aria-label="dream">💭</span></h3>
