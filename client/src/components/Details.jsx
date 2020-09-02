@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Router } from 'express'
 export default class Details extends Component {
     constructor(props) {
         super(props)
