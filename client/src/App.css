@@ -378,7 +378,7 @@ transform: translateY(4px);
 }
 .about-box h1
 {
-  font-size:4em;
+  font-size:10em;
   margin-bottom: 30px;
 }
 .about-box h2
@@ -401,6 +401,11 @@ transform: translateY(4px);
 
 .technologies{  
   margin-bottom: 50px;
+}
+
+article
+{
+  color: darkgreen;
 }
 /* ABOUT END  */
 
