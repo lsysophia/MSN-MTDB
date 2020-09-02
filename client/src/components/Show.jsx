@@ -43,7 +43,7 @@ export default class Show extends Component {
                         <h3>Ratings</h3>
                         <p>{this.state.ratings}</p>
                     </div>
-                    <input type="submit" value="Add to watchlist" className="add-wathclist-button" />
+                    <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
                 </article>
                 <article>
                     <div>
