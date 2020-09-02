@@ -13,7 +13,6 @@ usersController.index = (req, res, next) => {
                 userMovies: res.locals.userMovies,
                 userSeries: res.locals.userSeries,
                 userEpisodes: res.locals.userEpisodes,
-                // user: WE MAY WANT TO BRING IN USER DATA????
             }
         })
     })

@@ -16,18 +16,39 @@ export default class Details extends Component {
             releaseDate: this.props.selected.releaseDate,
             summary: this.props.selected.summary,
             outline: this.props.selected.outline,
-            //is_movie saved in this users account?
-            available_on: this.props.selected.available_on
+            available_on: (this.props.selected.available_on) ? this.props.selected.available_on : [],
+            seasons: (this.props.selected.season) ? this.props.selected.season.map(el => el.season) : null,
+            episodes: (this.props.selected.season) ? this.props.selected.season.map(el => el.episodes) : null,
         }
-        // this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
-    
+
     componentDidMount() {
         if (this.props.selected) {
             this.setState({
                 dataLoaded: true,
             })
         }
+    }
+
+    seasonsAndEpisodes() {
+        return this.state.seasons.map((el, i) => {
+            return (
+                <li key={i}>
+                    {el}
+                    <ul>
+                        {this.state.episodes.map(elem => {
+                            return elem.map(ele => {
+                                if (ele.season === el) {
+                                    return (
+                                        <li key={ele.id} onClick={() => { this.props.selectedPoster((ele.id).split('/')[0]) }} >{(ele.season === el) ? `Ep: ${ele.episode} Title: ${ele.title}` : null}</li>
+                                    )
+                                }
+                            })
+                        })}
+                    </ul>
+                </li>
+            )
+        })
     }
 
     conditionalRender() {
@@ -60,6 +81,11 @@ export default class Details extends Component {
                     </form>
                 </article>
                 <article>
+                    <ul>
+                        {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
+                    </ul>
+                </article>
+                <article>
                     <div>
                         <h3>
                             Summary
@@ -73,18 +99,14 @@ export default class Details extends Component {
                         </div>
                     </div>
                     <div>
-                        {this.state.available_on.map(el => {
+                        {(this.state.available_on.length > 0) ? this.state.available_on.map(el => {
                             return (
                                 <div key={el.id}>
                                     <h3><img src={el.icon} alt="Provider's Icon" /> {el.display_name}</h3>
                                     <a href={el.url} target='_blank' rel="noopener noreferrer">Watch: {this.state.title} on {el.display_name} NOW!</a>
                                 </div>
                             )
-                        })}
-                        <h2>
-                            {console.log(this.state.available_on)}
-                        </h2>
-                        <p><a href='/'>Click here to watch</a></p>
+                        }) : null}
                     </div>
                 </article>
             </section >

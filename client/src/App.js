@@ -29,6 +29,7 @@ class App extends Component {
     this.deleteUser = this.deleteUser.bind(this)
     this.handleUserEditSubmit = this.handleUserEditSubmit.bind(this)
     this.selectedPoster = this.selectedPoster.bind(this)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -123,6 +124,7 @@ class App extends Component {
   }
 
   selectedPoster(id) {
+    console.log("selected poster: ", id)
     fetch(`api/search/details/${id}`, {
       method: 'POST',
     }).then(res => res.json())
@@ -135,18 +137,53 @@ class App extends Component {
       })
   }
 
+
   handleFormSubmit = (evt, data) => {
     evt.preventDefault();
-    fetch('api/movies/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }).then(res => res.json())
-      .then(() => {
+    if (data.titleType === 'movie') {
+      fetch(`api/movies/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then(res => res.json())
 
+      .then(() => {
+        this.setState({
+          fireRedirect: true,
+          redirectPath: '/user'
+        })
       })
+    } else if (data.titleType === 'tvSeries') {
+      fetch(`api/series/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then(res => res.json())
+      .then(() => {
+        this.setState({
+          fireRedirect: true,
+          redirectPath: '/user'
+        })
+      })
+    } else if (data.titleType === 'tvEpisode') {
+      fetch(`api/episodes/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then(res => res.json())
+      .then(() => {
+        this.setState({
+          fireRedirect: true,
+          redirectPath: '/user'
+        })
+      })
+    }
   }
 
   render() {
@@ -194,7 +231,7 @@ class App extends Component {
           />
 
           <Route exact path='/details'
-            render={() => (<Details user={this.state.user} selected={this.state.selected} handleFormSubmit={this.handleFormSubmit} />)}
+            render={() => (<Details user={this.state.user} selected={this.state.selected} handleFormSubmit={this.handleFormSubmit} selectedPoster={this.selectedPoster} />)}
           />
 
           <Route exact path='/about'

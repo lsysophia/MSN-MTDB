@@ -15,10 +15,10 @@ user_seriesController.create = (req, res, next) => {
     new User_shows({
         title: req.body.title,
         imdb_id: req.body.imdb_id,
-        ratings: req.body.ratings,
-        has_watched: req.body.has_watched,
-        watched_time: req.body.watched_time,
-        user_id: req.body.user_id,
+        ratings: null,
+        has_watched: false,
+        watched_time: null,
+        user_id: req.user.id,
     })
         .save()
         .then(show => {
