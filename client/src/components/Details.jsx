@@ -16,11 +16,10 @@ export default class Details extends Component {
             releaseDate: this.props.selected.releaseDate,
             summary: this.props.selected.summary,
             outline: this.props.selected.outline,
-            available_on: this.props.selected.available_on,
-            seasons: this.props.selected.season.map(el => el.season),
-            episodes: this.props.selected.season.map(el => el.episodes),
+            available_on: (this.props.selected.available_on) ? this.props.selected.available_on : [],
+            seasons: (this.props.selected.season) ? this.props.selected.season.map(el => el.season) : null,
+            episodes: (this.props.selected.season) ? this.props.selected.season.map(el => el.episodes) : null,
         }
-        this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
     
     componentDidMount() {
@@ -39,11 +38,7 @@ export default class Details extends Component {
                     <ul>
                         {this.state.episodes.map(elem => {
                             return elem.map(ele => {
-                                if (ele.season === el) {
-                                    return (
-                                        <li key={ele.id}>Ep: {ele.episode} Title: {ele.title}</li>
-                                    )
-                                }
+                                return <li key={ele.id}>{(ele.season === el) ? `Ep: ${ele.episode} Title: ${ele.title}` : null}</li>
                             })
                         })}
                     </ul>
@@ -83,7 +78,7 @@ export default class Details extends Component {
                 </article>
                 <article>
                     <ul>
-                        {this.seasonsAndEpisodes()}
+                        {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
                     </ul>
                 </article>
                 <article>
@@ -100,14 +95,14 @@ export default class Details extends Component {
                         </div>
                     </div>
                     <div>
-                        {this.state.available_on.map(el => {
+                        {(this.state.available_on.length > 0) ? this.state.available_on.map(el => {
                             return (
                                 <div key={el.id}>
                                     <h3><img src={el.icon} alt="Provider's Icon" /> {el.display_name}</h3>
                                     <a href={el.url} target='_blank' rel="noopener noreferrer">Watch: {this.state.title} on {el.display_name} NOW!</a>
                                 </div>
                             )
-                        })}
+                        }) : null}
                     </div>
                 </article>
             </section >
