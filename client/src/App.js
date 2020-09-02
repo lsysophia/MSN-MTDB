@@ -10,18 +10,16 @@ import Footer from './components/Footer'
 import Login from './components/Login'
 import Register from './components/Register'
 import About from './components/About'
-import Search from './components/Search'
+import Search from './components/SearchController'
 import UserEdit from './components/UserEdit'
-import Show from './components/Show'
-
-
+import Details from './components/Details'
 class App extends Component {
   constructor() {
     super()
     this.state = {
+      selected: null,
       auth: false,
       user: null,
-      selected: null,
       fireRedirect: false,
       redirectPath: null,
     }
@@ -131,10 +129,11 @@ class App extends Component {
     .then(jsonRes => {
       this.setState({
         selected: jsonRes.data,
-        // we will need to change the page status here
+        fireRedirect: true,
+        redirectPath: '/details',
       })
     })
-  }
+}
 
   render() {
     return (
@@ -173,17 +172,18 @@ class App extends Component {
           />
 
           <Route exact path='/search'
-            render={() => <Search user={this.state.user} selectedPoster={this.selectedPoster} />}
+            render={() => (<Search user={this.state.user} selectedPoster={this.selectedPoster} pageStatus='initial' />)}
           />
 
-          <Route exact path='/show'
-            render={() => <Show selected={this.state.selected} user={this.state.user} />}
+          <Route exact path='/details'
+            render={() => (<Details user={this.state.user}  selected={this.state.selected} />)}
           />
 
           <Route exact path='/about'
-            render={() => <About search={this.state.user} />}
+            render={() => (<About user={this.state.user} />)}
           />
 
+          {this.state.fireRedirect && <Redirect push to={this.state.redirectPath} />}
         </div>
         <Footer />
       </div >

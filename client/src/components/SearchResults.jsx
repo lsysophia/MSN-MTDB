@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Search extends Component {
+export default class SearchResults extends Component {
     render() {
         return (
             <div className="search-page">
@@ -12,7 +12,14 @@ export default class Search extends Component {
                 </div>
                 <div className="search-results">
                     <ul>
-                        {(this.props.list.length) ? <li>Loading Movies &amp; Shows</li> : this.props.list.map(el => <li key={el.id}>{el.title}</li>)}
+                        {this.props.results.map(el => {
+                            return <li key={el.imdb_id}>
+                                <div onClick={() => {this.props.selectedPoster(el.imdb_id) }} className='posterDiv'>
+                                    <img src={el.posters} alt='Movie/Show Poster' />
+                                    <h3>{el.title}({el.years})</h3>
+                                </div>
+                            </li>
+                        })}
                     </ul>
                 </div>
             </div>

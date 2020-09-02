@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-
 export default class Show extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            dataLoaded: false,
             imdb_id: this.props.selected.imdb_id,
             title: this.props.selected.title,
             year: this.props.selected.year,
@@ -18,13 +18,18 @@ export default class Show extends Component {
             outline: this.props.selected.outline,
         }
     }
-    render() {
+    componentDidMount() {
+        this.setState({
+            dataLoaded: true,
+        })
+    }
+
+    conditionalRender() {
         return (
-            // may need a component did mount
             <section className="show-page">
                 <article>
                     <div>
-                        <img src={(this.props.selected) ? this.state.image : "https://images.pexels.com/photos/3150553/pexels-photo-3150553.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"} width="300px" />
+                        <img alt='Movie/Show Poster' src={(this.props.selected) ? this.state.image : "https://images.pexels.com/photos/3150553/pexels-photo-3150553.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"} width="300px" />
                     </div>
                     <div>
                         <h1>
@@ -32,7 +37,8 @@ export default class Show extends Component {
                         </h1>
                         <div>
                             Run Time: {this.state.runTime}
-                            Rating: {this.state.certificate.US.map(el => el.certificate)}
+                            Rating: {(this.state.certificate) ? this.state.certificate.US.map(el => el.certificate) : 'Unavailable'}
+                            {/* ratingReasons are possible */}
                             Release Date: {this.state.releaseDate}
                             Genres: {this.state.genres.map((el, i) => <span key={i}>{el}</span>)}
                         </div>
@@ -50,22 +56,29 @@ export default class Show extends Component {
                         <h3>
                             Summary
                         </h3>
-                        <div>
+                        {this.state.summary ? <div>
                             {this.state.summary.text}
                             <cite>{this.state.summary.author}</cite>
-                        </div>
+                        </div> : 'Unavailable'}
                         <div>
-                            {this.state.outline}
+                            {(this.state.outline) ? this.state.outline : 'Unavailable'}
                         </div>
                     </div>
                     <div>
                         <h2>
                             Watch it at: .....
                         </h2>
-                        <p><a>Click here to watch</a></p>
+                        <p><a href='/'>Click here to watch</a></p> 
                     </div>
                 </article>
             </section>
+        )
+    }
+    render() {
+        return (
+            <div>
+                {(this.state.dataLoaded) ? this.conditionalRender() : <p>Loading your Results...</p>}
+            </div>
         )
     }
 }

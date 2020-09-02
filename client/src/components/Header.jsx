@@ -6,16 +6,13 @@ export default class Header extends Component {
         return (
             <header>
                 <div className="logo">
-                    <a><Link to="/">MSN - MTDB</Link></a>
+                    <Link to="/">MSN - MTDB</Link>
                 </div>
                 <nav>
                     <ul>
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/search">Search</Link></li>
                         <li><Link to="/about">About</Link></li>
-                        {/* TEMP */}
-                        <li><Link to ="/show">Show</Link></li>
-                        {/* TEMP */}
                         {this.props.userAuth
                         ?
                         <ul> 
