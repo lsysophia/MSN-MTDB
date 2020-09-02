@@ -123,6 +123,7 @@ class App extends Component {
   }
 
   selectedPoster(id) {
+    console.log("selected poster: ", id)
     fetch(`api/search/details/${id}`, {
       method: 'POST',
     }).then(res => res.json())
@@ -135,9 +136,6 @@ class App extends Component {
       })
   }
 
-  selectedEpisode(e) {
-
-  }
 
   handleFormSubmit = (evt, data) => {
     evt.preventDefault();
@@ -194,7 +192,7 @@ class App extends Component {
           />
 
           <Route exact path='/details'
-            render={() => (<Details user={this.state.user} selected={this.state.selected} handleFormSubmit={this.handleFormSubmit} episodeInfo={this.selectedEpisode} />)}
+            render={() => (<Details user={this.state.user} selected={this.state.selected} handleFormSubmit={this.handleFormSubmit} selectedPoster={this.selectedPoster} />)}
           />
 
           <Route exact path='/about'
