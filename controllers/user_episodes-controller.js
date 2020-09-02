@@ -15,8 +15,9 @@ user_episodesController.create = (req, res, next) => {
     new User_episodes({
         title: req.body.title,
         imdb_id: req.body.imdb_id,
-        ratings: req.body.ratings,
-        has_watched: req.body.has_watched,
+        ratings: null,
+        has_watched: false,
+        watched_time: null,
         series_id: req.body.series_id,
         user_id: req.user.id,
     })

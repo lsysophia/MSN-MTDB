@@ -149,7 +149,10 @@ class App extends Component {
         body: JSON.stringify(data),
       }).then(res => res.json())
       .then(() => {
-        <Redirect push to='/user' />
+        this.setState({
+          fireRedirect: true,
+          redirectPath: '/user'
+        })
       })
     } else if (data.titleType === 'tvSeries') {
       fetch(`api/series/`, {
@@ -160,7 +163,10 @@ class App extends Component {
         body: JSON.stringify(data),
       }).then(res => res.json())
       .then(() => {
-        <Redirect push to='/user' />
+        this.setState({
+          fireRedirect: true,
+          redirectPath: '/user'
+        })
       })
     } else if (data.titleType === 'tvEpisode') {
       fetch(`api/episodes/`, {
@@ -171,7 +177,10 @@ class App extends Component {
         body: JSON.stringify(data),
       }).then(res => res.json())
       .then(() => {
-        <Redirect push to='/user' />
+        this.setState({
+          fireRedirect: true,
+          redirectPath: '/user'
+        })
       })
     }
   }
