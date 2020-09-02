@@ -13,7 +13,7 @@ const initialUnPack = (req, res, next) => {
 	.then(parsedRes => {
 		let searchRes = []
 		parsedRes.results.map(el => {
-			if (el.titleType) {
+			if (el.titleType === 'movie' || el.titleType === 'tvSeries') {
 				searchRes.push({
 					imdb_id: (el.id).split('/title/')[1],
 					title: el.title,
