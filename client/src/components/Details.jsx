@@ -19,7 +19,7 @@ export default class Details extends Component {
             //is_movie saved in this users account?
             available_on: this.props.selected.available_on
         }
-        this.handleFormSubmit = this.handleFormSubmit.bind(this)
+        // this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
     
     componentDidMount() {

@@ -4,6 +4,7 @@ const User = require('../models/User.js');
 const usersController = {};
 
 usersController.index = (req, res, next) => {
+    console.log(res.locals)
     User.getById(req.params.id)
     .then(() => {
         res.json({

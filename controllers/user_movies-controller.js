@@ -5,7 +5,7 @@ const user_moviesController = {}
 user_moviesController.index = (req, res, next) => {
     User_movies.getAllForUser(req.user.id)
         .then(movies => {
-            res.locals.movies = movies
+            res.locals.userMovies = movies
             next();
         })
         .catch(next)
@@ -44,6 +44,7 @@ user_moviesController.delete = (req, res, next) => {
 }
 
 user_moviesController.create = (req, res, next) => {
+    console.log(req)
     new User_movies({
         title: req.body.title,
         imdb_id: req.body.imdb_id,
