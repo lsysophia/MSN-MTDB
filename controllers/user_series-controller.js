@@ -3,7 +3,7 @@ const User_shows = require('../models/User_shows')
 const user_seriesController = {}
 
 user_seriesController.index = (req, res, next) => {
-    User_shows.getAllforUser(req.user.id)
+    User_shows.getAllForUser(req.user.id)
         .then(series => {
             res.locals.userSeries = series
             next();

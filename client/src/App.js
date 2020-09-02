@@ -148,6 +148,7 @@ class App extends Component {
         },
         body: JSON.stringify(data),
       }).then(res => res.json())
+
       .then(() => {
         this.setState({
           fireRedirect: true,
@@ -190,7 +191,11 @@ class App extends Component {
       <div className="App">
         <Header logout={this.logout} userAuth={this.state.auth} />
         <div className="container">
-          <Route exact path='/' component={Home} />
+          <Route exact path='/' 
+            render={() => (
+              <Home userAuth={this.state.auth} />
+            )} 
+            />
           <Route exact path='/login'
             render={() => (
               this.state.auth
@@ -209,7 +214,7 @@ class App extends Component {
             render={() => (
               !this.state.auth
                 ? <Redirect to='/login' />
-                : <User deleteUser={this.deleteUser} user={this.state.user} logout={this.logout} />
+                : <User deleteUser={this.deleteUser} user={this.state.user} auth={this.state.auth} logout={this.logout} />
             )}
           />
 

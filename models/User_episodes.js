@@ -21,11 +21,11 @@ class User_episodes {
     static getAllForUser(user_id) {
         return db.manyOrNone(
             `SELECT * FROM users
-            JOIN user_episodes ON user_id = user_episodes.user_id
+            JOIN user_episodes ON users.id = user_episodes.user_id
             WHERE users.id = $1
             `, user_id
         )
-            .then(episodes => episodes.map(episode => new this(episodes)))
+            .then(episodes => episodes.map(episode => new this(episode)))
             .catch(err => console.log(err))
     }
 

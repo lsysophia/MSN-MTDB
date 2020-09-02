@@ -22,11 +22,11 @@ class User_shows {
         return db
             .manyOrNone(
                 `SELECT * FROM users
-            JOIN user_shows ON users_id = user_shows.user_id
-            WHERE users_id = $1`, user_id
+            JOIN user_shows ON users.id = user_shows.user_id
+            WHERE users.id = $1`, user_id
             )
             .then(shows => shows.map(show => new this(show)))
-            .then(err => console.log(err))
+            .catch(err => console.log(err))
     }
 
     static getById(id) {
@@ -38,7 +38,7 @@ class User_shows {
 
     static getOneForUser(users_id, userShow_id) {
         return db
-            .manyOrNone('SELECT * FROM users_shows WHERE user_id = $1 AND id = $2', [users_id, userShow_id])
+            .manyOrNone('SELECT * FROM user_shows WHERE user_id = $1 AND id = $2', [users_id, userShow_id])
             .then(show => new this(show[0]))
             .catch(err => console.log(err))
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Login extends Component {
     constructor(props) {
@@ -26,6 +27,9 @@ export default class Login extends Component {
                     <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
                     <input type="submit" value="Log in!" />
                 </form>
+                {/* <div className="user-box">
+                    <h3><Link to='/register'>Register</Link></h3>
+                </div> */}
             </div>
         )
     }
