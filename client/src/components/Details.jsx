@@ -16,12 +16,16 @@ export default class Show extends Component {
             releaseDate: this.props.selected.releaseDate,
             summary: this.props.selected.summary,
             outline: this.props.selected.outline,
+            available_on: this.props.selected.available_on
         }
     }
+    
     componentDidMount() {
-        this.setState({
-            dataLoaded: true,
-        })
+        if (this.props.selected) {
+            this.setState({
+                dataLoaded: true,
+            })
+        }
     }
 
     conditionalRender() {
@@ -65,8 +69,16 @@ export default class Show extends Component {
                         </div>
                     </div>
                     <div>
+                        {this.state.available_on.map(el => {
+                            return (
+                                <div key={el.id}>
+                                    <h3><img src={el.icon} alt="Provider's Icon" /> {el.display_name}</h3>
+                                    <a href={el.url} target='_blank'>Watch: {this.state.title} on {el.display_name} NOW!</a>
+                                </div>
+                            )
+                        })}
                         <h2>
-                            Watch it at: .....
+                            {console.log(this.state.available_on)}
                         </h2>
                         <p><a href='/'>Click here to watch</a></p> 
                     </div>
