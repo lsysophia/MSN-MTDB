@@ -224,11 +224,11 @@ aside{
   padding:10px 5px 10px 5px;
   margin-left:20px;
   margin-right:20px;
-  box-shadow: 5px 5px gray;
+  box-shadow: 5px 5px rgb(232,	195,	53	);
 }
 
 .user-box h3:hover{
-background:gray;
+background:rgb(232,	195,	53	);
 color: black;
 cursor: pointer;
 box-shadow: 0px 0px;
@@ -271,18 +271,47 @@ box-shadow: 0px 0px;
 }
 
 .search-results{
-  border:1px white solid;
   padding: 50px;
+  color:black;
 }
+
 .search-results li{
 margin:10px;
 cursor: pointer;
+display: flex;
+justify-content: center;
 }
 
 .search-results li:hover{
-  background-color: white;
   color: black;
 }
+
+.search-box input{
+  margin: 10px;
+  padding: 5px 0 5px 0px;
+}
+
+.search-box input[type="submit"]{
+  padding: 5px;
+  border: 1px solid white;  
+  background-color: black;
+  color: white;
+  box-shadow: 0 9px #999;
+}
+.search-box input[type="submit"]:active{
+
+box-shadow: 0 5px #666;
+transform: translateY(4px);
+}
+.posterDiv {
+  margin: 5px 5px 30px 5px;
+  border: 1px solid black;
+}
+
+.posterDiv:hover{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
 
 .posterDiv img{
   margin: 10px;
@@ -291,8 +320,12 @@ cursor: pointer;
 }
 
 .posterDiv h3{
-  color: black;
+  color: rgb(232,	195,	53);
+  text-align:center;
+  font-size:1.2em;
+  font-weight: 700;
 }
+
 
 /* SEARCH PAGE END*/
 
@@ -378,9 +411,7 @@ footer{
   margin-bottom: 10px;
   
 }
-.posterDiv {
-  margin: 5%;
-}
+
 
 /* FOOTER END */
 
