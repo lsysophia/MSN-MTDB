@@ -271,19 +271,38 @@ box-shadow: 0px 0px;
 }
 
 .search-results{
-  border:1px white solid;
   padding: 50px;
+  color:black
 }
+
 .search-results li{
 margin:10px;
 cursor: pointer;
+display: flex;
+justify-content: center;
 }
 
 .search-results li:hover{
-  background-color: white;
   color: black;
 }
 
+.search-box input{
+  margin: 10px;
+  padding: 5px 0 5px 0px;
+}
+
+.search-box input[type="submit"]{
+  padding: 5px;
+  border: 1px solid white;  
+  background-color: black;
+  color: white;
+  box-shadow: 0 9px #999;
+}
+.search-box input[type="submit"]:active{
+
+box-shadow: 0 5px #666;
+transform: translateY(4px);
+}
 .posterDiv img{
   margin: 10px;
   width: 350px;
@@ -292,6 +311,13 @@ cursor: pointer;
 
 .posterDiv h3{
   color: black;
+  text-align:center;
+  font-size:1.75em;
+}
+
+.posterDiv {
+  /* margin: 5%; */
+  margin: 5px;
 }
 
 /* SEARCH PAGE END*/
@@ -378,9 +404,7 @@ footer{
   margin-bottom: 10px;
   
 }
-.posterDiv {
-  margin: 5%;
-}
+
 
 /* FOOTER END */
 
