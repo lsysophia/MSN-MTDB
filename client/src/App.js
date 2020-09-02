@@ -29,6 +29,7 @@ class App extends Component {
     this.logout = this.logout.bind(this)
     this.deleteUser = this.deleteUser.bind(this)
     this.handleUserEditSubmit = this.handleUserEditSubmit.bind(this)
+    this.selectedPoster = this.selectedPoster.bind(this)
   }
 
   componentDidMount() {
@@ -128,7 +129,8 @@ class App extends Component {
     }).then(res => res.json())
     .then(jsonRes => {
       this.setState({
-        selected: jsonRes
+        selected: jsonRes.data,
+        // we will need to change the page status here
       })
     })
   }
