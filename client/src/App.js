@@ -29,6 +29,7 @@ class App extends Component {
     this.deleteUser = this.deleteUser.bind(this)
     this.handleUserEditSubmit = this.handleUserEditSubmit.bind(this)
     this.selectedPoster = this.selectedPoster.bind(this)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
   componentDidMount() {

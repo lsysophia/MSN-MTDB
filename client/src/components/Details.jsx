@@ -21,7 +21,7 @@ export default class Details extends Component {
             episodes: (this.props.selected.season) ? this.props.selected.season.map(el => el.episodes) : null,
         }
     }
-    
+
     componentDidMount() {
         if (this.props.selected) {
             this.setState({
