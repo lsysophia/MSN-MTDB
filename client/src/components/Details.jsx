@@ -73,7 +73,7 @@ export default class Show extends Component {
                             return (
                                 <div key={el.id}>
                                     <h3><img src={el.icon} alt="Provider's Icon" /> {el.display_name}</h3>
-                                    <a href={el.url} target='_blank'>Watch: {this.state.title} on {el.display_name} NOW!</a>
+                                    <a href={el.url} target='_blank' rel="noopener noreferrer">Watch: {this.state.title} on {el.display_name} NOW!</a>
                                 </div>
                             )
                         })}
