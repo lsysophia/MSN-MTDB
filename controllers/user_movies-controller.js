@@ -48,6 +48,7 @@ user_moviesController.update = (req, res, next) => {
         .catch(next)
 }
 
+
 user_moviesController.delete = (req, res, next) => {
     User_movies.getById(req.params.id)
         .then(movie => movie.delete())
@@ -58,5 +59,6 @@ user_moviesController.delete = (req, res, next) => {
         })
         .catch(next);
 }
+
 
 module.exports = user_moviesController
