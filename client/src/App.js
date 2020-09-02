@@ -12,18 +12,23 @@ import Register from './components/Register'
 import About from './components/About'
 import Search from './components/SearchController'
 import UserEdit from './components/UserEdit'
+import Details from './components/Details'
 class App extends Component {
   constructor() {
     super()
     this.state = {
+      selected: null,
       auth: false,
       user: null,
+      fireRedirect: false,
+      redirectPath: null,
     }
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
     this.logout = this.logout.bind(this)
     this.deleteUser = this.deleteUser.bind(this)
     this.handleUserEditSubmit = this.handleUserEditSubmit.bind(this)
+    this.selectedPoster = this.selectedPoster.bind(this)
   }
 
   componentDidMount() {
@@ -117,6 +122,19 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
+  selectedPoster(id) {
+    fetch(`api/search/details/${id}`, {
+        method: 'POST',
+    }).then(res => res.json())
+    .then(jsonRes => {
+      this.setState({
+        selected: jsonRes.data,
+        fireRedirect: true,
+        redirectPath: '/details',
+      })
+    })
+}
+
   render() {
     return (
       <div className="App">
@@ -157,10 +175,15 @@ class App extends Component {
             render={() => (<Search user={this.state.user} selectedPoster={this.selectedPoster} pageStatus='initial' />)}
           />
 
-          <Route exact path='/about'
-            render={() => (<About search={this.state.user} />)}
+          <Route exact path='/details'
+            render={() => (<Details user={this.state.user}  selected={this.state.selected} />)}
           />
 
+          <Route exact path='/about'
+            render={() => (<About user={this.state.user} />)}
+          />
+
+          {this.state.fireRedirect && <Redirect push to={this.state.redirectPath} />}
         </div>
         <Footer />
       </div >
