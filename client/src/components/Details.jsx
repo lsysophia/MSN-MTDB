@@ -46,7 +46,7 @@ export default class Details extends Component {
                             })
                         })}
                     </ul>
-                </li >
+                </li>
             )
         })
     }
