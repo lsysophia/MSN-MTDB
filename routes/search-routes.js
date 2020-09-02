@@ -7,6 +7,7 @@ const searchController = require('../controllers/search-controller')
 const { initialUnPack } = require('../services/find/find')
 const { getDetailByImdbId } = require('../services/find/getOverviewDetails')
 const { getStreamingService } = require('../services/available_on/utelly')
+const { getSeasons } = require('../services/series/getSeasons')
 
 
 searchRouter.get('/', user_moviesController.index, user_seriesController.index, (req, res) => {
@@ -21,5 +22,5 @@ searchRouter.get('/', user_moviesController.index, user_seriesController.index, 
 
 
 searchRouter.post('/:title', initialUnPack, searchController.results)
-searchRouter.post('/details/:imdb_id', getDetailByImdbId, getStreamingService, searchController.decide)
+searchRouter.post('/details/:imdb_id', getDetailByImdbId, getStreamingService, searchController.decide, getSeasons, searchController.show)
 module.exports = searchRouter
