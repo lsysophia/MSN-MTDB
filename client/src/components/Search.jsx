@@ -46,12 +46,12 @@ export default class Search extends Component {
             }
         } else if (this.state.pageStatus === 'results') {
             return this.state.results.map(el => {
-                return <div key={el.imdb_id}>
+                return <li key={el.imdb_id}>
                     <div onClick={() => { this.props.selectedPoster(el.id) }} className='posterDiv'>
-                        <h3>{el.title}({el.years})</h3>
                         <img src={el.posters} />
+                        <h3>{el.title}({el.years})</h3>
                     </div>
-                </div>
+                </li>
             })
         }
     }
@@ -66,7 +66,9 @@ export default class Search extends Component {
                     </form>
                 </div>
                 <div className="search-results">
-                    {this.conditionalRender()}
+                    <ul>
+                        {this.conditionalRender()}
+                    </ul>
                 </div>
             </div>
         )
