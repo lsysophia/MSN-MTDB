@@ -10,27 +10,20 @@ import Footer from './components/Footer'
 import Login from './components/Login'
 import Register from './components/Register'
 import About from './components/About'
-import Search from './components/Search'
+import Search from './components/SearchController'
 import UserEdit from './components/UserEdit'
-import Show from './components/Show'
-
-
 class App extends Component {
   constructor() {
     super()
     this.state = {
       auth: false,
       user: null,
-      selected: null,
-      fireRedirect: false,
-      redirectPath: null,
     }
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
     this.logout = this.logout.bind(this)
     this.deleteUser = this.deleteUser.bind(this)
     this.handleUserEditSubmit = this.handleUserEditSubmit.bind(this)
-    this.selectedPoster = this.selectedPoster.bind(this)
   }
 
   componentDidMount() {
@@ -124,18 +117,6 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
-  selectedPoster(id) {
-    fetch(`api/search/details/${id}`, {
-        method: 'POST',
-    }).then(res => res.json())
-    .then(jsonRes => {
-      this.setState({
-        selected: jsonRes.data,
-        // we will need to change the page status here
-      })
-    })
-  }
-
   render() {
     return (
       <div className="App">
@@ -173,15 +154,11 @@ class App extends Component {
           />
 
           <Route exact path='/search'
-            render={() => <Search user={this.state.user} selectedPoster={this.selectedPoster} />}
-          />
-
-          <Route exact path='/show'
-            render={() => <Show selected={this.state.selected} user={this.state.user} />}
+            render={() => (<Search user={this.state.user} selectedPoster={this.selectedPoster} pageStatus='initial' />)}
           />
 
           <Route exact path='/about'
-            render={() => <About search={this.state.user} />}
+            render={() => (<About search={this.state.user} />)}
           />
 
         </div>
