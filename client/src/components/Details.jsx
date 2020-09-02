@@ -16,7 +16,9 @@ export default class Show extends Component {
             releaseDate: this.props.selected.releaseDate,
             summary: this.props.selected.summary,
             outline: this.props.selected.outline,
-            available_on: this.props.selected.available_on
+            available_on: this.props.selected.available_on,
+            seasons: this.props.selected.season.map(el => el.season),
+            episodes: this.props.selected.season.map(el => el.episodes),
         }
     }
     
@@ -26,6 +28,27 @@ export default class Show extends Component {
                 dataLoaded: true,
             })
         }
+    }
+
+    seasonsAndEpisodes() {
+        return this.state.seasons.map((el, i) => {
+            return (
+                <li key={i}>
+                    {el}
+                    <ul>
+                        {this.state.episodes.map(elem => {
+                            return elem.map(ele => {
+                                if (ele.season === el) {
+                                    return (
+                                        <li key={ele.id}>Ep: {ele.episode} Title: {ele.title}</li>
+                                    )
+                                }
+                            })
+                        })}
+                    </ul>
+                </li>
+            )
+        })
     }
 
     conditionalRender() {
@@ -56,6 +79,11 @@ export default class Show extends Component {
                     <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
                 </article>
                 <article>
+                    <ul>
+                        {this.seasonsAndEpisodes()}
+                    </ul>
+                </article>
+                <article>
                     <div>
                         <h3>
                             Summary
@@ -77,10 +105,6 @@ export default class Show extends Component {
                                 </div>
                             )
                         })}
-                        <h2>
-                            {console.log(this.state.available_on)}
-                        </h2>
-                        <p><a href='/'>Click here to watch</a></p> 
                     </div>
                 </article>
             </section>
