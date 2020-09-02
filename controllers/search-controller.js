@@ -29,6 +29,7 @@ searchController.decide = (req, res, next) => {
                 releaseDate: res.locals.releaseDate,
                 summary: res.locals.summary,
                 outline: res.locals.outline,
+                available_on: res.locals.available_on,
             }
         })
     } else if (res.locals.titleType === 'tvSeries') {

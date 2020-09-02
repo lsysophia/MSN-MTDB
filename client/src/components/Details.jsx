@@ -16,6 +16,7 @@ export default class Show extends Component {
             releaseDate: this.props.selected.releaseDate,
             summary: this.props.selected.summary,
             outline: this.props.selected.outline,
+            available_on: this.props.selected.available_on
         }
     }
     componentDidMount() {
@@ -66,7 +67,7 @@ export default class Show extends Component {
                     </div>
                     <div>
                         <h2>
-                            Watch it at: .....
+                            {console.log(this.state.available_on)}
                         </h2>
                         <p><a href='/'>Click here to watch</a></p> 
                     </div>
