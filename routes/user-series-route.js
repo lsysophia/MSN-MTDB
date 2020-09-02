@@ -1,4 +1,4 @@
-const userSeriesRoute = requure('express').Router()
+const userSeriesRoute = require('express').Router()
 
 const userSeriesController = require('../controllers/user_series-controller')
 
