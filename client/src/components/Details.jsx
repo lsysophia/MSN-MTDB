@@ -38,11 +38,15 @@ export default class Details extends Component {
                     <ul>
                         {this.state.episodes.map(elem => {
                             return elem.map(ele => {
-                                return <li key={ele.id}>{(ele.season === el) ? `Ep: ${ele.episode} Title: ${ele.title}` : null}</li>
+                                if (ele.season === el) {
+                                    return (
+                                        <li key={ele.id} onClick={() => { this.props.selectedPoster((ele.id).split('/')[0]) }} >{(ele.season === el) ? `Ep: ${ele.episode} Title: ${ele.title}` : null}</li>
+                                    )
+                                }
                             })
                         })}
                     </ul>
-                </li>
+                </li >
             )
         })
     }

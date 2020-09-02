@@ -124,6 +124,7 @@ class App extends Component {
   }
 
   selectedPoster(id) {
+    console.log("selected poster: ", id)
     fetch(`api/search/details/${id}`, {
       method: 'POST',
     }).then(res => res.json())
@@ -136,6 +137,7 @@ class App extends Component {
       })
   }
 
+
   handleFormSubmit = (evt, data) => {
     evt.preventDefault();
     fetch(`api/movies/`, {
@@ -146,7 +148,7 @@ class App extends Component {
       body: JSON.stringify(data),
     }).then(res => res.json())
       .then(() => {
-
+        console.log('POSted')
       })
   }
 
@@ -191,7 +193,7 @@ class App extends Component {
           />
 
           <Route exact path='/details'
-            render={() => (<Details user={this.state.user} selected={this.state.selected} handleFormSubmit={this.handleFormSubmit} />)}
+            render={() => (<Details user={this.state.user} selected={this.state.selected} handleFormSubmit={this.handleFormSubmit} selectedPoster={this.selectedPoster} />)}
           />
 
           <Route exact path='/about'
