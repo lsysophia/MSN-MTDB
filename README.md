@@ -2,7 +2,7 @@
 App with a react in the front end and Express in the backend
 
 Visit us online
-- Staging page: https://git.heroku.com/evening-basin-19807.git
+- Staging page: https://evening-basin-19807.herokuapp.com/
 - Production page: 
 
 ### Description
@@ -18,6 +18,19 @@ This application allows users to search for movies and TV shows and save it to t
 ### [Project Board](https://github.com/users/lsysophia/projects/1)
 
 ## User Stories
+- Visitors have a choice to use the search engine or create a new account.
+- Users that have created an account and will have a profile page with saved information and selected data.
+- User can save movies to their account
+- User can remove movies from their account
+- User can edit their account info
+- Visitor can search without an account
+- Search page will show a ‘top 10’ or so list of movies via the API’s ratings system.
+- Search will allow you to find-by movie titles and see the results of a 3rd party API.
+- Info about the website/app
+- The search results will show various data for each movie.
+- Show pages for an individual movie will show more detailed information with the movie poster and with ‘where to watch’ as-in where it is available to watch currently displayed also.
+- Show pages will also allow you to link out to the movie’s official webpage.
+
 
 ## HTTP Routes
 
