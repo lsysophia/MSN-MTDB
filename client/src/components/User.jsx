@@ -5,9 +5,11 @@ export default class User extends Component {
     constructor(props) {
         super(props) 
         this.setState={
-            watchlist: null, 
+            dataloaded: false,
+            watchlist: null,
+            test: 1,
         }
-        // this.chooseToRender = this.chooseToRender.bind(this)
+        this.chooseToRender = this.chooseToRender.bind(this)
     }
 
     componentDidMount() {
@@ -23,28 +25,27 @@ export default class User extends Component {
             console.log(parsedRes)
             this.setState({
                 watchlist: parsedRes.data,
+                dataloaded: true,
             })
         }).catch(err => console.log(err))
     }
 
-    // chooseToRender() {
-    //     if (this.state.watchlist.userEpisodes.length > 0) {
-    //         this.state.watchlist.userEpisodes.map(eachEpisode => {
-    //             console.log(eachEpisode)
-    //             return eachEpisode.title
-    //         })
-    //     } if (this.state.watchlist.userMovies.length > 0) {
-    //         this.state.watchlist.userMovies.map(eachMovie => {
-    //             return eachMovie.title
-    //         })
-    //     } if (this.state.watchlist.userSeries.length > 0) {
-    //         this.state.watchlist.userSeries.map(eachSeries => {
-    //             return eachSeries.title
-    //         })
-    //     } else {
-
-    //     }
-    // }
+    chooseToRender() {
+        if (this.state.watchlist.userEpisodes.length > 0) {
+            this.state.watchlist.userEpisodes.map(eachEpisode => {
+                console.log(eachEpisode)
+                return <li>{eachEpisode.title}</li>
+            })
+        } else if (this.state.watchlist.userMovies.length > 0) {
+            this.state.watchlist.userMovies.map(eachMovie => {
+                return eachMovie.title
+            })
+        } else if (this.state.watchlist.userSeries.length > 0) {
+            this.state.watchlist.userSeries.map(eachSeries => {
+                return eachSeries.title
+            })
+        } 
+    }
 
     render() {
         return (
@@ -63,22 +64,9 @@ export default class User extends Component {
                         <h2>User's saved watchlist</h2>
                         <div className="user-saved-list">
                             <ul>
-                                { (!this.state.watchlist) ?
-                                    <h3>Your list is empty. Go add something!</h3>
-                                    : (this.state.watchlist.userEpisodes.length > 0) ?
-                                    this.state.watchlist.userEpisodes.map(eachEpisode => {
-                                        return <li key={eachEpisode.id}>{eachEpisode.title}</li>
-                                    })
-                                    : (this.state.watchlist.userMovies.length > 0) ?
-                                    this.state.watchlist.userMovies.map(eachMovie => {
-                                        return <li key={eachMovie.id}>{eachMovie.title}</li>
-                                    })
-                                    : (this.state.watchlist.userSeries.length > 0) ?
-                                    this.state.watchlist.userSeries.map(eachSeries => {
-                                        return <li key={eachSeries.id}>{eachSeries.title}</li>
-                                    })
-                                    : null
-                                }
+                                {this.state ? 
+                                this.chooseToRender() 
+                                : <li>No Content</li>}
                             </ul>
                         </div>
                     </aside>
