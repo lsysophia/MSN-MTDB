@@ -55,7 +55,6 @@ class App extends Component {
       body: JSON.stringify(data),
     }).then(res => res.json())
       .then(parsedRes => {
-        console.log(parsedRes)
         this.setState({
           auth: parsedRes.auth,
           user: parsedRes.data.user,
@@ -65,7 +64,6 @@ class App extends Component {
 
   handleRegisterSubmit(e, data) {
     e.preventDefault()
-    console.log(data)
     fetch('/api/auth/register', {
       method: 'POST',
       headers: {
@@ -84,7 +82,6 @@ class App extends Component {
 
   handleUserEditSubmit(e, data, id) {
     e.preventDefault()
-    console.log(data)
     fetch(`/api/user/edit/${id}`, {
       method: 'PUT',
       headers: {
@@ -125,7 +122,6 @@ class App extends Component {
   }
 
   selectedPoster(id) {
-    console.log("selected poster: ", id)
     fetch(`/api/search/details/${id}`, {
       method: 'POST',
     }).then(res => res.json())
@@ -142,7 +138,7 @@ class App extends Component {
   handleFormSubmit = (evt, data) => {
     evt.preventDefault();
     if (data.titleType === 'movie') {
-      fetch(`api/movies/`, {
+      fetch('/api/movies/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -157,7 +153,7 @@ class App extends Component {
           })
         })
     } else if (data.titleType === 'tvSeries') {
-      fetch(`api/series/`, {
+      fetch('/api/series/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -171,7 +167,7 @@ class App extends Component {
           })
         })
     } else if (data.titleType === 'tvEpisode') {
-      fetch(`api/episodes/`, {
+      fetch('/api/episodes/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

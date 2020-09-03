@@ -3,12 +3,16 @@ const User_episodes = require('../models/User_episodes')
 const user_episodesController = {}
 
 user_episodesController.index = (req, res, next) => {
-    User_episodes.getAllForUser(req.user.id)
+    if (req.user) {
+        User_episodes.getAllForUser(req.user.id)
         .then(episodes => {
             res.locals.userEpisodes = episodes
             next();
         })
         .catch(next)
+    } else {
+        next()
+    }
 }
 
 user_episodesController.find= (req, res, next) => {

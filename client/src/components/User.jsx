@@ -12,7 +12,6 @@ export default class User extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.user)
         fetch(`/api/user/${this.props.user.id}`, {
             method: 'GET',
         })
@@ -26,19 +25,18 @@ export default class User extends Component {
     }
 
     renderWatchList() {
-        console.log(this.state.watchlist)
         return <ul>
                     <h3>Movies</h3>
                     {this.state.watchlist.userMovies.map(eachMovie => {
-                        return <li onClick={() => {this.props.selectedTitle(eachMovie.imdb_id)}}>{eachMovie.title}</li>
+                        return <li key={eachMovie.imdb_id} onClick={() => {this.props.selectedTitle(eachMovie.imdb_id)}}>{eachMovie.title}</li>
                     })}
                     <h3>Shows</h3>
                     {this.state.watchlist.userSeries.map(eachSeries => {
-                        return <li onClick={() => {this.props.selectedTitle(eachSeries.imdb_id)}}>{eachSeries.title}</li>
+                        return <li key={eachSeries.imdb_id} onClick={() => {this.props.selectedTitle(eachSeries.imdb_id)}}>{eachSeries.title}</li>
                     })}
                     <h3>Episodes</h3>
                     {this.state.watchlist.userEpisodes.map(eachEpisode => {
-                        return <li onClick={() => {this.props.selectedTitle(eachEpisode.imdb_id)}}>{eachEpisode.title}</li>
+                        return <li key={eachEpisode.imdb_id} onClick={() => {this.props.selectedTitle(eachEpisode.imdb_id)}}>{eachEpisode.title}</li>
                     })}
                 </ul>
     }

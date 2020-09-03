@@ -3,12 +3,16 @@ const User_shows = require('../models/User_shows')
 const user_seriesController = {}
 
 user_seriesController.index = (req, res, next) => {
-    User_shows.getAllForUser(req.user.id)
+    if (req.user) {
+        User_shows.getAllForUser(req.user.id)
         .then(series => {
             res.locals.userSeries = series
             next();
         })
         .catch(next)
+    } else {
+        next()
+    }
 }
 
 user_seriesController.find= (req, res, next) => {
