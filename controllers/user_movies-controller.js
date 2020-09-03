@@ -60,21 +60,4 @@ user_moviesController.delete = (req, res, next) => {
         .catch(next);
 }
 
-
-user_moviesController.create = (req, res, next) => {
-    console.log(req)
-    new User_movies({
-        title: req.body.title,
-        imdb_id: req.body.imdb_id,
-        user_id: req.body.user_id,
-    }).save()
-        .then(movie => {
-            res.json({
-                message: 'Movie added to users saved list',
-                data: { movie }
-            })
-        }).catch(next);
-}
-
-
 module.exports = user_moviesController
