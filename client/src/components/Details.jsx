@@ -104,6 +104,7 @@ export default class Details extends Component {
                         <h3>Ratings</h3>
                         <p>{this.state.ratings}</p>
                     </div>
+                    {/* CONDITIONAL FOR IF USER HAS ALREADY */}
                     <form onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
                         <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
                     </form>
