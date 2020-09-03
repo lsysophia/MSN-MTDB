@@ -134,9 +134,11 @@ export default class Details extends Component {
                     {(this.state.available_on.length > 0) ? this.state.available_on.map(el => {
                         return (
                             <div key={el.id}>
-                                <img src={el.icon} alt="Provider's Icon" />
+                                <div className="logo-box">
+                                    <img src={el.icon} alt="Provider's Icon" />
+                                </div>
                                 <h3>{el.display_name}</h3>
-                                <a href={el.url} target='_blank' rel="noopener noreferrer">Watch: {this.state.title} on {el.display_name} NOW!</a>
+                                <a href={el.url} target='_blank' rel="noopener noreferrer">Watch on {el.display_name} NOW!</a>
                             </div>
                         )
                     }) : null}

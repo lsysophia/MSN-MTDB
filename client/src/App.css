@@ -517,11 +517,29 @@ font-weight: bold;
   margin:0 auto;
   justify-content: center;
   flex-wrap: wrap;
+  text-align: center
 }
 
 .where-to-watch div{
   max-width: 250px;
   margin:15px;
+}
+
+.where-to-watch .logo-box{
+  max-height: 50px;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.where-to-watch div a{
+  text-decoration: none;
+  color: black;
+}
+
+.where-to-watch div a:visited{
+  color: rgb(232,	195,	53);
 }
 
 .show-page article{
