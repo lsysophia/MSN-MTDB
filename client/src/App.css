@@ -135,10 +135,12 @@ header a:visited{
 
 /* HEADER END*/
 section{
-  float: left;
+  /* float: left; */
+  /* Do not include the above line */
 }
 aside{
-  float: right;
+  /* float: right; */
+   /* Do not include the above line */
 }
 
 .container{
@@ -224,9 +226,12 @@ aside{
 .user-box{
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .user-box h3{
+  width: 150px;
+  text-align: center;
   border: 1px solid black;
   padding:10px 5px 10px 5px;
   margin-left:20px;
@@ -424,6 +429,72 @@ footer{
   
 }
 
+
+/* SHOW PAGE START */
+.show-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.show-page .image-box{
+  display: flex;
+  justify-content: center;
+}
+
+.show-page .detail-info{
+  display: flex;
+  flex-direction: column;
+}
+
+.show-page h4 {
+ font-size:1.1em;
+ margin-bottom:1.1em;
+}
+
+.show-page .seasons-episodes-box{
+  display: flex;
+  margin:30px auto;
+}
+
+.show-page .seasons-episodes-box ul li{
+  margin-top:20px
+}
+
+
+.show-page .seasons-episodes-box ul li ul li{
+  margin: 5px 0 5px 0;
+}
+.show-page .seasons-episodes-box ul li ul li:hover{
+  background-color:#333 ;
+  color:white;
+  cursor: pointer;
+  }
+.show-page .summary{
+  display: flex;
+  flex-direction: column;
+  margin: 20px 10px 20px 10px;
+}
+
+.show-page .where-to-watch{
+  display: flex;
+  flex-direction: row;
+  margin:0 auto;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.show-page .where-to-watch div{
+  width: 300px;
+  margin:15px;
+}
+
+
+.show-page article{
+  display: flex;
+  flex-direction: column;
+}
+/* SHOW PAGE END */
 
 /* FOOTER END */
 
