@@ -5,12 +5,12 @@ export default class User extends Component {
     constructor(props) {
         super(props) 
         this.setState={
-            watchlist: [], 
+            watchlist: null, 
         }
-        this.getWatchList = this.getWatchList.bind(this)
+        this.chooseToRender = this.chooseToRender.bind(this)
     }
 
-    getWatchList() {
+    componentDidMount() {
         console.log(this.props.user)
         fetch(`/api/user/${this.props.user.id}`, {
             method: 'GET',
@@ -21,12 +21,20 @@ export default class User extends Component {
         .then(res => res.json())
         .then(parsedRes => {
             console.log(parsedRes)
-            // this.setState({
-            //     watchlist: console.log(parsedRes.data.userMovies)
-            // })
-        })
+            this.setState({
+                watchlist: parsedRes.data,
+            })
+        }).catch(err => console.log(err))
     }
 
+    chooseToRender() {
+        if (this.state.watchlist) {
+            this.state.watchlist.map(each => {
+                console.log(each)
+                return 
+            })
+        }
+    }
 
     render() {
         return (
@@ -38,12 +46,8 @@ export default class User extends Component {
                     <aside>
                         <h2>User's saved movie list</h2>
                         <div className="user-saved-list">
-                            { this.props.auth 
-                            ? 
-                            this.getWatchList()
-                            : 
-                            <h3>Add some movies to your list!</h3>
-                            }
+                          
+                            
                         </div>
                     </aside>
                 </div>
