@@ -297,6 +297,7 @@ box-shadow: 0px 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  width: 100%;
 }
 
 .search-page .search-box{
@@ -308,14 +309,21 @@ box-shadow: 0px 0px;
 .search-page .search-results{
   padding: 50px;
   color:black;
+  width: 100%;
+}
+search-page .search-results ul{
+display: flex;
+flex-wrap: wrap
 }
 
 .search-page .search-results li{
 margin:10px;
 cursor: pointer;
-display: flex;
-justify-content: center;
+/* display: flex;
+justify-content: center; */
+width: 300px;
 }
+
 
 .search-page .search-results li:hover{
   color: black;
@@ -351,6 +359,12 @@ transform: translateY(4px);
 .posterDiv {
   margin: 5px 5px 30px 5px;
   border: 1px solid black;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .posterDiv:hover{
@@ -359,14 +373,14 @@ transform: translateY(4px);
 
 .posterDiv img{
   margin: 10px;
-  width: 350px;
-  height: 500px;
+  width: 70%;
+  /* height: 75%; */
 }
 
 .posterDiv h3{
   color: rgb(232,	195,	53);
   text-align:center;
-  font-size:1.2em;
+  font-size:1em;
   font-weight: 700;
 }
 /* SEARCH RESULT END */
@@ -487,6 +501,7 @@ justify-content: center;
   width: 100%;
   height: auto;
   max-width: 450px;
+  max-height: 660px;
 }
 
 .show-page .info-box{
@@ -526,20 +541,28 @@ font-weight: bold;
   margin: 20px 0 20px 0;
 }
 
-.show-page .seasons-episodes-box{
-  display: flex;
+.show-page2 .seasons-episodes-box{
   margin:30px auto;
 }
 
-.show-page .seasons-episodes-box ul li{
-  margin-top:20px
+.show-page2 .seasons-episodes-box ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-.show-page .seasons-episodes-box ul li ul li{
+.show-page2 .seasons-episodes-box ul li{
+  margin-top:20px;
+  width: 300px;
+}
+
+.show-page2 .seasons-episodes-box ul li ul li{
   margin: 5px 0 5px 0;
+  margin-left: 15px;
 }
 
-.show-page .seasons-episodes-box ul li ul li:hover{
+.show-page2 .seasons-episodes-box ul li ul li:hover{
   background-color:#333 ;
   color:white;
   cursor: pointer;
