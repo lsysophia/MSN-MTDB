@@ -4,25 +4,20 @@ import { Link } from 'react-router-dom'
 export default class User extends Component {
     constructor(props) {
         super(props) 
-        this.setState={
+        this.state={
             dataloaded: false,
             watchlist: null,
-            test: 1,
         }
-        this.chooseToRender = this.chooseToRender.bind(this)
+        this.renderWatchList = this.renderWatchList.bind(this)
     }
 
     componentDidMount() {
         console.log(this.props.user)
         fetch(`/api/user/${this.props.user.id}`, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
         })
         .then(res => res.json())
         .then(parsedRes => {
-            console.log(parsedRes)
             this.setState({
                 watchlist: parsedRes.data,
                 dataloaded: true,
@@ -30,21 +25,22 @@ export default class User extends Component {
         }).catch(err => console.log(err))
     }
 
-    chooseToRender() {
-        if (this.state.watchlist.userEpisodes.length > 0) {
-            this.state.watchlist.userEpisodes.map(eachEpisode => {
-                console.log(eachEpisode)
-                return <li>{eachEpisode.title}</li>
-            })
-        } else if (this.state.watchlist.userMovies.length > 0) {
-            this.state.watchlist.userMovies.map(eachMovie => {
-                return eachMovie.title
-            })
-        } else if (this.state.watchlist.userSeries.length > 0) {
-            this.state.watchlist.userSeries.map(eachSeries => {
-                return eachSeries.title
-            })
-        } 
+    renderWatchList() {
+        console.log(this.state.watchlist)
+        return <ul>
+                    <h3>Movies</h3>
+                    {this.state.watchlist.userMovies.map(eachMovie => {
+                        return <li>{eachMovie.title}</li>
+                    })}
+                    <h3>Shows</h3>
+                    {this.state.watchlist.userSeries.map(eachSeries => {
+                        return <li>{eachSeries.title}</li>
+                    })}
+                    <h3>Episodes</h3>
+                    {this.state.watchlist.userEpisodes.map(eachEpisode => {
+                        return <li>{eachEpisode.title}</li>
+                    })}
+                </ul>
     }
 
     render() {
@@ -63,11 +59,9 @@ export default class User extends Component {
                     <aside>
                         <h2>User's saved watchlist</h2>
                         <div className="user-saved-list">
-                            <ul>
-                                {this.state ? 
-                                this.chooseToRender() 
-                                : <li>No Content</li>}
-                            </ul>
+                            {this.state.dataloaded ? 
+                            this.renderWatchList() 
+                            : <li>No Content</li>}
                         </div>
                     </aside>
                 </div>
