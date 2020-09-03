@@ -437,6 +437,17 @@ footer{
   display: flex;
   justify-content: center;
   margin-right: 30px;
+  flex: 1;
+}
+
+.image-box img{
+  width: 100%;
+  height: auto;
+  max-width: 450px;
+}
+
+.show-page .info-box{
+  flex: 1;
 }
 
 .show-page .detail-info{
@@ -461,7 +472,15 @@ margin-bottom:1.1em;
 
 .show-page h4 {
 font-size:1.1em;
-margin: 15px 0 15px 0;
+margin-bottom:1.1em;
+}
+
+em{
+font-weight: bold;
+}
+
+.show-page .info{
+  margin: 20px 0 20px 0;
 }
 
 .show-page .seasons-episodes-box{
@@ -492,7 +511,7 @@ margin: 15px 0 15px 0;
   font-weight: bold;
 }
 
-.show-page .where-to-watch{
+.where-to-watch{
   display: flex;
   flex-direction: row;
   margin:0 auto;
@@ -500,11 +519,10 @@ margin: 15px 0 15px 0;
   flex-wrap: wrap;
 }
 
-.show-page .where-to-watch div{
-  width: 300px;
+.where-to-watch div{
+  max-width: 250px;
   margin:15px;
 }
-
 
 .show-page article{
   display: flex;
@@ -517,6 +535,9 @@ margin: 15px 0 15px 0;
 @media screen and (max-width: 993px) {
   .container{
     min-width: 650px;
+  }
+  .show-page{
+    flex-direction: column;
   }
 }
 

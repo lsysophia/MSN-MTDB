@@ -85,10 +85,10 @@ export default class Details extends Component {
             <section className="show-page">
                 <aside className="image-box">
                     {/* // <div className="image-box"> */}
-                    <img alt='Movie/Show Poster' src={(this.props.selected) ? this.state.image : "https://images.pexels.com/photos/3150553/pexels-photo-3150553.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"} width="300px" />
+                    <img alt='Movie/Show Poster' src={(this.props.selected) ? this.state.image : "https://images.pexels.com/photos/3150553/pexels-photo-3150553.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"}/>
                     {/* </div> */}
                 </aside>
-                <div>
+                <div className="info-box">
                     <article className="detail-info">
                             <h1>
                                 {this.state.title}({this.state.year})
@@ -110,12 +110,12 @@ export default class Details extends Component {
                                 </div>
                                 : 'Unavailable'}
                             </div>
-                            <div>
-                                <h4>Run Time: </h4><p>{this.state.runTime}</p>
-                                <h4>Rating:</h4><p>{(this.state.certificate) ? this.state.certificate.US.map(el => el.certificate) : 'Unavailable'}</p>
+                            <div className="info">
+                                <h4><em>Run Time:</em>{this.state.runTime}</h4>
+                                <h4><em>Rating:</em>{(this.state.certificate) ? this.state.certificate.US.map(el => el.certificate) : 'Unavailable'}</h4>
                                 <h4>{/* ratingReasons are possible */}</h4>
-                                <h4>Release Date:</h4><p>{this.state.releaseDate}</p>
-                                <h4>Genres:</h4><p>{this.state.genres.map((el, i) => <span key={i}>{el}</span>)}</p>
+                                <h4><em>Release Date:</em>{this.state.releaseDate}</h4>
+                                <h4><em>Genres:</em>{this.state.genres.map((el, i) => <span key={i}> •{el}</span>)}</h4>
                                 <form onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
                                     <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
                                 </form>
