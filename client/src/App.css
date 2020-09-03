@@ -319,15 +319,14 @@ flex-wrap: wrap
 .search-page .search-results li{
 margin:10px;
 cursor: pointer;
-/* display: flex;
-justify-content: center; */
-width: 300px;
+display: flex;
+justify-content: center; 
+/* width: 300px; */
 }
-
 
 .search-page .search-results li:hover{
   color: black;
-  background-color: rgb(232,	195,	53);
+  /* background-color: rgb(232,	195,	53); */
 }
 
 .search-page .search-box input{
@@ -351,6 +350,12 @@ transform: translateY(4px);
   text-align:center;
   font-weight: bold;
   margin-top:20px
+}
+
+.search-results-ul
+{
+  display: flex;
+  flex-wrap:wrap ;
 }
 
 /* SEARCH PAGE END*/
