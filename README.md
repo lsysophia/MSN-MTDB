@@ -49,7 +49,7 @@ Create your own .env file on your root level.
 
 ### Required fields
 - SECRET_KEY= [YOUR SECRET KEY]
-- DB_NAME= msn_mtdb_dev
+- DB_NAME= [YOUR_DB_NAME]
 - NODE_ENV=development
 - API_Key= [YOUR API KEY]
 - UTELLY_HOST= utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com
