@@ -18,7 +18,6 @@ user_episodesController.create = (req, res, next) => {
         ratings: null,
         has_watched: false,
         watched_time: null,
-        series_id: req.body.series_id,
         user_id: req.user.id,
     })
         .save()
@@ -35,12 +34,8 @@ user_episodesController.update = (req, res, next) => {
     User_episodes.getById(req.params.id)
         .then(episode => {
             episode.update({
-                title: req.body.title,
-                imdb_id: req.body.imdb_id,
                 ratings: req.body.ratings,
                 has_watched: req.body.has_watched,
-                series_id: req.body.series_id,
-                user_id: req.body.user_id,
             })
         })
         .then(episode => {

@@ -24,10 +24,10 @@ const getDetailByImdbId = (req, res, next) => {
 			res.locals.releaseDate = (parsedRes.releaseDate) ? parsedRes.releaseDate : null
 			res.locals.summary = (parsedRes.plotSummary) ? parsedRes.plotSummary : null
 			res.locals.outline = (parsedRes.plotOutline) ? parsedRes.plotOutline.text : null
-			// WE MAY OR MAY NOT NEED BELOW ITEMS IF SEASONS FETCH COLLECT GOOD DATA
 			res.locals.episodeCount = (parsedRes.numberOfEpisodes) ? parsedRes.numberOfEpisodes : null
 			res.locals.startYear = (parsedRes.title.seriesStartYear) ? parsedRes.title.seriesStartYear : null
 			res.locals.endYear = (parsedRes.title.seriesEndYear) ? parsedRes.title.seriesEndYear : null
+			res.locals.parentTitle_id = (parsedRes.title.parentTitle) ? parsedRes.title.parentTitle.id : null
 			// console.log('locals HEREEEE', res.locals)
 			next()
 		})

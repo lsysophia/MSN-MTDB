@@ -57,6 +57,7 @@ searchController.show = (req, res, next) => {
             outline: res.locals.outline,
             available_on: res.locals.available_on,
             season: res.locals.showSeasons,
+            parentTitle_id: res.locals.parentTitle_id,
         }
     })
 }

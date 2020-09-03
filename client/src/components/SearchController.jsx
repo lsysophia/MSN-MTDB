@@ -54,6 +54,7 @@ export default class SearchController extends Component {
     }
 
     conditionalRender() {
+        // sub router will allow for Details to be in here??
         switch (this.state.pageStatus) {
             case 'initial':
                 return <Search handleSearchSubmit={this.handleSearchSubmit} handleInputChange={this.handleInputChange} list={this.state.list} />

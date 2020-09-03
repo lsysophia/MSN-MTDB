@@ -1,4 +1,5 @@
-const db = require('../db/config')
+const db = require('../db/config');
+const user_moviesController = require('../controllers/user_movies-controller');
 
 class User_episodes {
     constructor(user_episodes) {
@@ -7,7 +8,7 @@ class User_episodes {
         this.imdb_id = user_episodes.imdb_id;
         this.ratings = user_episodes.ratings;
         this.has_watched = user_episodes.has_watched;
-        this.series_id = user_episodes.series_id;
+        this.watched_time = user_episodes.watched_time;
         this.user_id = user_episodes.user_id;
     }
 
@@ -47,9 +48,9 @@ class User_episodes {
             .one(
                 `
             INSERT INTO user_episodes 
-            (title, imdb_id, ratings, has_watched, series_id, user_id)
+            (title, imdb_id, ratings, has_watched, watched_time, user_id)
             VALUES
-            ($/title/, $/imdb_id/, $/ratings/, $/has_watched/, $/series_id/, $/user_id/)
+            ($/title/, $/imdb_id/, $/ratings/, $/has_watched/, $/watched_time/, $/user_id/)
             RETURNING *
             `,
                 this

@@ -4,6 +4,7 @@ export default class Details extends Component {
         super(props)
         this.state = {
             dataLoaded: false,
+            id: this.props.selected.id,
             imdb_id: this.props.selected.imdb_id,
             title: this.props.selected.title,
             year: this.props.selected.year,
@@ -16,10 +17,35 @@ export default class Details extends Component {
             releaseDate: this.props.selected.releaseDate,
             summary: this.props.selected.summary,
             outline: this.props.selected.outline,
+            parentTitle_id: this.props.selected.parentTitle_id,
             available_on: (this.props.selected.available_on) ? this.props.selected.available_on : [],
             seasons: (this.props.selected.season) ? this.props.selected.season.map(el => el.season) : null,
             episodes: (this.props.selected.season) ? this.props.selected.season.map(el => el.episodes) : null,
         }
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log(this.state.id)
+        if (prevProps.selected !== this.props.selected) {
+            this.setState({
+                imdb_id: this.props.selected.imdb_id,
+                title: this.props.selected.title,
+                year: this.props.selected.year,
+                titleType: this.props.selected.titleType,
+                image: this.props.selected.image,
+                runTime: this.props.selected.runTime,
+                certificate: this.props.selected.certificate,
+                ratings: this.props.selected.ratings,
+                genres: this.props.selected.genres,
+                releaseDate: this.props.selected.releaseDate,
+                summary: this.props.selected.summary,
+                outline: this.props.selected.outline,
+                parentTitle_id: this.props.selected.parentTitle_id,
+                available_on: (this.props.selected.available_on) ? this.props.selected.available_on : [],
+            })
+        }
+        // console.log('prevProps', prevProps)
+        // console.log('THIS', this.props)
     }
 
     componentDidMount() {
@@ -39,8 +65,11 @@ export default class Details extends Component {
                         {this.state.episodes.map(elem => {
                             return elem.map(ele => {
                                 if (ele.season === el) {
+                                    let url = ele.id.split('/')[2]
+                                    // console.log(ele)
+                                    // console.log(url)
                                     return (
-                                        <li key={ele.id} onClick={() => { this.props.selectedPoster((ele.id).split('/')[0]) }} >{(ele.season === el) ? `Ep: ${ele.episode} Title: ${ele.title}` : null}</li>
+                                        <li key={ele.id} onClick={() => { this.props.selectedPoster(url)}} >{`Ep: ${ele.episode} Title: ${ele.title}`}</li>
                                     )
                                 }
                             })
