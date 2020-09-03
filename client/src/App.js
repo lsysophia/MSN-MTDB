@@ -30,7 +30,7 @@ class App extends Component {
     this.handleUserEditSubmit = this.handleUserEditSubmit.bind(this)
     this.selectedPoster = this.selectedPoster.bind(this)
     this.toggleLoginRegister = this.toggleLoginRegister.bind(this)
-    // this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleUsersInputSubmit = this.handleUsersInputSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -55,7 +55,6 @@ class App extends Component {
       body: JSON.stringify(data),
     }).then(res => res.json())
       .then(parsedRes => {
-        console.log(parsedRes)
         this.setState({
           auth: parsedRes.auth,
           user: parsedRes.data.user,
@@ -65,7 +64,6 @@ class App extends Component {
 
   handleRegisterSubmit(e, data) {
     e.preventDefault()
-    console.log(data)
     fetch('/api/auth/register', {
       method: 'POST',
       headers: {
@@ -84,7 +82,6 @@ class App extends Component {
 
   handleUserEditSubmit(e, data, id) {
     e.preventDefault()
-    console.log(data)
     fetch(`/api/user/edit/${id}`, {
       method: 'PUT',
       headers: {
@@ -125,16 +122,15 @@ class App extends Component {
   }
 
   selectedPoster(id) {
-    console.log("selected poster: ", id)
     fetch(`/api/search/details/${id}`, {
       method: 'POST',
     }).then(res => res.json())
       .then(jsonRes => {
         this.setState({
           selected: jsonRes.data,
-          fireRedirect: true,
-          redirectPath: `/details/${jsonRes.data.imdb_id}`,
-        })
+          fireRedirect: true,  // can get rid of
+          redirectPath: `/details/${jsonRes.data.imdb_id}`,  // can get rid of
+        } )// put in a callback function with ','
       })
   }
 
@@ -142,7 +138,7 @@ class App extends Component {
   handleFormSubmit = (evt, data) => {
     evt.preventDefault();
     if (data.titleType === 'movie') {
-      fetch(`api/movies/`, {
+      fetch('/api/movies/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -157,7 +153,7 @@ class App extends Component {
           })
         })
     } else if (data.titleType === 'tvSeries') {
-      fetch(`api/series/`, {
+      fetch('/api/series/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -171,7 +167,7 @@ class App extends Component {
           })
         })
     } else if (data.titleType === 'tvEpisode') {
-      fetch(`api/episodes/`, {
+      fetch('/api/episodes/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -191,6 +187,41 @@ class App extends Component {
     this.setState({
       fireRedirect: true,
       redirectPath: '/register'
+    })
+  }
+
+  handleUsersInputSubmit(e, watched, rating, titleType, id) {
+    e.preventDefault()
+    let data = {}
+    if (watched === 'on') {
+      data = {
+        has_watched: true,
+        ratings: parseInt(rating),
+        titleType: titleType,
+        imdb_id: id,
+      }
+    } else {
+      data = {
+        has_watched: false,
+        ratings: parseInt(rating),
+        titleType: titleType,
+        imdb_id: id,
+      }
+    }
+    console.log('DATA', data)
+    fetch('/api/input', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(res => res.json())
+    .then(() => {
+      this.setState({
+        fireRedirect: true,
+        redirectPath: '/user',
+      })
     })
   }
 
@@ -239,7 +270,7 @@ class App extends Component {
           />
 
           <Route exact path='/details/:id'
-            render={() => (<Details user={this.state.user} selected={this.state.selected} handleFormSubmit={this.handleFormSubmit} selectedPoster={this.selectedPoster} />)}
+            render={() => (<Details user={this.state.user} selected={this.state.selected} handleUsersInputSubmit={this.handleUsersInputSubmit} handleFormSubmit={this.handleFormSubmit} selectedPoster={this.selectedPoster} />)}
           />
 
           <Route exact path='/about'

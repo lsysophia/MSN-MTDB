@@ -3,12 +3,16 @@ const User_shows = require('../models/User_shows')
 const user_seriesController = {}
 
 user_seriesController.index = (req, res, next) => {
-    User_shows.getAllForUser(req.user.id)
+    if (req.user) {
+        User_shows.getAllForUser(req.user.id)
         .then(series => {
             res.locals.userSeries = series
             next();
         })
         .catch(next)
+    } else {
+        next()
+    }
 }
 
 user_seriesController.find= (req, res, next) => {
@@ -37,26 +41,6 @@ user_seriesController.create = (req, res, next) => {
             })
         })
         .catch(next)
-}
-
-user_seriesController.update = (req, res, next) => {
-    User_shows.getById(req.params.id)
-        .then(show => {
-            show.update({
-                title: req.body.title,
-                imdb_id: req.body.imdb_id,
-                ratings: req.body.ratings,
-                has_watched: req.body.has_watched,
-                watched_time: req.body.watched_time,
-                user_id: req.body.user_id,
-            })
-        })
-        .then(show => {
-            res.json({
-                message: 'Show updated',
-                data: { show }
-            })
-        }).catch(next)
 }
 
 user_seriesController.delete = (req, res, next) => {

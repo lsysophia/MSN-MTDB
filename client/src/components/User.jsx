@@ -12,7 +12,6 @@ export default class User extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.user)
         fetch(`/api/user/${this.props.user.id}`, {
             method: 'GET',
         })
@@ -26,7 +25,6 @@ export default class User extends Component {
     }
 
     renderWatchList() {
-        console.log(this.state.watchlist)
         return <ul>
             <h3 className="titles">Movies</h3>
             {this.state.watchlist.userMovies.map(eachMovie => {

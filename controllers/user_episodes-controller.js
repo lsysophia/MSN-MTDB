@@ -3,12 +3,16 @@ const User_episodes = require('../models/User_episodes')
 const user_episodesController = {}
 
 user_episodesController.index = (req, res, next) => {
-    User_episodes.getAllForUser(req.user.id)
+    if (req.user) {
+        User_episodes.getAllForUser(req.user.id)
         .then(episodes => {
             res.locals.userEpisodes = episodes
             next();
         })
         .catch(next)
+    } else {
+        next()
+    }
 }
 
 user_episodesController.find= (req, res, next) => {
@@ -21,7 +25,6 @@ user_episodesController.find= (req, res, next) => {
 }
 
 user_episodesController.create = (req, res, next) => {
-    console.log('FINAL STOP IN', req.body)
     new User_episodes({
         title: req.body.title,
         imdb_id: req.body.imdb_id,
@@ -38,22 +41,6 @@ user_episodesController.create = (req, res, next) => {
             })
         })
         .catch(next)
-}
-
-user_episodesController.update = (req, res, next) => {
-    User_episodes.getById(req.params.id)
-        .then(episode => {
-            episode.update({
-                ratings: req.body.ratings,
-                has_watched: req.body.has_watched,
-            })
-        })
-        .then(episode => {
-            res.json({
-                message: 'Episode updated',
-                data: { episode }
-            })
-        }).catch(next)
 }
 
 user_episodesController.delete = (req, res, next) => {

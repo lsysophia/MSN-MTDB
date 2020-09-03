@@ -38,7 +38,7 @@ class User_shows {
 
     static getOneForUser(users_id, userShow_id) {
         return db
-            .manyOrNone('SELECT * FROM user_shows WHERE user_id = $1 AND id = $2', [users_id, userShow_id])
+            .manyOrNone('SELECT * FROM user_shows WHERE user_id = $1 AND imdb_id=$2', [users_id, userShow_id])
             .then(show => new this(show[0]))
             .catch(err => console.log(err))
     }
@@ -56,6 +56,25 @@ class User_shows {
             )
             .then(savedShow => Object.assign(this, savedShow))
             .catch(err => console.log(err))
+    }
+
+    update(changes) {
+        Object.assign(this, changes)
+        return db
+        .oneOrNone(
+            `UPDATE user_shows SET
+            title = $/title/,
+            imdb_id = $/imdb_id/,
+            ratings = $/ratings/,
+            has_watched = $/has_watched/,
+            user_id = $/user_id/,
+            watched_time = now()
+            WHERE id = $/id/
+            RETURNING *`,
+            this
+        )
+        .then(updatedShow => Object.assign(this, updatedShow))
+        .catch(err => console.log(err))
     }
 
     delete() {

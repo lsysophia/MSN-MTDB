@@ -15,5 +15,5 @@ searchRouter.get('/', user_moviesController.find, user_seriesController.find, us
 
 
 searchRouter.post('/:title', initialUnPack, searchController.results)
-searchRouter.post('/details/:imdb_id', getDetailByImdbId, getStreamingService, searchController.decide, getSeasons, searchController.show)
+searchRouter.post('/details/:imdb_id', getDetailByImdbId, getStreamingService, user_moviesController.index, user_seriesController.index, user_episodesController.index, searchController.decide, getSeasons, searchController.show)
 module.exports = searchRouter

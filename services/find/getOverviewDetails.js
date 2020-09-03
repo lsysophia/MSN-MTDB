@@ -10,7 +10,7 @@ const getDetailByImdbId = (req, res, next) => {
 			},
 		})
 		.then(res => res.json())
-		.then(parsedRes => { 
+		.then(parsedRes => {
 			let firstSplit = (parsedRes.id).split('/title/')[1]
 			res.locals.imdb_id = firstSplit.split('/')[0]
 			res.locals.title = parsedRes.title.title
