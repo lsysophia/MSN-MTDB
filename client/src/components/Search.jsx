@@ -21,7 +21,7 @@ export default class Search extends Component {
             })
         }
     }
-    
+
     // componentDidMount() {
     //     this.setState({
     //         dataLoaded: true,
@@ -31,10 +31,12 @@ export default class Search extends Component {
     conditionalRender() {
         return (
             <ul>
-                {(this.state.movies.length > 0) ? this.state.movies.map(el => <li onClick={() => {this.props.selectedPoster(el.imdb_id)}} key={el.imdb_id}>{el.title}</li>) : <li>No Movies</li>}
-                {(this.state.shows.length > 0) ? this.state.shows.map(el => <li onClick={() => {this.props.selectedPoster(el.imdb_id)}} key={el.imdb_id}>{el.title}</li>) : <li>No Shows</li>}
-                {(this.state.episodes.length > 0) ? this.state.episodes.map(el => <li onClick={() => {this.props.selectedPoster(el.imdb_id)}} key={el.imdb_id}>{el.title}</li>) : <li>No Episodes</li>}
-
+                <h3 className="search-titles">Movies</h3>
+                {(this.state.movies.length > 0) ? this.state.movies.map(el => <li onClick={() => { this.props.selectedPoster(el.imdb_id) }} key={el.imdb_id}>• {el.title}</li>) : <li>No Movies</li>}
+                <h3 className="search-titles">Shows</h3>
+                {(this.state.shows.length > 0) ? this.state.shows.map(el => <li onClick={() => { this.props.selectedPoster(el.imdb_id) }} key={el.imdb_id}>• {el.title}</li>) : <li>No Shows</li>}
+                <h3 className="search-titles">Episodes</h3>
+                {(this.state.episodes.length > 0) ? this.state.episodes.map(el => <li onClick={() => { this.props.selectedPoster(el.imdb_id) }} key={el.imdb_id}>• {el.title}</li>) : <li>No Episodes</li>}
                 {console.log(this.state)}
                 {/* {this.state.list.movies.map(el => <li key={el.id}>{el.title}</li>)} */}
             </ul>
