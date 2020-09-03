@@ -324,7 +324,6 @@ justify-content: center; */
 width: 300px;
 }
 
-
 .search-page .search-results li:hover{
   color: black;
   background-color: rgb(232,	195,	53);
@@ -351,6 +350,12 @@ transform: translateY(4px);
   text-align:center;
   font-weight: bold;
   margin-top:20px
+}
+
+.search-results-ul
+{
+  display: flex;
+  flex-wrap:wrap ;
 }
 
 /* SEARCH PAGE END*/
