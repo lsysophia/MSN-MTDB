@@ -1,47 +1,52 @@
-# MSN-MTDB
-GA Project 3 
+# MSN-MTDB 
+App with a react in the front end and Express in the backend
 
-## Contributers of Squad 3 
-- Matt,
-- Sophia, 
-- Niso 
-
-Movie/TV Database Search App
-
-Visit our 
-- Staging page: https://msn-mtvdb.herokuapp.com/
+Visit us online
+- Staging page: https://git.heroku.com/evening-basin-19807.git
 - Production page: 
 
-## Table of contents
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [Setup](#setup)
+### Description
 
-## General info
-This project is simple Lorem ipsum dolor generator.
-	
+This application allows users to search for movies and TV shows and save it to their accounts. 
+
+## Workflow
+
+### [Wireframes](https://ibb.co/Hpsq3Jp)
+
+### [DB Schemas](https://ibb.co/s1RnN7m) 
+
+### [Project Board](https://github.com/users/lsysophia/projects/1)
+
+## User Stories
+
+## HTTP Routes
+
+Frontend:  
+'/' --> Homepage
+'/user' --> User
+'/register'
+'/user/edit'
+'/search/'
+'/details/:id'
+'/about'
+
+API:
+
+/api/auth
+/api/user
+/api/search
+/api/movies
+/api/series
+/api/episodes
+
+## Specs 
+
+### Technologies
 
 
-## Wireframes
-
-
-## DB Schemas
-
-
-
-## Technologies
-Project is created with:
-* bcryptjs: ^2.4.3,
-* body-parser: ^1.19.0,
-* cookie-parser: ^1.4.5,
-* dotenv: ^8.2.0,
-* express: ^4.17.1,
-* express-session: ^1.17.1,
-* morgan: ^1.10.0,
-* node-fetch: ^2.6.0,
-* passport: ^0.4.1,
-* passport-local: ^1.0.0,
-* pg-promise: ^10.6.1
+### APIs
+* [IMDB ](https://rapidapi.com/apidojo/api/imdb8)
+* [UTELLY](https://rapidapi.com/utelly/api/utelly)
 
 ## Setup
 
@@ -57,7 +62,12 @@ Create your own .env file on your root level.
 - IMDB_HOST=imdb8.p.rapidapi.com
 
 ### To run this project, 
-install it locally using yarn:
+
+- Fork the project or download it in your machine
+- Create your database in psql
+- Create database, run the migration files and create tables from db/migrations 
+
+install yarn and start the servers:
 ```
 $ yarn install
 $ yarn dev
@@ -65,3 +75,11 @@ $ cd client
 $ yarn install
 $ yarn start
 ```
+
+browse to localhost:3000 or your favorite {PORT}
+
+
+## Contributers of Squad 3 
+- Matt,
+- Sophia, 
+- Niso 
