@@ -214,7 +214,7 @@ class App extends Component {
             render={() => (
               !this.state.auth
                 ? <Redirect to='/login' />
-                : <User deleteUser={this.deleteUser} user={this.state.user} auth={this.state.auth} logout={this.logout} />
+                : <User deleteUser={this.deleteUser} user={this.state.user} auth={this.state.auth} logout={this.logout} selectedTitle={this.selectedPoster}/>
             )}
           />
 
