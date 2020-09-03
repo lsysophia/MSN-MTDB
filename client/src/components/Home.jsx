@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default class Home extends Component {
     render() {
         return (
-            <div className="Home-page">
+            <div className="home-page">
                 <div>
                     <h1>Welcome to MSN - MTVDB</h1>
                 </div>

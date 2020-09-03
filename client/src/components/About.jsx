@@ -5,7 +5,7 @@ export default class About extends Component {
     render() {
         return (
             <div>
-                <article>
+                <article className="about-box">
                     <h1>MSN - MTVDB</h1>
                     <p>
                         Welcome to our web-app! This is a platform where you would be able to search for movies and tv shows that you have in mind, keep track of what you have watched and what you want to watch,
@@ -23,11 +23,10 @@ export default class About extends Component {
                     </p><br></br>
                     <h2>Technologies used for this project</h2>
                     <ul>
-                        <li><span role="img" aria-label="tech">Express JS</span></li>
-                        <li><span role="img" aria-label="tech">React</span></li>
-                        <li><span role="img" aria-label="tech">PSQL</span></li>
-                        <li><span role="img" aria-label="tech">CSS</span></li>
-                        <li><span role="img" aria-label="tech">🖥️</span></li>
+                        <li><span role="img" aria-label="tech">• Express JS</span></li>
+                        <li><span role="img" aria-label="tech">• React</span></li>
+                        <li><span role="img" aria-label="tech">• PSQL</span></li>
+                        <li><span role="img" aria-label="tech">• CSS</span></li>
                     </ul>
                     <p>
                     </p>
