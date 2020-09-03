@@ -58,9 +58,7 @@ class User {
             RETURNING *`,
             this
         )
-        .then(updatedUser => {
-            return Object.assign(this, updatedUser)
-        })
+        .then(updatedUser => Object.assign(this, updatedUser))
         .catch(err => console.log(err));
     }
 

@@ -43,26 +43,6 @@ user_seriesController.create = (req, res, next) => {
         .catch(next)
 }
 
-user_seriesController.update = (req, res, next) => {
-    User_shows.getById(req.params.id)
-        .then(show => {
-            show.update({
-                title: req.body.title,
-                imdb_id: req.body.imdb_id,
-                ratings: req.body.ratings,
-                has_watched: req.body.has_watched,
-                watched_time: req.body.watched_time,
-                user_id: req.body.user_id,
-            })
-        })
-        .then(show => {
-            res.json({
-                message: 'Show updated',
-                data: { show }
-            })
-        }).catch(next)
-}
-
 user_seriesController.delete = (req, res, next) => {
     User_shows.getById(req.params.id)
         .then(show => show.delete())

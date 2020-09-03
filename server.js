@@ -7,6 +7,7 @@ const passport = require('passport')
 
 const authRouter = require('./routes/auth-routes')
 const userRouter = require('./routes/user-routes')
+const inputRouter = require('./routes/input-routes')
 const searchRouter = require('./routes/search-routes')
 const userMoviesRouter = require('./routes/user-movies-route')
 const userSeriesRouter = require('./routes/user-series-route')
@@ -47,6 +48,7 @@ app.use('/api/search', searchRouter)
 app.use('/api/movies', userMoviesRouter)
 app.use('/api/series', userSeriesRouter)
 app.use('/api/episodes', userEpisodesRouter)
+app.use('/api/input', inputRouter)
 
 app.use('*', (req, res) => {
     res.status(400).json({

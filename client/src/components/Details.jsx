@@ -17,6 +17,9 @@ export default class Details extends Component {
             summary: this.props.selected.summary,
             outline: this.props.selected.outline,
             parentTitle_id: this.props.selected.parentTitle_id,
+            has_watched: false,
+            watched_time: null,
+            user_rating: 20,
             available_on: (this.props.selected.available_on) ? this.props.selected.available_on : [],
             seasons: (this.props.selected.season) ? this.props.selected.season.map(el => el.season) : null,
             episodes: (this.props.selected.season) ? this.props.selected.season.map(el => el.episodes) : null,
@@ -24,6 +27,7 @@ export default class Details extends Component {
             user_shows: (this.props.selected.userShows) ? this.props.selected.userShows : null,
             user_movies: (this.props.selected.userMovies) ? this.props.selected.userMovies : null,
         }
+        this.handleChange = this.handleChange.bind(this)
     }
 
     componentDidUpdate(prevProps) {
@@ -42,6 +46,9 @@ export default class Details extends Component {
                 summary: this.props.selected.summary,
                 outline: this.props.selected.outline,
                 parentTitle_id: this.props.selected.parentTitle_id,
+                user_episodes: (this.props.selected.userEpisodes) ? this.props.selected.userEpisodes : null,
+                user_shows: (this.props.selected.userShows) ? this.props.selected.userShows : null,
+                user_movies: (this.props.selected.userMovies) ? this.props.selected.userMovies : null,
                 available_on: (this.props.selected.available_on) ? this.props.selected.available_on : [],
             })
             this.toggleWatch()
@@ -82,24 +89,34 @@ export default class Details extends Component {
         })
     }
 
+    handleChange(e) {
+        const name = e.currentTarget.name
+        const value = e.currentTarget.value
+        this.setState({
+            [name]: value,
+        })
+    }
+
     toggleWatch() {
         if (this.props.user) {
             if (this.state.titleType === 'movie') {
                 if (this.state.user_movies) {
                     let movieCheck = this.state.user_movies.filter(movie => (movie.imdb_id === this.state.imdb_id))
-                        if (movieCheck.length > 0) {
-                            return (
-                                <form>
-                                    {/* with ratings and has_watched */}<p>HERE HERE</p>
-                                </form>
-                            )
-                        } else {
-                            return (
-                                <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
-                                    <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
-                                </form>
-                            )
-                        }
+                    if (movieCheck.length > 0) {
+                        return (
+                            <form onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id))}>
+                                <input type='range' name='user_rating' min='0' max='10' value={movieCheck.ratings} onChange={this.handleChange} />
+                                {(movieCheck.has_watched) ? <p>{movieCheck.watched_time}</p> : <input type='radio' name='has_watched' onChange={this.handleChange} />}
+                                <input type='submit' value='Save Input' />
+                            </form>
+                        )
+                    } else {
+                        return (
+                            <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
+                                <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
+                            </form>
+                        )
+                    }
                 } else {
                     return (
                         <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
@@ -109,21 +126,21 @@ export default class Details extends Component {
                 }
             } else if (this.state.titleType === 'tvSeries') {
                 if (this.state.user_shows) {
-                    return this.state.user_shows.map(el => {
-                        if (this.state.imdb_id === el.imdb_id) {
-                            return (
-                                <form>
-                                    {/* with ratings and has_watched */}<p>HERE HERE</p>
-                                </form>
-                            )
-                        } //else {
-                            //     return (
-                                //         <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
-                                //             <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
-                                //         </form>
-                                //     )
-                                // }
-                    })
+                    let showCheck = this.state.user_shows.filter(show => (show.imdb_id === this.state.imdb_id))
+                    if (showCheck.length > 0) {
+                        return (
+                            <form onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id))}>
+                                <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} />
+                                {(showCheck.has_watched) ? <p>{showCheck.watched_time}</p> : <input type='checkbox' name='has_watched' onChange={this.handleChange} />}
+                            </form>
+                        )
+                    } else {
+                        return (
+                            <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
+                                <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
+                            </form>
+                        )
+                    }
                 } else {
                     return (
                         <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
@@ -133,21 +150,21 @@ export default class Details extends Component {
                 }
             } else if (this.state.titleType === 'tvEpisode') {
                 if (this.state.user_episodes) {
-                    return this.state.user_episodes.map(el => {
-                        if (this.state.imdb_id === el.imdb_id) {
+                    let episodeCheck = this.state.user_episodes.filter(episode => (episode.imdb_id === this.state.imdb_id))
+                        if (episodeCheck.length > 0) {
                             return (
-                                <form>
-                                    {/* with ratings and has_watched */}<p>HERE HERE</p>
+                                <form onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id))}>
+                                    <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} />
+                                    {(episodeCheck.has_watched) ? <p>{episodeCheck.watched_time}</p> : <input type='checkbox' name='has_watched' onChange={this.handleChange} />}
                                 </form>
                             )
-                        } //else {
-                            //     return (
-                                        // <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
-                                        //     <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
-                                        // </form>
-                                //     )
-                                // }
-                    })
+                        } else {
+                            return (
+                                <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
+                                    <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
+                                </form>
+                            )
+                        }
                 } else {
                     return (
                         <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >

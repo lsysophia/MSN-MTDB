@@ -30,7 +30,7 @@ class App extends Component {
     this.handleUserEditSubmit = this.handleUserEditSubmit.bind(this)
     this.selectedPoster = this.selectedPoster.bind(this)
     this.toggleLoginRegister = this.toggleLoginRegister.bind(this)
-    // this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleUsersInputSubmit = this.handleUsersInputSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -190,6 +190,40 @@ class App extends Component {
     })
   }
 
+  handleUsersInputSubmit(e, watched, rating, titleType, id) {
+    let data = {}
+    if (watched === 'on') {
+      data = {
+        has_watched: true,
+        ratings: parseInt(rating),
+        titleType: titleType,
+        imdb_id: id,
+      }
+    } else {
+      data = {
+        has_watched: false,
+        ratings: parseInt(rating),
+        titleType: titleType,
+        imdb_id: id,
+      }
+    }
+    e.preventDefault()
+    fetch('/api/input', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(res => res.json())
+    .then(() => {
+      this.setState({
+        fireRedirect: true,
+        redirectPath: '/user',
+      })
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -235,7 +269,7 @@ class App extends Component {
           />
 
           <Route exact path='/details/:id'
-            render={() => (<Details user={this.state.user} selected={this.state.selected} handleFormSubmit={this.handleFormSubmit} selectedPoster={this.selectedPoster} />)}
+            render={() => (<Details user={this.state.user} selected={this.state.selected} handleUsersInputSubmit={this.handleUsersInputSubmit} handleFormSubmit={this.handleFormSubmit} selectedPoster={this.selectedPoster} />)}
           />
 
           <Route exact path='/about'

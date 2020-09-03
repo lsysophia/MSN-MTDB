@@ -1,4 +1,3 @@
-const searchRouter = require("../routes/search-routes")
 
 const searchController = {}
 
@@ -42,7 +41,7 @@ searchController.decide = (req, res, next) => {
                 outline: res.locals.outline,
                 available_on: res.locals.available_on,
                 userMovies: res.locals.userMovies,
-                userSeries: res.locals.userSeries,
+                userShows: res.locals.userSeries,
                 userEpisodes: res.locals.userEpisodes,
             }
         })
@@ -72,7 +71,7 @@ searchController.show = (req, res, next) => {
             season: res.locals.showSeasons,
             parentTitle_id: res.locals.parentTitle_id,
             userMovies: res.locals.userMovies,
-            userSeries: res.locals.userSeries,
+            userShows: res.locals.userSeries,
             userEpisodes: res.locals.userEpisodes,
         }
     })
