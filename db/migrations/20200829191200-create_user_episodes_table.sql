@@ -5,6 +5,5 @@ CREATE TABLE IF NOT EXISTS user_episodes (
     ratings INTEGER,
     has_watched BOOLEAN DEFAULT false,
     watched_time TIMESTAMP,
-    show_id INTEGER NOT NULL REFERENCES user_shows(id) ON DELETE CASCADE,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE
 );

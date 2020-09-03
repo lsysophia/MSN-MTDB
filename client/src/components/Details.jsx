@@ -4,6 +4,7 @@ export default class Details extends Component {
         super(props)
         this.state = {
             dataLoaded: false,
+            id: this.props.selected.id,
             imdb_id: this.props.selected.imdb_id,
             title: this.props.selected.title,
             year: this.props.selected.year,
@@ -24,6 +25,7 @@ export default class Details extends Component {
     }
 
     componentDidUpdate(prevProps) {
+        console.log(this.state.id)
         if (prevProps.selected !== this.props.selected) {
             this.setState({
                 imdb_id: this.props.selected.imdb_id,
