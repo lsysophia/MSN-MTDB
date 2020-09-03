@@ -196,6 +196,11 @@ header a:visited{
 
 }
 
+.user-settings h4 a{
+  text-decoration: none;
+  color: black
+}
+
 .user-page .user-info {
   margin-top: 30px;
   text-align:left;
