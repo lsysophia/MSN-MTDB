@@ -118,13 +118,18 @@ export default class Details extends Component {
                         <h3>
                             Summary
                         </h3>
-                        {this.state.summary ? <div>
-                            <p>{this.state.summary.text}</p>
-                            <cite>{this.state.summary.author}</cite>
-                        </div> : 'Unavailable'}
-                        <div>
-                            {(this.state.outline) ? this.state.outline : 'Unavailable'}
-                        </div>
+                            {(this.state.summary && this.state.outline) 
+                            ? 
+                            <div>
+                                {this.state.summary.text}
+                                <cite>{this.state.summary.author}</cite>
+                            </div> 
+                            : (!this.state.summary && this.state.outline)
+                            ? 
+                            <div>
+                                {(this.state.outline)}
+                            </div>
+                            : 'Unavailable'}
                     </div>
                     <div className="where-to-watch">
                         {(this.state.available_on.length > 0) ? this.state.available_on.map(el => {
