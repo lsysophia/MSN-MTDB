@@ -149,6 +149,7 @@ aside{
   max-width: 90vw; 
   margin: 0 auto;
   background-color: rgb(236, 234, 234);
+  padding: 2%;
 }
 
 /* USER START */
@@ -428,13 +429,14 @@ footer{
 /* SHOW PAGE START */
 .show-page {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .show-page .image-box{
   display: flex;
   justify-content: center;
+  margin-right: 30px;
 }
 
 .show-page .detail-info{
@@ -442,9 +444,24 @@ footer{
   flex-direction: column;
 }
 
-.show-page h4 {
- font-size:1.1em;
+.show-page h1 {
+ font-size:1.7em;
  margin-bottom:1.1em;
+}
+
+.show-page h2 {
+  font-size:1.5em;
+  margin-bottom:1.1em;
+ }
+
+.show-page h3 {
+font-size:1.3em;
+margin-bottom:1.1em;
+}
+
+.show-page h4 {
+font-size:1.1em;
+margin: 15px 0 15px 0;
 }
 
 .show-page .seasons-episodes-box{
@@ -468,7 +485,11 @@ footer{
 .show-page .summary{
   display: flex;
   flex-direction: column;
-  margin: 20px 10px 20px 10px;
+  /* margin: 20px 10px 20px 10px; */
+}
+.show-page .summary h1{
+  margin: 10px 0 10px 0;
+  font-weight: bold;
 }
 
 .show-page .where-to-watch{
