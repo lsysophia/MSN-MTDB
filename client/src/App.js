@@ -29,7 +29,7 @@ class App extends Component {
     this.deleteUser = this.deleteUser.bind(this)
     this.handleUserEditSubmit = this.handleUserEditSubmit.bind(this)
     this.selectedPoster = this.selectedPoster.bind(this)
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    // this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -125,14 +125,14 @@ class App extends Component {
 
   selectedPoster(id) {
     console.log("selected poster: ", id)
-    fetch(`api/search/details/${id}`, {
+    fetch(`/api/search/details/${id}`, {
       method: 'POST',
     }).then(res => res.json())
       .then(jsonRes => {
         this.setState({
           selected: jsonRes.data,
           fireRedirect: true,
-          redirectPath: '/details',
+          redirectPath: `/details/${jsonRes.data.imdb_id}`,
         })
       })
   }
@@ -226,11 +226,11 @@ class App extends Component {
             )}
           />
 
-          <Route exact path='/search'
+          <Route exact path='/search/'
             render={() => (<Search user={this.state.user} selectedPoster={this.selectedPoster} pageStatus='initial' />)}
           />
 
-          <Route exact path='/details'
+          <Route exact path='/details/:id'
             render={() => (<Details user={this.state.user} selected={this.state.selected} handleFormSubmit={this.handleFormSubmit} selectedPoster={this.selectedPoster} />)}
           />
 

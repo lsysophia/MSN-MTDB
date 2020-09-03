@@ -33,7 +33,6 @@ searchController.decide = (req, res, next) => {
             }
         })
     } else {
-        // console.log('WENT THROUGHT THE DECIDER TO NEXT FETCH')
         next()
         // what about videoGames
     }

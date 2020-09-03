@@ -14,6 +14,8 @@ export default class SearchController extends Component {
             list: [],
             title: '',
             results: null,
+            fireRedirect: false,
+            redirectPath: null,
         }
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
@@ -69,7 +71,7 @@ export default class SearchController extends Component {
         return (
             <div className="search-page">
                 {(this.state.dataLoaded) ? this.conditionalRender() : <p>Page Loading...</p>}
-                {/* {this.state.fireRed irect && <Redirect push to={this.state.redirectPath} />} */}
+                {this.state.fireRedirect && <Redirect push to={this.state.redirectPath} />}
             </div>
         )
     }
