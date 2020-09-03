@@ -29,6 +29,7 @@ class App extends Component {
     this.deleteUser = this.deleteUser.bind(this)
     this.handleUserEditSubmit = this.handleUserEditSubmit.bind(this)
     this.selectedPoster = this.selectedPoster.bind(this)
+    this.toggleLoginRegister = this.toggleLoginRegister.bind(this)
     // this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
@@ -149,12 +150,12 @@ class App extends Component {
         body: JSON.stringify(data),
       }).then(res => res.json())
 
-      .then(() => {
-        this.setState({
-          fireRedirect: true,
-          redirectPath: '/user'
+        .then(() => {
+          this.setState({
+            fireRedirect: true,
+            redirectPath: '/user'
+          })
         })
-      })
     } else if (data.titleType === 'tvSeries') {
       fetch(`api/series/`, {
         method: 'POST',
@@ -163,12 +164,12 @@ class App extends Component {
         },
         body: JSON.stringify(data),
       }).then(res => res.json())
-      .then(() => {
-        this.setState({
-          fireRedirect: true,
-          redirectPath: '/user'
+        .then(() => {
+          this.setState({
+            fireRedirect: true,
+            redirectPath: '/user'
+          })
         })
-      })
     } else if (data.titleType === 'tvEpisode') {
       fetch(`api/episodes/`, {
         method: 'POST',
@@ -177,13 +178,20 @@ class App extends Component {
         },
         body: JSON.stringify(data),
       }).then(res => res.json())
-      .then(() => {
-        this.setState({
-          fireRedirect: true,
-          redirectPath: '/user'
+        .then(() => {
+          this.setState({
+            fireRedirect: true,
+            redirectPath: '/user'
+          })
         })
-      })
     }
+  }
+
+  toggleLoginRegister() {
+    this.setState({
+      fireRedirect: true,
+      redirectPath: '/register'
+    })
   }
 
   render() {
@@ -191,16 +199,16 @@ class App extends Component {
       <div className="App">
         <Header logout={this.logout} userAuth={this.state.auth} />
         <div className="container">
-          <Route exact path='/' 
+          <Route exact path='/'
             render={() => (
               <Home userAuth={this.state.auth} />
-            )} 
-            />
+            )}
+          />
           <Route exact path='/login'
             render={() => (
               this.state.auth
                 ? <Redirect to='/user' />
-                : <Login handleLoginSubmit={this.handleLoginSubmit} />
+                : <Login handleLoginSubmit={this.handleLoginSubmit} toggleLoginRegister={this.toggleLoginRegister} />
             )}
           />
           <Route exact path='/register'
@@ -214,7 +222,7 @@ class App extends Component {
             render={() => (
               !this.state.auth
                 ? <Redirect to='/login' />
-                : <User deleteUser={this.deleteUser} user={this.state.user} auth={this.state.auth} logout={this.logout} selectedTitle={this.selectedPoster}/>
+                : <User deleteUser={this.deleteUser} user={this.state.user} auth={this.state.auth} logout={this.logout} selectedTitle={this.selectedPoster} />
             )}
           />
 
