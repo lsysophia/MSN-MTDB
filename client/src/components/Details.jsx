@@ -84,9 +84,7 @@ export default class Details extends Component {
             <div>
             <section className="show-page">
                 <aside className="image-box">
-                    {/* // <div className="image-box"> */}
                     <img alt='Movie/Show Poster' src={(this.props.selected) ? this.state.image : "https://images.pexels.com/photos/3150553/pexels-photo-3150553.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"}/>
-                    {/* </div> */}
                 </aside>
                 <div className="info-box">
                     <article className="detail-info">
@@ -115,8 +113,8 @@ export default class Details extends Component {
                                 <h4><em>Rating:</em>{(this.state.certificate) ? this.state.certificate.US.map(el => el.certificate) : 'Unavailable'}</h4>
                                 <h4>{/* ratingReasons are possible */}</h4>
                                 <h4><em>Release Date:</em>{this.state.releaseDate}</h4>
-                                <h4><em>Genres:</em>{this.state.genres.map((el, i) => <span key={i}> •{el}</span>)}</h4>
-                                <form onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
+                                <h4><em>Genres:</em>{this.state.genres.map((el, i) => <span key={i}> •{el} </span>)}</h4>
+                                <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
                                     <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
                                 </form>
                             </div>
