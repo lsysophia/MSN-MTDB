@@ -73,8 +73,7 @@ button::-moz-focus-inner {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  color:white;
-
+  color:#333;
 }
 
 /* HEADER START*/
@@ -415,10 +414,6 @@ transform: translateY(4px);
   margin-bottom: 50px;
 }
 
-article
-{
-  color: darkgreen;
-}
 /* ABOUT END  */
 
 /* FOOTER START */
