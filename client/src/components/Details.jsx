@@ -84,24 +84,24 @@ export default class Details extends Component {
         return (
             <section className="show-page">
                 <article>
-                    <div>
+                    <div className="image-box">
                         <img alt='Movie/Show Poster' src={(this.props.selected) ? this.state.image : "https://images.pexels.com/photos/3150553/pexels-photo-3150553.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"} width="300px" />
                     </div>
-                    <div>
+                    <div className="detail-info">
                         <h1>
                             {this.state.title}({this.state.year})
                         </h1>
                         <div>
-                            Run Time: {this.state.runTime}
-                            Rating: {(this.state.certificate) ? this.state.certificate.US.map(el => el.certificate) : 'Unavailable'}
-                            {/* ratingReasons are possible */}
-                            Release Date: {this.state.releaseDate}
-                            Genres: {this.state.genres.map((el, i) => <span key={i}>{el}</span>)}
+                            <h4>Run Time: {this.state.runTime}</h4>
+                            <h4>Rating: {(this.state.certificate) ? this.state.certificate.US.map(el => el.certificate) : 'Unavailable'}</h4>
+                            <h4>{/* ratingReasons are possible */}</h4>
+                            <h4>Release Date: {this.state.releaseDate}</h4>
+                            <h4>Genres: {this.state.genres.map((el, i) => <span key={i}>{el}</span>)}</h4>
                         </div>
                     </div>
                 </article>
                 <article>
-                    <div>
+                    <div className="ratings-box">
                         <h3>Ratings</h3>
                         <p>{this.state.ratings}</p>
                     </div>
@@ -109,29 +109,30 @@ export default class Details extends Component {
                         <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
                     </form>
                 </article>
-                <article>
+                <article className="seasons-episodes-box">
                     <ul>
                         {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
                     </ul>
                 </article>
                 <article>
-                    <div>
+                    <div className='summary'>
                         <h3>
                             Summary
                         </h3>
                         {this.state.summary ? <div>
-                            {this.state.summary.text}
+                            <p>{this.state.summary.text}</p>
                             <cite>{this.state.summary.author}</cite>
                         </div> : 'Unavailable'}
                         <div>
                             {(this.state.outline) ? this.state.outline : 'Unavailable'}
                         </div>
                     </div>
-                    <div>
+                    <div className="where-to-watch">
                         {(this.state.available_on.length > 0) ? this.state.available_on.map(el => {
                             return (
                                 <div key={el.id}>
-                                    <h3><img src={el.icon} alt="Provider's Icon" /> {el.display_name}</h3>
+                                    <img src={el.icon} alt="Provider's Icon" />
+                                    <h3>{el.display_name}</h3>
                                     <a href={el.url} target='_blank' rel="noopener noreferrer">Watch: {this.state.title} on {el.display_name} NOW!</a>
                                 </div>
                             )
@@ -143,7 +144,7 @@ export default class Details extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="decide">
                 {(this.state.dataLoaded) ? this.conditionalRender() : <p>Loading your Results...</p>}
             </div>
         )
