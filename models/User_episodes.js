@@ -7,7 +7,7 @@ class User_episodes {
         this.imdb_id = user_episodes.imdb_id;
         this.ratings = user_episodes.ratings;
         this.has_watched = user_episodes.has_watched;
-        this.series_id = user_episodes.series_id;
+        this.show_id = user_episodes.show_id;
         this.user_id = user_episodes.user_id;
     }
 
@@ -47,9 +47,9 @@ class User_episodes {
             .one(
                 `
             INSERT INTO user_episodes 
-            (title, imdb_id, ratings, has_watched, series_id, user_id)
+            (title, imdb_id, ratings, has_watched, show_id, user_id)
             VALUES
-            ($/title/, $/imdb_id/, $/ratings/, $/has_watched/, $/series_id/, $/user_id/)
+            ($/title/, $/imdb_id/, $/ratings/, $/has_watched/, $/show_id/, $/user_id/)
             RETURNING *
             `,
                 this

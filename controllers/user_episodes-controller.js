@@ -18,7 +18,7 @@ user_episodesController.create = (req, res, next) => {
         ratings: null,
         has_watched: false,
         watched_time: null,
-        series_id: req.body.series_id,
+        show_id: req.body.parentTitle_id,
         user_id: req.user.id,
     })
         .save()
