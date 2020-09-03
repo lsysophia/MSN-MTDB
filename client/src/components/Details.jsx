@@ -72,7 +72,7 @@ export default class Details extends Component {
         return this.state.seasons.map((el, i) => {
             return (
                 <li key={i}>
-                    {el}
+                    Season {el}
                     <ul>
                         {this.state.episodes.map(elem => {
                             return elem.map(ele => {
@@ -231,26 +231,28 @@ export default class Details extends Component {
                                 {(this.props.selected) ? this.toggleWatch() : <p>Loading...</p>}
                             </div>
                     </article>
-                    <article className="seasons-episodes-box">
-                        <ul>
-                            {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
-                        </ul>
-                    </article>
                 </div>
             </section>
-            <article className="where-to-watch">
-                    {(this.state.available_on.length > 0) ? this.state.available_on.map(el => {
-                        return (
-                            <div key={el.id}>
-                                <div className="logo-box">
-                                    <img src={el.icon} alt="Provider's Icon" />
+            <section className="show-page2">
+                <article className="seasons-episodes-box">
+                    <ul>
+                        {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
+                    </ul>
+                </article>
+                <article className="where-to-watch">
+                        {(this.state.available_on.length > 0) ? this.state.available_on.map(el => {
+                            return (
+                                <div key={el.id}>
+                                    <div className="logo-box">
+                                        <img src={el.icon} alt="Provider's Icon" />
+                                    </div>
+                                    <h3>{el.display_name}</h3>
+                                    <a href={el.url} target='_blank' rel="noopener noreferrer">Watch on {el.display_name} NOW!</a>
                                 </div>
-                                <h3>{el.display_name}</h3>
-                                <a href={el.url} target='_blank' rel="noopener noreferrer">Watch on {el.display_name} NOW!</a>
-                            </div>
-                        )
-                    }) : null}
-            </article>
+                            )
+                        }) : null}
+                </article>
+            </section>
             </div>
         )
     }

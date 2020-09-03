@@ -104,6 +104,11 @@ header nav ul li a{
 header li{
   text-transform: uppercase;
   padding: 10px;
+  letter-spacing: 1px;
+}
+
+header li:hover{
+ background-color: rgb(232,	195,	53	);
 }
 
 header a{
@@ -125,22 +130,15 @@ header a:visited{
   text-decoration: none;
 }
 
-.logo 
-{
+.logo {
   display: flex;
   align-items: center;
 }
 
 /* HEADER END*/
-section{
-  /* float: left; */
-  /* Do not include the above line */
-}
-aside{
-  /* float: right; */
-   /* Do not include the above line */
-}
 
+
+/* CONTAINER START */
 .container{
   display: flex;
   flex:1;
@@ -151,9 +149,9 @@ aside{
   background-color: rgb(236, 234, 234);
   padding: 2%;
 }
+/* CONTAINER END */
 
 /* USER START */
-
 .user-page{
   display: flex;
   flex-direction: row;
@@ -168,7 +166,6 @@ aside{
 .user-page section{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   flex:1;
   text-align:center;
 }
@@ -187,11 +184,25 @@ aside{
   justify-content: space-evenly;
   color:black;
 }
+
 .user-settings h4{
+  padding: 10px;
   font-size: 1.25em;
 }
+
 .user-settings h4:hover{
   cursor: pointer;
+  background-color: rgb(232,	195,	53	);
+
+}
+
+.user-page .user-info {
+  margin-top: 30px;
+  text-align:left;
+}
+
+.user-page .user-info p{
+  margin-top: 10px;
 }
 
 .user-page aside h2{
@@ -208,12 +219,24 @@ aside{
   text-align: center;
 }
 
+.user-page .user-saved-list ul li{
+  margin: 5px 0 5px 0;
+  cursor: pointer;
+}
+
+.user-page .user-saved-list ul li:hover{
+  background-color: rgb(232,	195,	53	);  
+}
+
+.titles{
+  margin-top:15px;
+
+  font-weight: bold;
+}
 /* USER END */
 
-
-
 /* HOME PAGE START */
-.Home-page{
+.home-page{
   display: flex;
   flex-direction: column;
   flex:1;
@@ -222,13 +245,13 @@ aside{
   color: black;
 }
 
-.user-box{
+.home-page .user-box{
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.user-box h3{
+.home-page .user-box h3{
   width: 150px;
   text-align: center;
   border: 1px solid black;
@@ -238,134 +261,163 @@ aside{
   box-shadow: 5px 5px rgb(232,	195,	53	);
 }
 
-.user-box h3:hover{
+.home-page .user-box h3:hover{
 background:rgb(232,	195,	53	);
 color: black;
 cursor: pointer;
 box-shadow: 0px 0px;
 }
 
-.Home-page h1{
+.home-page h1{
   font-size: 3em;
 }
-.Home-page h2{
+
+.home-page h2{
   font-size: 2em;
 }
-.Home-page h3{
+
+.home-page h3{
   font-size: 1.5em;
 }
-.Home-page h4{
+
+.home-page h4{
   font-size: 1em;
 }
 
-.Home-page div{
+.home-page div{
   padding:50px;
 }
-
 /* HOME PAGE END */
 
 
 
 
 /* SEARCH PAGE START*/
-
 .search-page{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  width: 100%;
 }
 
-.search-box{
+.search-page .search-box{
   display: flex;
   justify-content: center;
   padding: 20px;
 }
 
-.search-results{
+.search-page .search-results{
   padding: 50px;
   color:black;
+  width: 100%;
+}
+search-page .search-results ul{
+display: flex;
+flex-wrap: wrap
 }
 
-.search-results li{
+.search-page .search-results li{
 margin:10px;
 cursor: pointer;
 display: flex;
-justify-content: center;
+justify-content: center; 
+/* width: 300px; */
 }
 
-.search-results li:hover{
+.search-page .search-results li:hover{
   color: black;
+  /* background-color: rgb(232,	195,	53); */
 }
 
-.search-box input{
+.search-page .search-box input{
   margin: 10px;
   padding: 5px 0 5px 0px;
 }
 
-.search-box input[type="submit"]{
+.search-page .search-box input[type="submit"]{
   padding: 5px;
   border: 1px solid white;  
   background-color: black;
   color: white;
   box-shadow: 0 9px #999;
 }
-.search-box input[type="submit"]:active{
 
+.search-page .search-box input[type="submit"]:active{
 box-shadow: 0 5px #666;
 transform: translateY(4px);
 }
+.search-titles{
+  text-align:center;
+  font-weight: bold;
+  margin-top:20px
+}
+
+.search-results-ul
+{
+  display: flex;
+  flex-wrap:wrap ;
+}
+
+/* SEARCH PAGE END*/
+
+/* SEARCH RESULT START */
 .posterDiv {
   margin: 5px 5px 30px 5px;
   border: 1px solid black;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .posterDiv:hover{
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-
 .posterDiv img{
   margin: 10px;
-  width: 350px;
-  height: 500px;
+  width: 70%;
+  /* height: 75%; */
 }
 
 .posterDiv h3{
   color: rgb(232,	195,	53);
   text-align:center;
-  font-size:1.2em;
+  font-size:1em;
   font-weight: 700;
 }
-/* SEARCH PAGE END*/
+/* SEARCH RESULT END */
+
+
+/* GENERAL START */
+.column-flex{
+  display: flex;
+  flex-direction: column;
+}
+/* GENERAL END */
 
 /* REGISTER START */
-  .form-box{
+.form-box{
     display: flex;
     flex-direction: column;
     justify-content: center;  
 }
 
-.column-flex{
-  display: flex;
-  flex-direction: column;
-}
-
-.form-box input[type="submit"]
-{
+.form-box input[type="submit"]{
   color: black;
   text-transform: uppercase;
   font-weight: 700;
   border:1px solid black;
 }
 
-.form-box input[type="submit"]:hover
-{
+.form-box input[type="submit"]:hover{
   background-color: gray;
   color: white;  
 }
 
-.form-box input
-{
+.form-box input{
   padding:5px 5px 5px 5px;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -381,50 +433,60 @@ transform: translateY(4px);
 
 /* ABOUT START */
 .about-box{
-  display: flex;
-  flex-direction: column;
   height: 80vh;
-  /* justify-content: center; */
   color:black;
+  padding: 0 70px;
+}
+
+.about-box h1{
+  font-size:3em;
+  margin-bottom: 30px;
   text-align: center;
 }
-.about-box h1
-{
-  font-size:10em;
-  margin-bottom: 30px;
-}
-.about-box h2
-{  
-  font-size:3em;
-  margin-bottom: 20px;
 
-}
-.about-box h3
-{  
+.about-box h2{  
   font-size:2em;
-  margin-bottom: 20px;
-
+  margin: 20px 0 20px 0;
+  text-align: center;
 }
-.about-box h4
-{
+
+.about-box h3{  
+  font-size:1.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about-box h4{
   font-size:1.25em;
   margin-bottom: 20px;
 }
 
+.about-box p{
+  margin: 0 auto;
+  line-height: 1.4em;
+}
+
+.about-box ul{
+    display: flex;
+    flex-direction: column;  
+}
+
+.about-box .center{
+display: flex;
+justify-content: center;
+}
+.about-box ul li{
+  margin: 5px 0 5px 0;
+  line-height: 1.1em;
+}
+
+.about-box .about{
+  margin: 0 auto;
+}
 .technologies{  
   margin-bottom: 50px;
 }
-
 /* ABOUT END  */
-
-/* FOOTER START */
-footer{
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  
-}
-
 
 /* SHOW PAGE START */
 .show-page {
@@ -444,6 +506,7 @@ footer{
   width: 100%;
   height: auto;
   max-width: 450px;
+  max-height: 660px;
 }
 
 .show-page .info-box{
@@ -463,7 +526,7 @@ footer{
 .show-page h2 {
   font-size:1.5em;
   margin-bottom:1.1em;
- }
+}
 
 .show-page h3 {
 font-size:1.3em;
@@ -483,29 +546,38 @@ font-weight: bold;
   margin: 20px 0 20px 0;
 }
 
-.show-page .seasons-episodes-box{
-  display: flex;
+.show-page2 .seasons-episodes-box{
   margin:30px auto;
 }
 
-.show-page .seasons-episodes-box ul li{
-  margin-top:20px
+.show-page2 .seasons-episodes-box ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
+.show-page2 .seasons-episodes-box ul li{
+  margin-top:20px;
+  width: 300px;
+}
 
-.show-page .seasons-episodes-box ul li ul li{
+.show-page2 .seasons-episodes-box ul li ul li{
   margin: 5px 0 5px 0;
+  margin-left: 15px;
 }
-.show-page .seasons-episodes-box ul li ul li:hover{
+
+.show-page2 .seasons-episodes-box ul li ul li:hover{
   background-color:#333 ;
   color:white;
   cursor: pointer;
-  }
+}
+
 .show-page .summary{
   display: flex;
   flex-direction: column;
-  /* margin: 20px 10px 20px 10px; */
 }
+
 .show-page .summary h1{
   margin: 10px 0 10px 0;
   font-weight: bold;
@@ -548,6 +620,12 @@ font-weight: bold;
 }
 /* SHOW PAGE END */
 
+/* FOOTER START */
+footer{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 /* FOOTER END */
 
 @media screen and (max-width: 993px) {
