@@ -24,8 +24,8 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
-                <form className="form-box" onSubmit={(e) => this.props.handleRegisterSubmit(e, this.state)}>
+            <div className="form-box">
+                <form className="column-flex" onSubmit={(e) => this.props.handleRegisterSubmit(e, this.state)}>
                     <input type="text"
                         name="username"
                         value={this.state.username}
