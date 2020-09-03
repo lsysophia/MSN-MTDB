@@ -11,6 +11,15 @@ user_moviesController.index = (req, res, next) => {
         .catch(next)
 }
 
+user_moviesController.find= (req, res, next) => {
+    User_movies.getAll()
+    .then(movies => {
+        res.locals.allMovies = movies
+        next()
+    })
+    .catch(next)
+}
+
 user_moviesController.create = (req, res, next) => {
     console.log(req.user)
     new User_movies({

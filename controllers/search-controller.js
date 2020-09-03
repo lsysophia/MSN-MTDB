@@ -2,6 +2,17 @@ const searchRouter = require("../routes/search-routes")
 
 const searchController = {}
 
+searchController.search = (req, res, next) => {
+    res.json({
+        message: 'ok',
+        data: {
+            movies: res.locals.allMovies,
+            shows: res.locals.allShows,
+            episodes: res.locals.allEpisodes,
+        }
+    })
+}
+
 searchController.results = (req, res, next) => {
     res.json({
         message: 'ok',

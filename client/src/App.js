@@ -10,7 +10,7 @@ import Footer from './components/Footer'
 import Login from './components/Login'
 import Register from './components/Register'
 import About from './components/About'
-import Search from './components/SearchController'
+import SearchController from './components/SearchController'
 import UserEdit from './components/UserEdit'
 import Details from './components/Details'
 class App extends Component {
@@ -227,7 +227,7 @@ class App extends Component {
           />
 
           <Route exact path='/search/'
-            render={() => (<Search user={this.state.user} selectedPoster={this.selectedPoster} pageStatus='initial' />)}
+            render={() => (<SearchController user={this.state.user} selectedPoster={this.selectedPoster} pageStatus='initial' />)}
           />
 
           <Route exact path='/details/:id'
