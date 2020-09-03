@@ -166,7 +166,6 @@ header a:visited{
 .user-page section{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   flex:1;
   text-align:center;
 }
@@ -187,11 +186,23 @@ header a:visited{
 }
 
 .user-settings h4{
+  padding: 10px;
   font-size: 1.25em;
 }
 
 .user-settings h4:hover{
   cursor: pointer;
+  background-color: rgb(232,	195,	53	);
+
+}
+
+.user-page .user-info {
+  margin-top: 30px;
+  text-align:left;
+}
+
+.user-page .user-info p{
+  margin-top: 10px;
 }
 
 .user-page aside h2{
@@ -206,6 +217,21 @@ header a:visited{
 .user-page .user-saved-list{
   margin-top: 30px;
   text-align: center;
+}
+
+.user-page .user-saved-list ul li{
+  margin: 5px 0 5px 0;
+  cursor: pointer;
+}
+
+.user-page .user-saved-list ul li:hover{
+  background-color: rgb(232,	195,	53	);  
+}
+
+.titles{
+  margin-top:15px;
+
+  font-weight: bold;
 }
 /* USER END */
 
@@ -293,6 +319,7 @@ justify-content: center;
 
 .search-page .search-results li:hover{
   color: black;
+  background-color: rgb(232,	195,	53);
 }
 
 .search-page .search-box input{
@@ -312,6 +339,12 @@ justify-content: center;
 box-shadow: 0 5px #666;
 transform: translateY(4px);
 }
+.search-titles{
+  text-align:center;
+  font-weight: bold;
+  margin-top:20px
+}
+
 /* SEARCH PAGE END*/
 
 /* SEARCH RESULT START */
@@ -383,6 +416,7 @@ transform: translateY(4px);
 .about-box{
   height: 80vh;
   color:black;
+  padding: 0 70px;
 }
 
 .about-box h1{
@@ -418,6 +452,18 @@ transform: translateY(4px);
     flex-direction: column;  
 }
 
+.about-box .center{
+display: flex;
+justify-content: center;
+}
+.about-box ul li{
+  margin: 5px 0 5px 0;
+  line-height: 1.1em;
+}
+
+.about-box .about{
+  margin: 0 auto;
+}
 .technologies{  
   margin-bottom: 50px;
 }
