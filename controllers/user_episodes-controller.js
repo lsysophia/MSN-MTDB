@@ -10,6 +10,16 @@ user_episodesController.index = (req, res, next) => {
         })
         .catch(next)
 }
+
+user_episodesController.find= (req, res, next) => {
+    User_episodes.getAll()
+    .then(episodes => {
+        res.locals.allEpisodes = episodes
+        next()
+    })
+    .catch(next)
+}
+
 user_episodesController.create = (req, res, next) => {
     console.log('FINAL STOP IN', req.body)
     new User_episodes({

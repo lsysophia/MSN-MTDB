@@ -44,6 +44,13 @@ export default class SearchController extends Component {
     }
 
     componentDidMount() {
+        fetch('/api/search')
+        .then(res => res.json())
+        .then(parsedRes => {
+            this.setState({
+                list: parsedRes.data,
+            })
+        })
         if (this.state.pageStatus === 'initial') {
             this.setState({
                 dataLoaded: true,
@@ -59,7 +66,7 @@ export default class SearchController extends Component {
         // sub router will allow for Details to be in here??
         switch (this.state.pageStatus) {
             case 'initial':
-                return <Search handleSearchSubmit={this.handleSearchSubmit} handleInputChange={this.handleInputChange} list={this.state.list} />
+                return <Search selectedPoster={this.props.selectedPoster} handleSearchSubmit={this.handleSearchSubmit} handleInputChange={this.handleInputChange} list={this.state.list} />
             case 'results':
                 return <SearchResults handleSearchSubmit={this.handleSearchSubmit} handleInputChange={this.handleInputChange} selectedPoster={this.props.selectedPoster} results={this.state.results} />
             default:

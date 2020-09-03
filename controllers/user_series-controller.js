@@ -11,6 +11,15 @@ user_seriesController.index = (req, res, next) => {
         .catch(next)
 }
 
+user_seriesController.find= (req, res, next) => {
+    User_shows.getAll()
+    .then(shows => {
+        res.locals.allShows = shows
+        next()
+    })
+    .catch(next)
+}
+
 user_seriesController.create = (req, res, next) => {
     new User_shows({
         title: req.body.title,
