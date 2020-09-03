@@ -46,6 +46,9 @@ export default class Details extends Component {
                 summary: this.props.selected.summary,
                 outline: this.props.selected.outline,
                 parentTitle_id: this.props.selected.parentTitle_id,
+                has_watched: false,
+                watched_time: null,
+                user_rating: 20,
                 user_episodes: (this.props.selected.userEpisodes) ? this.props.selected.userEpisodes : null,
                 user_shows: (this.props.selected.userShows) ? this.props.selected.userShows : null,
                 user_movies: (this.props.selected.userMovies) ? this.props.selected.userMovies : null,
@@ -75,11 +78,11 @@ export default class Details extends Component {
                             return elem.map(ele => {
                                 if (ele.season === el) {
                                     let url = ele.id.split('/')[2]
-                                    // console.log(ele)
-                                    // console.log(url)
                                     return (
                                         <li key={ele.id} onClick={() => { this.props.selectedPoster(url)}} >{`Ep: ${ele.episode} Title: ${ele.title}`}</li>
                                     )
+                                } else {
+                                    return null
                                 }
                             })
                         })}
@@ -101,11 +104,13 @@ export default class Details extends Component {
         if (this.props.user) {
             if (this.state.titleType === 'movie') {
                 if (this.state.user_movies) {
-                    let movieCheck = this.state.user_movies.filter(movie => (movie.imdb_id === this.state.imdb_id))
-                    if (movieCheck.length > 0) {
+                    let movieCheck = this.state.user_movies.find(movie => (movie.imdb_id === this.state.imdb_id))
+                    if (movieCheck) {
+                        console.log('CHECK', movieCheck)
                         return (
                             <form onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id))}>
                                 <input type='range' name='user_rating' min='0' max='10' value={movieCheck.ratings} onChange={this.handleChange} />
+
                                 {(movieCheck.has_watched) ? <p>{movieCheck.watched_time}</p> : <input type='radio' name='has_watched' onChange={this.handleChange} />}
                                 <input type='submit' value='Save Input' />
                             </form>
@@ -126,12 +131,13 @@ export default class Details extends Component {
                 }
             } else if (this.state.titleType === 'tvSeries') {
                 if (this.state.user_shows) {
-                    let showCheck = this.state.user_shows.filter(show => (show.imdb_id === this.state.imdb_id))
-                    if (showCheck.length > 0) {
+                    let showCheck = this.state.user_shows.find(show => (show.imdb_id === this.state.imdb_id))
+                    if (showCheck) {
                         return (
                             <form onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id))}>
                                 <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} />
-                                {(showCheck.has_watched) ? <p>{showCheck.watched_time}</p> : <input type='checkbox' name='has_watched' onChange={this.handleChange} />}
+                                {(showCheck.has_watched) ? <p>{showCheck.watched_time}</p> : <input type='radio' name='has_watched' onChange={this.handleChange} />}
+                                <input type='submit' value='Save Input' />
                             </form>
                         )
                     } else {
@@ -150,12 +156,13 @@ export default class Details extends Component {
                 }
             } else if (this.state.titleType === 'tvEpisode') {
                 if (this.state.user_episodes) {
-                    let episodeCheck = this.state.user_episodes.filter(episode => (episode.imdb_id === this.state.imdb_id))
-                        if (episodeCheck.length > 0) {
+                    let episodeCheck = this.state.user_episodes.find(episode => (episode.imdb_id === this.state.imdb_id))
+                        if (episodeCheck) {
                             return (
                                 <form onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id))}>
                                     <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} />
-                                    {(episodeCheck.has_watched) ? <p>{episodeCheck.watched_time}</p> : <input type='checkbox' name='has_watched' onChange={this.handleChange} />}
+                                    {(episodeCheck.has_watched) ? <p>{episodeCheck.watched_time}</p> : <input type='radio' name='has_watched' onChange={this.handleChange} />}
+                                <input type='submit' value='Save Input' />
                                 </form>
                             )
                         } else {

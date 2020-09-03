@@ -5,8 +5,9 @@ const User_episodes = require('../models/User_episodes')
 const inputController = {}
 
 inputController.decide = (req, res, next) => {
+    console.log('INPUT CONTROLLER', req.body)
     if (req.body.titleType === 'movie') {
-        User_movies.getOneForUser(req.user.id, req.body.imbd_id)
+        User_movies.getOneForUser(req.user.id, req.body.imdb_id)
         .then(movie => {
             return movie.update({
                 has_watched: req.body.has_watched,
@@ -20,7 +21,7 @@ inputController.decide = (req, res, next) => {
         })
         .catch(next)
     } else if (req.body.titleType === 'tvSeries') {
-        User_shows.getOneForUser(req.user.id, req.body.imbd_id)
+        User_shows.getOneForUser(req.user.id, req.body.imdb_id)
         .then(show => {
             return show.update({
                 has_watched: req.body.has_watched,
@@ -34,7 +35,7 @@ inputController.decide = (req, res, next) => {
         })
         .catch(next)
     } else if (req.body.titleType === 'tvEpisodes') {
-        User_episodes.getOneForUser(req.user.id, req.body.imbd_id)
+        User_episodes.getOneForUser(req.user.id, req.body.imdb_id)
         .then(episode => {
             return episode.update({
                 has_watched: req.body.has_watched,
