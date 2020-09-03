@@ -73,8 +73,7 @@ button::-moz-focus-inner {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  color:white;
-
+  color:#333;
 }
 
 /* HEADER START*/
@@ -83,7 +82,6 @@ header{
   flex-direction: row;
   justify-content: space-evenly;
   padding: 10px;
-  margin-top:10px
 }
 
 header a{ 
@@ -337,16 +335,18 @@ transform: translateY(4px);
   font-size:1.2em;
   font-weight: 700;
 }
-
-
 /* SEARCH PAGE END*/
 
 /* REGISTER START */
   .form-box{
     display: flex;
     flex-direction: column;
-    height: 80vh;
     justify-content: center;  
+}
+
+.column-flex{
+  display: flex;
+  flex-direction: column;
 }
 
 .form-box input[type="submit"]
@@ -366,7 +366,6 @@ transform: translateY(4px);
 .form-box input
 {
   padding:5px 5px 5px 5px;
-  margin-bottom:5px;
   margin-right: 20px;
   margin-bottom: 20px;
 }
@@ -415,10 +414,6 @@ transform: translateY(4px);
   margin-bottom: 50px;
 }
 
-article
-{
-  color: darkgreen;
-}
 /* ABOUT END  */
 
 /* FOOTER START */

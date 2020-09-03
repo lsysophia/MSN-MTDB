@@ -4,7 +4,7 @@ export default class Footer extends Component {
     render() {
         return (
             <footer>
-                Made by the best team of devs
+                &copy;	 Made by the best team of devs
             </footer>
         )
     }
