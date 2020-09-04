@@ -125,7 +125,6 @@ class App extends Component {
   }
 
   selectedPoster(id) {
-    console.log('POSTER ID', id)
     fetch(`/api/search/details/${id}`, {
       method: 'POST',
     }).then(res => res.json())
