@@ -39,9 +39,9 @@ export default class About extends Component {
                     <h3><span role="img" aria-label="dream">💭</span> Dream team <span role="img" aria-label="dream">💭</span></h3>
                     <div className="center">
                         <ul>
-                            <li><span role="img" aria-label="fire">💥</span><a href="https://github.com/Schlaffmatthewj" target="_blank">Matthew</a></li>
-                            <li><span role="img" aria-label="fire">💥</span><a href="https://github.com/lsysophia" target="_blank">Sophia</a></li>
-                            <li><span role="img" aria-label="fire">💥</span><a href="https://github.com/nisozakuto/" target="_blank">Niso</a></li>
+                            <li><span role="img" aria-label="fire">💥</span><a href="https://github.com/Schlaffmatthewj" target="_blank" rel="noopener noreferrer">Matthew</a></li>
+                            <li><span role="img" aria-label="fire">💥</span><a href="https://github.com/lsysophia" target="_blank" rel="noopener noreferrer">Sophia</a></li>
+                            <li><span role="img" aria-label="fire">💥</span><a href="https://github.com/nisozakuto/" target="_blank" rel="noopener noreferrer">Niso</a></li>
                         </ul>
                     </div>
                 </article>

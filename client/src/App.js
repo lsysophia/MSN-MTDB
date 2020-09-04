@@ -128,9 +128,9 @@ class App extends Component {
       .then(jsonRes => {
         this.setState({
           selected: jsonRes.data,
-          fireRedirect: true,  // can get rid of
-          redirectPath: `/details/${jsonRes.data.imdb_id}`,  // can get rid of
-        } )// put in a callback function with ','
+          fireRedirect: true,
+          redirectPath: `/details/${id}`,
+        })
       })
   }
 
@@ -190,7 +190,7 @@ class App extends Component {
     })
   }
 
-  handleUsersInputSubmit(e, watched, rating, titleType, id) {
+  handleUsersInputSubmit(e, watched, rating, titleType, id, check) {
     e.preventDefault()
     let data = {}
     if (watched === 'on') {
@@ -201,14 +201,24 @@ class App extends Component {
         imdb_id: id,
       }
     } else {
-      data = {
-        has_watched: false,
-        ratings: parseInt(rating),
-        titleType: titleType,
-        imdb_id: id,
+      if (check.watched_time) {
+        data = {
+          has_watched: true,
+          ratings: parseInt(rating),
+          titleType: titleType,
+          imdb_id: id,
+        }
+      } else {
+        data = {
+          has_watched: false,
+          ratings: parseInt(rating),
+          titleType: titleType,
+          imdb_id: id,
+        }
       }
     }
     console.log('DATA', data)
+    console.log('CHECK', check)
     fetch('/api/input', {
       method: 'POST',
       headers: {
