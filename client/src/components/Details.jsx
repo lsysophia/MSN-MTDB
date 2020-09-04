@@ -16,7 +16,7 @@ export default class Details extends Component {
             releaseDate: this.props.selected.releaseDate,
             summary: this.props.selected.summary,
             outline: this.props.selected.outline,
-            parentTitle_id: this.props.selected.parentTitle_id,
+            parentTitle_id: (this.props.selected.parentTitle_id) ? (this.props.selected.parentTitle_id).split('/')[2] : null,
             has_watched: false,
             watched_time: null,
             user_rating: 5,
@@ -45,7 +45,7 @@ export default class Details extends Component {
                 releaseDate: this.props.selected.releaseDate,
                 summary: this.props.selected.summary,
                 outline: this.props.selected.outline,
-                parentTitle_id: this.props.selected.parentTitle_id,
+                parentTitle_id: (this.props.selected.parentTitle_id) ? (this.props.selected.parentTitle_id).split('/')[2] : null,
                 user_episodes: (this.props.selected.userEpisodes) ? this.props.selected.userEpisodes : null,
                 user_shows: (this.props.selected.userShows) ? this.props.selected.userShows : null,
                 user_movies: (this.props.selected.userMovies) ? this.props.selected.userMovies : null,
@@ -223,10 +223,6 @@ export default class Details extends Component {
                                 <h4>{/* ratingReasons are possible */}</h4>
                                 <h4><em>Release Date:</em>{this.state.releaseDate}</h4>
                                 <h4><em>Genres:</em>{this.state.genres.map((el, i) => <span key={i}> •{el} </span>)}</h4>
-                                {/* <div className="ratings-box">
-                                    <h3>Ratings</h3>
-                                    <p>{this.state.ratings}</p>
-                                </div> */}
                                 {(this.props.selected) ? this.toggleWatch() : <p>Loading...</p>}
                             </div>
                         </article>
@@ -235,7 +231,7 @@ export default class Details extends Component {
                 <section className="show-page2">
                     <article className="seasons-episodes-box">
                         <ul className="single-season">
-                            <li className="form-box" onClick={this.selectedPoster(this.parentTitle_id)}>Back to the Main Page</li>
+                            {(this.state.titleType === 'tvEpisode') ? <li onClick={() => {this.props.selectedPoster(this.state.parentTitle_id)}}>Back to the Main Page</li> : <li></li>}
                             {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
                         </ul>
                     </article>
