@@ -257,7 +257,7 @@ export default class Details extends Component {
                 </section>
                 <section className="show-page2">
                     <article className="seasons-episodes-box">
-                        {(this.state.titleType === 'tvEpisode') ? <span onClick={() => { this.props.selectedPoster(this.state.parentTitle_id) }}>Back to the Main Page</span> : <span></span>}
+                        {(this.state.titleType === 'tvEpisode') ? <span onClick={() => { this.props.selectedPoster(this.state.parentTitle_id) }}>↩ Back to the Main Page</span> : <span></span>}
                         <ul className="single-season">
                             {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
                         </ul>
