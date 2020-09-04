@@ -250,6 +250,7 @@ class App extends Component {
       },
       body: JSON.stringify(type),
     }).then(() => {
+      this.getUserContent()
       this.setState({
         fireRedirect: true,
         redirectPath: '/user'

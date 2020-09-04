@@ -6,7 +6,7 @@ export default class User extends Component {
         super(props)
         this.state = {
             dataloaded: false,
-            watchlist: null,
+            watchList: null,
         }
         this.renderWatchList = this.renderWatchList.bind(this)
     }
@@ -16,10 +16,10 @@ export default class User extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.watchList.data !== this.state.watchlist) {
+        if (prevProps.watchList.data !== this.state.watchList) {
             this.setState({
                 dataloaded: true,
-                watchlist: this.props.watchList.data,
+                watchList: this.props.watchList.data,
             })
         }
     }
@@ -27,21 +27,21 @@ export default class User extends Component {
     renderWatchList() {
         return <ul className="user-saved-list-ul">
             <h3 className="titles">Movies</h3>
-            {this.state.watchlist.userMovies.map(eachMovie => {
+            {this.props.watchList && this.props.watchList.data.userMovies.map(eachMovie => {
                 return <li key={eachMovie.imdb_id} className="user-saved-list-li">
                     <h3 onClick={() => { this.props.selectedTitle(eachMovie.imdb_id) }} >{eachMovie.title}</h3>
                     <p onClick={() => { this.props.deleteFromWatch(eachMovie.imdb_id, 'movie') }}><span>X</span></p>
                 </li>
             })}
             <h3 className="titles">Shows</h3>
-            {this.state.watchlist.userSeries.map(eachSeries => {
+            {this.props.watchList && this.props.watchList.data.userSeries.map(eachSeries => {
                 return <li key={eachSeries.imdb_id} className="user-saved-list-li">
                     <h3 onClick={() => { this.props.selectedTitle(eachSeries.imdb_id) }} >{eachSeries.title}</h3>
                     <p onClick={() => { this.props.deleteFromWatch(eachSeries.imdb_id, 'tvSeries') }}><span>X</span></p>
                 </li>
             })}
             <h3 className="titles">Episodes</h3>
-            {this.state.watchlist.userEpisodes.map(eachEpisode => {
+            {this.props.watchList && this.props.watchList.data.userEpisodes.map(eachEpisode => {
                 return <li key={eachEpisode.imdb_id} className="user-saved-list-li">
                     <h3 onClick={() => { this.props.selectedTitle(eachEpisode.imdb_id) }} >{eachEpisode.title}</h3>
                     <p onClick={() => { this.props.deleteFromWatch(eachEpisode.imdb_id, 'tvEpisodes') }}><span>X</span></p>
