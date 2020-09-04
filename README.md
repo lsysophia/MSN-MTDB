@@ -15,10 +15,14 @@ This application allows users to search for movies and TV shows and save it to t
 
 ### [DB Schemas](https://ibb.co/s1RnN7m) 
 
-### [Project Board](https://github.com/users/lsysophia/projects/1)
+### [Project Board](https://github.com/lsysophia/MSN-MTDB/projects/1)
 
 ## User Stories
 - Visitors have a choice to use the search engine or create a new account.
+- Visitor can search without an account
+- Initial landing on the search page will display movies, tv shows, and show episodes that users across the platform have saved
+- Search function will allow you to find-by movie and tv show titles.
+- Show pages for an individual title will provide detailed information with a plot summary, release date, rating, genres. Links to streaming services available for that specific title.
 - Users that have created an account and will have a profile page with user information and existing watchlist.
 - User can edit their account info
 - User can remove their account
@@ -26,10 +30,6 @@ This application allows users to search for movies and TV shows and save it to t
 - User can remove movies, tv shows, and show episodes from their watchlist
 - User can update a certain title to Watched status
 - User can have their own ratings for each movie and tv show that they have in their watchlist
-- Visitor can search without an account
-- Initial landing on the search page will show movies, tv shows, and show episodes that users across the platform have saved
-- Search will allow you to find-by movie and tv show titles.
-- Show pages for an individual movie will show more detailed information with the movie poster, plot summary, release date, rating, genres. Links to streaming services available for that specific title.
 - About page will display info about the website/app, what it is about, links to register and log-in.
 
 

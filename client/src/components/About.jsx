@@ -20,10 +20,15 @@ export default class About extends Component {
                 </p><br></br>
                 <h2>How to use this app</h2>
                 <p>
-                    MSN - MTVDB is an app where users can do search about Movies and TV shows, add them to their watchlist and rate them.about
+                    MSN - MTVDB is an app where users can do search about Movies and TV shows, add them to their watchlist and rate them.
                     </p>
                 <h2>Search Functionality</h2>
-                <h2>Search Functionality</h2>
+                <p>
+                    You can search by movie and tv show titles.
+                    Initial landing on the search page will display movies, tv shows, and show episodes that users across the platform have saved. 
+                    Show pages for an individual title will provide more detailed information with the movie poster, plot summary, release date, rating, genres. Links to streaming services available for that specific title.
+                </p><br></br>
+                
 
                 <h2>Technologies used for this project</h2>
                 <div className="center">
