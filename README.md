@@ -7,7 +7,7 @@ Visit us online
 
 ### Description
 
-This application allows users to search for movies and TV shows and save it to their accounts, while also keeping track of what they  have watched and what they will watch.
+This application allows users to search for movies and TV shows and save it to their accounts, while also keeping track of what they have watched as well as what they will watch.
 
 ## Workflow
 
@@ -64,10 +64,18 @@ API:
 ## Specs 
 
 ### Technologies
-
+- Express JS
+- REACT
+- PSQL
+- User Authentication (Passport JS)
+- 2 different 3rd Party APIs (listed below)
+- Wireframe
+- Project board
+- Heroku autodeployment on the staging app
+- 
 
 ### APIs
-* [IMDB ](https://rapidapi.com/apidojo/api/imdb8)
+* [IMDB](https://rapidapi.com/apidojo/api/imdb8)
 * [UTELLY](https://rapidapi.com/utelly/api/utelly)
 
 ## Setup

@@ -143,8 +143,8 @@ header a:visited{
   display: flex;
   flex:1;
   justify-content: center;
-  min-width: 60vw;
-  max-width: 60vw; 
+  min-width: 75vw;
+  max-width: 75vw; 
   margin: 0 auto;
   background-color: rgb(236, 234, 234);
   padding: 2%;

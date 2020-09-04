@@ -136,7 +136,7 @@ export default class Details extends Component {
                             <form className="user-votes-box" onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id, movieCheck))}>
                                 <div className="inline-block"><p>Your Rating: {movieCheck.ratings}</p>
                                     <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} /></div>
-                                {(movieCheck.has_watched && this.state.dataLoaded) ? <div className="watched-div"><p>Saved at: {movieCheck.watched_time}</p></div> : <div className="watched-div"><p>Watched: </p><input type='radio' name='has_watched' onChange={this.handleChange} /></div>}
+                                {(movieCheck.has_watched && this.state.dataLoaded) ? <div className="watched-div"><p>Saved at: {movieCheck.watched_time}</p></div> : <div className="watched-div"><p>Watched: </p><input type='checkbox' name='has_watched' onChange={this.handleChange} /></div>}
                                 <input type='submit' value='Save Input' />
                             </form>
                         )
@@ -162,7 +162,8 @@ export default class Details extends Component {
                             <form className="user-votes-box" onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id, showCheck))}>
                                 <div className="inline-block"><p>Your Rating: {showCheck.ratings}</p>
                                     <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} /></div>
-                                {(showCheck.has_watched) ? <div className="watched-div"><p>Saved at: {showCheck.watched_time}</p></div> : <div className="watched-div"><p>Watched: </p><input type='radio' name='has_watched' onChange={this.handleChange} /></div>}
+                                {(showCheck.has_watched) ? <div className="watched-div"><p>Saved at: {showCheck.watched_time}</p></div> : <div className="watched-div"><p>Watched: </p><input type='checkbox' name='has_watched' onChange={this.handleChange} /></div>}
+
                                 <input type='submit' value='Save Input' />
                             </form>
                         )
@@ -188,7 +189,7 @@ export default class Details extends Component {
                             <form className="user-votes-box" onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id, episodeCheck))}>
                                 <div className="inline-block"><p>Your Rating: {episodeCheck.ratings}</p>
                                     <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} /></div>
-                                {(episodeCheck.has_watched) ? <div className="watched-div"><p>Saved at: {episodeCheck.watched_time}</p></div> : <div className="watched-div"><p>Watched: </p><input type='radio' name='has_watched' onChange={this.handleChange} /></div>}
+                                {(episodeCheck.has_watched) ? <div className="watched-div"><p>Saved at: {episodeCheck.watched_time}</p></div> : <div className="watched-div"><p>Watched: </p><input type='checkbox' name='has_watched' onChange={this.handleChange} /></div>}
                                 <input type='submit' value='Save Input' />
                             </form>
                         )
