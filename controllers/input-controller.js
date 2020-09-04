@@ -67,12 +67,12 @@ inputController.decide = (req, res, next) => {
         User_episodes.getOneForUser(req.user.id, req.body.imdb_id)
         .then(episode => {
             var currentdate = new Date(); 
-            var datetime = currentdate.getDate() + "/"
-                            + (currentdate.getMonth()+1)  + "/" 
+            var datetime = (currentdate.getMonth()+1)  + "/" 
+                            + currentdate.getDate() + "/"
                             + currentdate.getFullYear() + " @ "  
-                            + (currentdate.getHours()+2) + ":"  
+                            + (currentdate.getHours()) + ":"  
                             + currentdate.getMinutes() + ":" 
-                            + currentdate.getSeconds() + "(EST)"
+                            + currentdate.getSeconds()
             if (req.body.check) {
                 return episode.update({
                     ratings: req.body.ratings,
