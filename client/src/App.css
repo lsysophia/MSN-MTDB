@@ -398,11 +398,16 @@ transform: translateY(4px);
 .search-titles{
   text-align:center;
   font-weight: bold;
-  margin-top:20px
+  margin:20px 0 20px 0;
+  font-size:1.45em;
+
 }
 
 
-
+.search-results{
+  min-height: 50vh;
+  overflow-y: scroll;
+}
 
 .search-results-ul
 {
@@ -414,6 +419,10 @@ transform: translateY(4px);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.search-results-categorie{
+  /* overflow-y: scroll; */
 }
 /* SEARCH PAGE END*/
 
@@ -625,7 +634,6 @@ font-weight: bold;
 
 .show-page2 .seasons-episodes-box .single-season .season-group ul{
 margin-top:10px;
-
 max-height: 520px;
 overflow-y: scroll;
 
