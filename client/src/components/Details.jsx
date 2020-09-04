@@ -19,7 +19,8 @@ export default class Details extends Component {
             parentTitle_id: this.props.selected.parentTitle_id,
             has_watched: false,
             watched_time: null,
-            user_rating: 5,
+            user_rating: 0,
+            listOpen: false,
             available_on: (this.props.selected.available_on) ? this.props.selected.available_on : [],
             seasons: (this.props.selected.season) ? this.props.selected.season.map(el => el.season) : null,
             episodes: (this.props.selected.season) ? this.props.selected.season.map(el => el.episodes) : null,
@@ -65,11 +66,22 @@ export default class Details extends Component {
         }
     }
 
+    handleClickOutside(){
+        this.setState({
+            listOpen: false
+        })
+    }
+    toggleList(){
+        this.setState(prevState => ({
+            listOpen: !prevState.listOpen
+        }))
+    }
+
     seasonsAndEpisodes() {
         return this.state.seasons.map((el, i) => {
             return (
                 <li key={i} className="season-group">
-                    Season {el}
+                    {/* Season {el}
                     <ul>
                         {this.state.episodes.map(elem => {
                             return elem.map(ele => {
@@ -83,7 +95,24 @@ export default class Details extends Component {
                                 }
                             })
                         })}
-                    </ul>
+                    </ul> */}
+                    <div className="dd-wrapper">
+                        <div className="dd-header" onClick={() => this.toggleList()}>
+                            <div className="dd-header-title">Season: {el}</div>
+                            {/* {this.state.listOpen
+                            ? <FontAwesome name="angle-up" size="2x"/>
+                            : <FontAwesome name="angle-down" size="2x"/>
+                            } */}
+                        </div>
+                        {this.state.listOpen && <ul className="dd-list">
+                        {this.state.episodes.map(episode => {
+                            return episode.map(eps => (
+                                <li className="dd-list-item" key={eps.id} >Ep: {eps.episode} {eps.title}</li>
+                            ))
+                                
+                        })}
+                        </ul>}
+                    </div>
                 </li>
             )
         })
