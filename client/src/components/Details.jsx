@@ -16,10 +16,12 @@ export default class Details extends Component {
             releaseDate: this.props.selected.releaseDate,
             summary: this.props.selected.summary,
             outline: this.props.selected.outline,
-            parentTitle_id: this.props.selected.parentTitle_id,
+            parentTitle_id: (this.props.selected.parentTitle_id) ? (this.props.selected.parentTitle_id).split('/')[2] : null,
             has_watched: false,
             watched_time: null,
-            user_rating: 5,
+            user_rating: 0,
+            listOpen: false,
+            currentList: null,
             available_on: (this.props.selected.available_on) ? this.props.selected.available_on : [],
             seasons: (this.props.selected.season) ? this.props.selected.season.map(el => el.season) : null,
             episodes: (this.props.selected.season) ? this.props.selected.season.map(el => el.episodes) : null,
@@ -45,7 +47,7 @@ export default class Details extends Component {
                 releaseDate: this.props.selected.releaseDate,
                 summary: this.props.selected.summary,
                 outline: this.props.selected.outline,
-                parentTitle_id: this.props.selected.parentTitle_id,
+                parentTitle_id: (this.props.selected.parentTitle_id) ? (this.props.selected.parentTitle_id).split('/')[2] : null,
                 user_episodes: (this.props.selected.userEpisodes) ? this.props.selected.userEpisodes : null,
                 user_shows: (this.props.selected.userShows) ? this.props.selected.userShows : null,
                 user_movies: (this.props.selected.userMovies) ? this.props.selected.userMovies : null,
@@ -65,25 +67,50 @@ export default class Details extends Component {
         }
     }
 
+    handleClickOutside(){
+        this.setState({
+            listOpen: false
+        })
+    }
+    toggleList(current){
+        this.setState(prevState => ({
+            listOpen: !prevState.listOpen,
+            currentList: current,
+        }))
+    }
+
+    // CREDITS FOR THE DROP DOWN GO TO Doğacan Bilgili 
+    // https://blog.logrocket.com/building-a-custom-dropdown-menu-component-for-react-e94f02ced4a1/
+
+
     seasonsAndEpisodes() {
         return this.state.seasons.map((el, i) => {
             return (
                 <li key={i} className="season-group">
-                    Season {el}
-                    <ul>
-                        {this.state.episodes.map(elem => {
-                            return elem.map(ele => {
-                                if (ele.season === el) {
-                                    let url = ele.id.split('/')[2]
+                    <div className="dd-wrapper">
+                        <div className="dd-header" onClick={() => this.toggleList(el)}>
+                            <div className="dd-header-title">Season: {el}</div>
+                            {this.state.listOpen
+                            ? <span>⬆</span>
+                            : <span>⬇</span>
+                            }
+                        </div>
+                        {this.state.listOpen && <ul className="dd-list">
+                        {this.state.episodes.map(episode => {
+                            return episode.map(eps => {
+                                if (eps.season === el && eps.season === this.state.currentList) {
+                                    let url = eps.id.split('/')[2]
                                     return (
-                                        <li key={ele.id} onClick={() => { this.props.selectedPoster(url) }} >{`Ep: ${ele.episode} Title: ${ele.title}`}</li>
+                                        <li className="dd-list-item" key={eps.id} onClick={() => { this.props.selectedPoster(url) }} >Ep: {eps.episode} {eps.title}</li>
                                     )
                                 } else {
-                                    return null
+                                    return <li></li>
                                 }
                             })
+                                
                         })}
-                    </ul>
+                        </ul>}
+                    </div>
                 </li>
             )
         })
@@ -223,10 +250,6 @@ export default class Details extends Component {
                                 <h4>{/* ratingReasons are possible */}</h4>
                                 <h4><em>Release Date:</em>{this.state.releaseDate}</h4>
                                 <h4><em>Genres:</em>{this.state.genres.map((el, i) => <span key={i}> •{el} </span>)}</h4>
-                                {/* <div className="ratings-box">
-                                    <h3>Ratings</h3>
-                                    <p>{this.state.ratings}</p>
-                                </div> */}
                                 {(this.props.selected) ? this.toggleWatch() : <p>Loading...</p>}
                             </div>
                         </article>
@@ -234,6 +257,7 @@ export default class Details extends Component {
                 </section>
                 <section className="show-page2">
                     <article className="seasons-episodes-box">
+                        {(this.state.titleType === 'tvEpisode') ? <span onClick={() => {this.props.selectedPoster(this.state.parentTitle_id)}}>Back to the Main Page</span> : <span></span>}
                         <ul className="single-season">
                             {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
                         </ul>
