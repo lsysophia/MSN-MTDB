@@ -235,6 +235,7 @@ export default class Details extends Component {
                 <section className="show-page2">
                     <article className="seasons-episodes-box">
                         <ul className="single-season">
+                            <li className="form-box" onClick={this.selectedPoster(this.parentTitle_id)}>Back to the Main Page</li>
                             {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
                         </ul>
                     </article>
