@@ -211,6 +211,7 @@ class App extends Component {
           ratings: parseInt(rating),
           titleType: titleType,
           imdb_id: id,
+          check: check.watched_time
         }
       } else {
         data = {

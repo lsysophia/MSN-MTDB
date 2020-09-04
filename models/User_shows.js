@@ -68,7 +68,7 @@ class User_shows {
             ratings = $/ratings/,
             has_watched = $/has_watched/,
             user_id = $/user_id/,
-            watched_time = now()
+            watched_time = $/watched_time/
             WHERE id = $/id/
             RETURNING *`,
             this
