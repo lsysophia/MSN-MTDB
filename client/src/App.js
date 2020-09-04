@@ -98,7 +98,6 @@ class App extends Component {
           fireRedirect: true,
           redirectPath: '/user',
           user: parsedRes.data.updatedUser,
-          user: parsedRes.data.user,
         })
       }).catch(err => console.log(err))
   }
