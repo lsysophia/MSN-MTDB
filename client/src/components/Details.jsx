@@ -136,8 +136,7 @@ export default class Details extends Component {
                             <form onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id, movieCheck))}>
                                 <p>Your Rating: {movieCheck.ratings}</p>
                                 <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} />
-
-                                {(movieCheck.has_watched && this.state.dataLoaded) ? <p>{movieCheck.watched_time}</p> : <input type='radio' name='has_watched' onChange={this.handleChange} />}
+                                {(movieCheck.has_watched && this.state.dataLoaded) ? <p>{movieCheck.watched_time}</p> : <input type='checkbox' name='has_watched' onChange={this.handleChange} />}
                                 <input type='submit' value='Save Input' />
                             </form>
                         )
@@ -163,7 +162,7 @@ export default class Details extends Component {
                             <form onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id, showCheck))}>
                                 <p>Your Rating: {showCheck.ratings}</p>
                                 <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} />
-                                {(showCheck.has_watched) ? <p>{showCheck.watched_time}</p> : <input type='radio' name='has_watched' onChange={this.handleChange} />}
+                                {(showCheck.has_watched) ? <p>{showCheck.watched_time}</p> : <input type='checkbox' name='has_watched' onChange={this.handleChange} />}
                                 <input type='submit' value='Save Input' />
                             </form>
                         )
@@ -189,7 +188,7 @@ export default class Details extends Component {
                             <form onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id, episodeCheck))}>
                                 <p>Your Rating: {episodeCheck.ratings}</p>
                                 <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} />
-                                {(episodeCheck.has_watched) ? <p>{episodeCheck.watched_time}</p> : <input type='radio' name='has_watched' onChange={this.handleChange} />}
+                                {(episodeCheck.has_watched) ? <p>{episodeCheck.watched_time}</p> : <input type='checkbox' name='has_watched' onChange={this.handleChange} />}
                                 <input type='submit' value='Save Input' />
                             </form>
                         )
