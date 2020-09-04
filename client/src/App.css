@@ -199,6 +199,11 @@ header a:visited{
 
 }
 
+.user-settings h4 a{
+  text-decoration: none;
+  color: black
+}
+
 .user-page .user-info {
   background-color: #33333314;
   margin: 30px;
