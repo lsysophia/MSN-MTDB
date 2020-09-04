@@ -22,6 +22,7 @@ class App extends Component {
       user: null,
       fireRedirect: false,
       redirectPath: null,
+      watchList: [],
     }
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
@@ -31,6 +32,8 @@ class App extends Component {
     this.selectedPoster = this.selectedPoster.bind(this)
     this.toggleLoginRegister = this.toggleLoginRegister.bind(this)
     this.handleUsersInputSubmit = this.handleUsersInputSubmit.bind(this)
+    this.deleteFromWatch = this.deleteFromWatch.bind(this)
+    this.getUserContent = this.getUserContent.bind(this)
   }
 
   componentDidMount() {
@@ -235,6 +238,38 @@ class App extends Component {
     })
   }
 
+  deleteFromWatch(id, data) {
+    let type = {
+      titleType: data
+    }
+    fetch(`/api/input/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(type),
+    }).then(() => {
+      this.setState({
+        fireRedirect: true,
+        redirectPath: '/user'
+      })
+    })
+  }
+
+  getUserContent() {
+    fetch(`/api/user/${this.state.user.id}`, {
+        method: 'GET',
+    })
+        .then(res => res.json())
+        .then(parsedRes => {
+            this.setState({
+              watchList: parsedRes,
+              fireRedirect: true,
+              redirectPath: '/user'
+            })
+        }).catch(err => console.log(err))
+  }
+
   render() {
     return (
       <div className="App">
@@ -263,7 +298,7 @@ class App extends Component {
             render={() => (
               !this.state.auth
                 ? <Redirect to='/login' />
-                : <User deleteUser={this.deleteUser} user={this.state.user} auth={this.state.auth} logout={this.logout} selectedTitle={this.selectedPoster} />
+                : <User deleteFromWatch={this.deleteFromWatch} watchList={this.state.watchList} getUserContent={this.getUserContent} deleteUser={this.deleteUser} user={this.state.user} auth={this.state.auth} logout={this.logout} selectedTitle={this.selectedPoster} />
             )}
           />
 
