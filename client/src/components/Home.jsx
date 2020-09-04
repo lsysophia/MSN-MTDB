@@ -5,7 +5,7 @@ export default class Home extends Component {
         return (
             <div className="home-page">
                 <div>
-                    <h1>Welcome to MSN - MTVDB</h1>
+                    <h1>Welcome to MSN - MTDB</h1>
                 </div>
                 {this.props.userAuth
                     ?
