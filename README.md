@@ -19,25 +19,28 @@ This application allows users to search for movies and TV shows and save it to t
 
 ## User Stories
 - Visitors have a choice to use the search engine or create a new account.
-- Users that have created an account and will have a profile page with saved information and selected data.
-- User can save movies to their account
-- User can remove movies from their account
+- Users that have created an account and will have a profile page with user information and existing watchlist.
 - User can edit their account info
+- User can remove their account
+- User can save movies, tv shows, and show episodes to their watchlist
+- User can remove movies, tv shows, and show episodes from their watchlist
+- User can update a certain title to Watched status
+- User can have their own ratings for each movie and tv show that they have in their watchlist
 - Visitor can search without an account
-- Search page will show a ‘top 10’ or so list of movies via the API’s ratings system.
-- Search will allow you to find-by movie titles and see the results of a 3rd party API.
-- Info about the website/app
-- The search results will show various data for each movie.
-- Show pages for an individual movie will show more detailed information with the movie poster and with ‘where to watch’ as-in where it is available to watch currently displayed also.
-- Show pages will also allow you to link out to the movie’s official webpage.
+- Initial landing on the search page will show movies, tv shows, and show episodes that users across the platform have saved
+- Search will allow you to find-by movie and tv show titles.
+- Show pages for an individual movie will show more detailed information with the movie poster, plot summary, release date, rating, genres. Links to streaming services available for that specific title.
+- About page will display info about the website/app, what it is about, links to register and log-in.
 
 
 ## HTTP Routes
 
 Frontend:  
 '/' --> Homepage
-'/user' --> User
+'/user' --> User profile
 '/register'
+'/login'
+'/logout'
 '/user/edit'
 '/search/'
 '/details/:id'
@@ -69,7 +72,7 @@ Create your own .env file on your root level.
 - SECRET_KEY= [YOUR SECRET KEY]
 - DB_NAME= [YOUR_DB_NAME]
 - NODE_ENV=development
-- API_Key= [YOUR API KEY]
+- API_Key= [YOUR API KEY] --> for IMDB data fetch
 - UTELLY_HOST= utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com
 - UTELLY_KEY= [YOUR API KEY]
 - IMDB_HOST=imdb8.p.rapidapi.com
