@@ -204,7 +204,8 @@ header a:visited{
   margin: 30px;
   text-align: left;
   height: 100%;
-  padding:10px
+  padding:10px;
+  box-shadow: 0px 0 10px -2px #888;
 }
 
 .user-page .user-info p{
@@ -225,8 +226,8 @@ header a:visited{
   margin: 30px;
   text-align: center;
   height: 100%;
-  padding:10px
-
+  padding:10px;
+  box-shadow: 0px 0 10px -2px #888;
 }
 
 .user-page .user-saved-list ul li{
@@ -234,7 +235,7 @@ header a:visited{
   cursor: pointer;
 }
 
-.user-page .user-saved-list ul li:hover{
+.user-page .user-saved-list ul li h3:hover{
   background-color: rgb(232,	195,	53	);  
 }
 
@@ -320,10 +321,12 @@ box-shadow: 0px 0px;
   padding: 50px 0 50px 0;
   color:black;
   width: 100%;
+  background-color: #33333314;
 }
 search-page .search-results ul{
 display: flex;
-flex-wrap: wrap
+flex-wrap: wrap;
+justify-content: center;
 }
 
 .search-page .search-results li{
@@ -561,25 +564,31 @@ font-weight: bold;
   margin:30px auto;
 }
 
-.show-page2 .seasons-episodes-box ul {
+.show-page2 .seasons-episodes-box .single-season {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  background-color:#33333314 ;
 }
 
-.show-page2 .seasons-episodes-box ul li{
-  margin-top:20px;
+.show-page2 .seasons-episodes-box .single-season .season-group{
+  margin-top:50px;
   width: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
+ padding:10px;
 }
 
-.show-page2 .seasons-episodes-box ul li ul li{
+.show-page2 .seasons-episodes-box .single-season .season-group ul{
+margin-top:10px
+}
+
+.show-page2 .seasons-episodes-box .single-season .season-group ul li{
   margin: 5px 0 5px 0;
-  margin-left: 15px;
 }
 
-.show-page2 .seasons-episodes-box ul li ul li:hover{
-  background-color:#333 ;
+.show-page2 .seasons-episodes-box .single-season .season-group ul li:hover{
   color:white;
   cursor: pointer;
   background-color: rgb(232,	195,	53);
@@ -629,6 +638,14 @@ font-weight: bold;
 .show-page article{
   display: flex;
   flex-direction: column;
+}
+
+.season-group{
+
+}
+
+.single-season{
+
 }
 /* SHOW PAGE END */
 
