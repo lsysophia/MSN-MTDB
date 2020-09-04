@@ -90,7 +90,7 @@ export default class Details extends Component {
                     <div className="dd-wrapper">
                         <div className="dd-header" onClick={() => this.toggleList(el)}>
                             <div className="dd-header-title">Season: {el}</div>
-                            {this.state.listOpen
+                            {(this.state.listOpen && el === this.state.currentList)
                             ? <span>⬆</span>
                             : <span>⬇</span>
                             }
