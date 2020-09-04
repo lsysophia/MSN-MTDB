@@ -432,7 +432,7 @@ transform: translateY(4px);
 }
 
 .posterDiv h3{
-  color: rgb(232,	195,	53);
+  color: #333;
   text-align:center;
   font-size:1em;
   font-weight: 700;
@@ -600,11 +600,8 @@ font-weight: bold;
 }
 
 
-
-
 .show-page2 .seasons-episodes-box .single-season {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   background-color:#33333314 ;
@@ -612,14 +609,18 @@ font-weight: bold;
 
 .show-page2 .seasons-episodes-box .single-season .season-group{
   margin-top:50px;
-  width: 300px;
+  width: 500px;
   border: 1px solid black;
   border-radius: 5px;
  padding:10px;
 }
 
 .show-page2 .seasons-episodes-box .single-season .season-group ul{
-margin-top:10px
+margin-top:10px;
+
+max-height: 520px;
+overflow-y: scroll;
+
 }
 
 .show-page2 .seasons-episodes-box .single-season .season-group ul li{
@@ -642,6 +643,52 @@ margin-top:10px
   font-weight: bold;
 }
 
+.user-votes-box{
+  border:1px solid black;
+  border-radius: 2px;
+  padding:5px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0 10px -2px #888;
+
+}
+
+.inline-block{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.user-votes-box p{
+  display: inline-block;
+  margin-top: 10px;
+
+}
+
+.user-votes-box input[type="range"]{
+  margin-top: 10px;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.watched-div{
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+  justify-content: space-evenly;
+}
+
+.user-votes-box input[type="submit"]{
+border: 1px solid black;
+border-radius: 2px;
+box-shadow: 5px 5px rgb(232, 195, 53 );
+margin:4px;
+}
+
+.user-votes-box input[type="submit"]:hover{
+background-color: rgb(232,	195,	53	);
+box-shadow: 0px 0px;
+
+}
 .where-to-watch{
   display: flex;
   flex-direction: row;
@@ -678,13 +725,6 @@ margin-top:10px
   flex-direction: column;
 }
 
-.season-group{
-
-}
-
-.single-season{
-
-}
 .expand-episodes .span {
   display: inline-block;
 }
@@ -692,14 +732,23 @@ margin-top:10px
 .collapse-episodes .span {
   display: inline-block;
 }
+
 .expand-episodes p:hover{
   background-color: rgb(232,	195,	53);
-
 }
 
 .collapse-episodes p:hover{
   background-color: rgb(232,	195,	53);
+}
 
+.collapse-episodes, .expand-episodes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.collapse-episodes span, .expand-episodes span {
+ cursor: pointer;
 }
 /* SHOW PAGE END */
 
