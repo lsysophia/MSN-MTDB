@@ -8,10 +8,21 @@ inputController.decide = (req, res, next) => {
     if (req.body.titleType === 'movie') {
         User_movies.getOneForUser(req.user.id, req.body.imdb_id)
         .then(movie => {
-            return movie.update({
-                has_watched: req.body.has_watched,
-                ratings: req.body.ratings,
-            })
+            console.log(';lajdfo;ija;slkdhf;asihd;oihjasd;lfjadjf;ljasd;lfhas;dvh;alks')
+            let currentDate = new Date()
+            let date = currentDate.getDate()
+            let month = currentDate.getMonth()
+            let year = currentDate.getFullYear()
+            let timestamp = currentDate.getTime()
+            let dateString = date + "-" +(month + 1) + "-" + year + " / " + timestamp
+            console.log('DATE STRING', dateString)
+            if (req.body.has_watched) {
+                return movie.update({
+                    ratings: req.body.ratings,
+                    has_watched: req.body.has_watched,
+                    watched_time: dateString,
+                })
+            }
         })
         .then(() => {
             res.json({
@@ -22,10 +33,21 @@ inputController.decide = (req, res, next) => {
     } else if (req.body.titleType === 'tvSeries') {
         User_shows.getOneForUser(req.user.id, req.body.imdb_id)
         .then(show => {
-            return show.update({
-                has_watched: req.body.has_watched,
-                ratings: req.body.ratings,
-            })
+            console.log(';lajdfo;ija;slkdhf;asihd;oihjasd;lfjadjf;ljasd;lfhas;dvh;alks')
+            let currentDate = new Date()
+            let date = currentDate.getDate()
+            let month = currentDate.getMonth()
+            let year = currentDate.getFullYear()
+            let timestamp = currentDate.getTime()
+            let dateString = date + "-" +(month + 1) + "-" + year + " / " + timestamp
+            console.log('DATE STRING', dateString)
+            if (req.body.has_watched) {
+                return show.update({
+                    ratings: req.body.ratings,
+                    has_watched: req.body.has_watched,
+                    watched_time: dateString,
+                })
+            }
         })
         .then(() => {
             res.json({
@@ -36,10 +58,21 @@ inputController.decide = (req, res, next) => {
     } else if (req.body.titleType === 'tvEpisodes') {
         User_episodes.getOneForUser(req.user.id, req.body.imdb_id)
         .then(episode => {
-            return episode.update({
-                has_watched: req.body.has_watched,
-                ratings: req.body.ratings,
-            })
+            console.log(';lajdfo;ija;slkdhf;asihd;oihjasd;lfjadjf;ljasd;lfhas;dvh;alks')
+            let currentDate = new Date()
+            let date = currentDate.getDate()
+            let month = currentDate.getMonth()
+            let year = currentDate.getFullYear()
+            let timestamp = currentDate.getTime()
+            let dateString = date + "-" +(month + 1) + "-" + year + " / " + timestamp
+            console.log('DATE STRING', dateString)
+            if (req.body.has_watched) {
+                return episode.update({
+                    ratings: req.body.ratings,
+                    has_watched: req.body.has_watched,
+                    watched_time: dateString,
+                })
+            }
         })
         .then(() => {
             res.json({

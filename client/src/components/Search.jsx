@@ -22,12 +22,6 @@ export default class Search extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     this.setState({
-    //         dataLoaded: true,
-    //     })
-    // }
-
     conditionalRender() {
         return (
             <ul>
