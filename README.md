@@ -13,10 +13,14 @@ This application allows users to search for movies and TV shows and save it to t
 
 Once we developed the user stories, we were able to identify the initial work for setting up the express server. We talked through all the models and controllers that we will need. We have also refined the server structure when we updated our database. We decided that instead of creating multiple tables in the backend to store all information fetched from the API, we will use the API as the database for movies and shows, our backend databases will only store user-related information(user profile, user saved movies/shows/episodes). After the initial set up was done, we moved on to the React side set up and connecting the backend to the front end. Styling was done little by little along the way. 
 
-### [Wireframes](https://ibb.co/Hpsq3Jp)
+### Wireframes
+- [1](https://ibb.co/Hpsq3Jp)
+- [2 - Detail page](https://ibb.co/h7r59gF)
+- [3 - Newer version](https://ibb.co/2Y22w8B)
 
-### [DB Schemas](https://ibb.co/s1RnN7m) 
-
+### DB Schemas
+- [1](https://ibb.co/s1RnN7m)
+- [2](https://ibb.co/JrvCqZV)
 ### [Project Board](https://github.com/lsysophia/MSN-MTDB/projects/1)
 
 ## User Stories
