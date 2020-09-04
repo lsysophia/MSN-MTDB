@@ -21,6 +21,7 @@ export default class Details extends Component {
             watched_time: null,
             user_rating: 0,
             listOpen: false,
+            currentList: null,
             available_on: (this.props.selected.available_on) ? this.props.selected.available_on : [],
             seasons: (this.props.selected.season) ? this.props.selected.season.map(el => el.season) : null,
             episodes: (this.props.selected.season) ? this.props.selected.season.map(el => el.episodes) : null,
@@ -71,9 +72,10 @@ export default class Details extends Component {
             listOpen: false
         })
     }
-    toggleList(){
+    toggleList(current){
         this.setState(prevState => ({
-            listOpen: !prevState.listOpen
+            listOpen: !prevState.listOpen,
+            currentList: current,
         }))
     }
 
@@ -85,37 +87,24 @@ export default class Details extends Component {
         return this.state.seasons.map((el, i) => {
             return (
                 <li key={i} className="season-group">
-                    {/* Season {el}
-                    <ul>
-                        {this.state.episodes.map(elem => {
-                            return elem.map(ele => {
-                                if (ele.season === el) {
-                                    let url = ele.id.split('/')[2]
-                                    return (
-                                        <li key={ele.id} onClick={() => { this.props.selectedPoster(url) }} >{`Ep: ${ele.episode} Title: ${ele.title}`}</li>
-                                    )
-                                } else {
-                                    return null
-                                }
-                            })
-                        })}
-                    </ul> */}
                     <div className="dd-wrapper">
-                        <div className="dd-header" onClick={() => this.toggleList()}>
+                        <div className="dd-header" onClick={() => this.toggleList(el)}>
                             <div className="dd-header-title">Season: {el}</div>
-                            {/* {this.state.listOpen
-                            ? <FontAwesome name="angle-up" size="2x"/>
-                            : <FontAwesome name="angle-down" size="2x"/>
-                            } */}
+                            {this.state.listOpen
+                            ? <span>⬆</span>
+                            : <span>⬇</span>
+                            }
                         </div>
                         {this.state.listOpen && <ul className="dd-list">
                         {this.state.episodes.map(episode => {
                             return episode.map(eps => {
-                                if (eps.season === el) {
+                                if (eps.season === el && eps.season === this.state.currentList) {
                                     let url = eps.id.split('/')[2]
                                     return (
                                         <li className="dd-list-item" key={eps.id} onClick={() => { this.props.selectedPoster(url) }} >Ep: {eps.episode} {eps.title}</li>
                                     )
+                                } else {
+                                    return <li></li>
                                 }
                             })
                                 
@@ -268,8 +257,8 @@ export default class Details extends Component {
                 </section>
                 <section className="show-page2">
                     <article className="seasons-episodes-box">
+                        {(this.state.titleType === 'tvEpisode') ? <span onClick={() => {this.props.selectedPoster(this.state.parentTitle_id)}}>Back to the Main Page</span> : <span></span>}
                         <ul className="single-season">
-                            {(this.state.titleType === 'tvEpisode') ? <li onClick={() => {this.props.selectedPoster(this.state.parentTitle_id)}}>Back to the Main Page</li> : <li></li>}
                             {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
                         </ul>
                     </article>

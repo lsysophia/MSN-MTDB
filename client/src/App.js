@@ -316,7 +316,7 @@ class App extends Component {
           />
 
           <Route exact path='/details/:id'
-            render={() => (<Details user={this.state.user} selectedPoster={this.selectedPoster} selected={this.state.selected} handleUsersInputSubmit={this.handleUsersInputSubmit} handleFormSubmit={this.handleFormSubmit} selectedPoster={this.selectedPoster} />)}
+            render={() => (<Details user={this.state.user} selected={this.state.selected} handleUsersInputSubmit={this.handleUsersInputSubmit} handleFormSubmit={this.handleFormSubmit} selectedPoster={this.selectedPoster} />)}
           />
 
           <Route exact path='/about'
