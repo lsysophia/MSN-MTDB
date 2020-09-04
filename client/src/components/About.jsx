@@ -44,7 +44,6 @@ export default class About extends Component {
                     </ul>
                 </div>
             </article>
-
         )
     }
 }
