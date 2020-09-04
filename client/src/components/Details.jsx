@@ -77,6 +77,10 @@ export default class Details extends Component {
         }))
     }
 
+    // CREDITS FOR THE DROP DOWN GO TO Doğacan Bilgili 
+    // https://blog.logrocket.com/building-a-custom-dropdown-menu-component-for-react-e94f02ced4a1/
+
+
     seasonsAndEpisodes() {
         return this.state.seasons.map((el, i) => {
             return (
@@ -106,9 +110,14 @@ export default class Details extends Component {
                         </div>
                         {this.state.listOpen && <ul className="dd-list">
                         {this.state.episodes.map(episode => {
-                            return episode.map(eps => (
-                                <li className="dd-list-item" key={eps.id} >Ep: {eps.episode} {eps.title}</li>
-                            ))
+                            return episode.map(eps => {
+                                if (eps.season === el) {
+                                    let url = eps.id.split('/')[2]
+                                    return (
+                                        <li className="dd-list-item" key={eps.id} onClick={() => { this.props.selectedPoster(url) }} >Ep: {eps.episode} {eps.title}</li>
+                                    )
+                                }
+                            })
                                 
                         })}
                         </ul>}
