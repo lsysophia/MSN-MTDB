@@ -244,6 +244,7 @@ header a:visited{
 
 .user-page .user-saved-list ul li h3:hover{
   background-color: rgb(232,	195,	53	);  
+  padding:0 15px 0 5px;
 }
 
 .titles{
@@ -368,7 +369,7 @@ margin:10px;
 width: auto;
 cursor: pointer;
 display: flex;
-justify-content: center; 
+/* justify-content: center;  */
 /* width: 300px; */
 }
 
@@ -400,13 +401,20 @@ transform: translateY(4px);
   margin-top:20px
 }
 
+
+
+
 .search-results-ul
 {
   display: flex;
   flex-wrap:wrap ;
   justify-content: center;
 }
-
+.search-results-categories{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 /* SEARCH PAGE END*/
 
 /* SEARCH RESULT START */
