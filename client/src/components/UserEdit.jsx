@@ -29,18 +29,21 @@ class UserEdit extends Component {
                         value={this.state.name}
                         placeholder='Name'
                         onChange={this.handleInputChange}
+                        required
                     />
                     <input type="email"
                         name="email"
                         value={this.state.email}
                         placeholder='Email'
                         onChange={this.handleInputChange}
+                        required
                     />
                     <input type="number"
                         name="age"
                         value={this.state.age}
                         placeholder='Age'
                         onChange={this.handleInputChange}
+                        required
                     />
                     <input type="text"
                         name="genres"

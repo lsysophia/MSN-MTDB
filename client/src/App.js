@@ -94,8 +94,6 @@ class App extends Component {
     }).then(res => res.json())
       .then(parsedRes => {
         this.setState({
-          //add page status change
-          // auth: parsedRes.auth,
           user: parsedRes.data.user,
         })
       }).catch(err => console.log(err))
@@ -221,8 +219,6 @@ class App extends Component {
         }
       }
     }
-    console.log('DATA', data)
-    console.log('CHECK', check)
     fetch('/api/input', {
       method: 'POST',
       headers: {

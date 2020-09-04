@@ -59,6 +59,7 @@ class Register extends Component {
                         value={this.state.age}
                         placeholder="Age"
                         onChange={this.handleInputChange}
+                        required
                     />
                     <input type="text"
                         name="genres"
