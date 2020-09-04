@@ -24,14 +24,19 @@ export default class Search extends Component {
 
     conditionalRender() {
         return (
-            <ul>
-                <h3 className="search-titles">Movies</h3>
-                {(this.state.movies.length > 0) ? this.state.movies.map(el => <li onClick={() => { this.props.selectedPoster(el.imdb_id) }} key={el.imdb_id}>• {el.title}</li>) : <li>No Movies</li>}
-                <h3 className="search-titles">Shows</h3>
-                {(this.state.shows.length > 0) ? this.state.shows.map(el => <li onClick={() => { this.props.selectedPoster(el.imdb_id) }} key={el.imdb_id}>• {el.title}</li>) : <li>No Shows</li>}
-                <h3 className="search-titles">Episodes</h3>
-                {(this.state.episodes.length > 0) ? this.state.episodes.map(el => <li onClick={() => { this.props.selectedPoster(el.imdb_id) }} key={el.imdb_id}>• {el.title}</li>) : <li>No Episodes</li>}
-                {console.log(this.state)}
+            <ul className="search-results-categories">
+                <div className="search-results-categorie">
+                    <h3 className="search-titles">Movies</h3>
+                    {(this.state.movies.length > 0) ? this.state.movies.map(el => <li onClick={() => { this.props.selectedPoster(el.imdb_id) }} key={el.imdb_id}>• {el.title}</li>) : <li>No Movies</li>}
+                </div>
+                <div className="search-results-categorie">
+                    <h3 className="search-titles">Shows</h3>
+                    {(this.state.shows.length > 0) ? this.state.shows.map(el => <li onClick={() => { this.props.selectedPoster(el.imdb_id) }} key={el.imdb_id}>• {el.title}</li>) : <li>No Shows</li>}
+                </div>
+                <div className="search-results-categorie">
+                    <h3 className="search-titles">Episodes</h3>
+                    {(this.state.episodes.length > 0) ? this.state.episodes.map(el => <li onClick={() => { this.props.selectedPoster(el.imdb_id) }} key={el.imdb_id}>• {el.title}</li>) : <li>No Episodes</li>}
+                </div>
             </ul>
         )
     }
