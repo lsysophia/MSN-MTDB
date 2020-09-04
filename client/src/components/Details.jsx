@@ -67,12 +67,12 @@ export default class Details extends Component {
         }
     }
 
-    handleClickOutside(){
+    handleClickOutside() {
         this.setState({
             listOpen: false
         })
     }
-    toggleList(current){
+    toggleList(current) {
         this.setState(prevState => ({
             listOpen: !prevState.listOpen,
             currentList: current,
@@ -91,24 +91,24 @@ export default class Details extends Component {
                         <div className="dd-header" onClick={() => this.toggleList(el)}>
                             <div className="dd-header-title">Season: {el}</div>
                             {this.state.listOpen
-                            ? <span>⬆</span>
-                            : <span>⬇</span>
+                                ? <div className="expand-episodes"><p>Click to see episodes <span>⬆</span></p></div>
+                                : <div className="collapse-episodes"><p>Click to close <span>⬇</span></p></div>
                             }
                         </div>
                         {this.state.listOpen && <ul className="dd-list">
-                        {this.state.episodes.map(episode => {
-                            return episode.map(eps => {
-                                if (eps.season === el && eps.season === this.state.currentList) {
-                                    let url = eps.id.split('/')[2]
-                                    return (
-                                        <li className="dd-list-item" key={eps.id} onClick={() => { this.props.selectedPoster(url) }} >Ep: {eps.episode} {eps.title}</li>
-                                    )
-                                } else {
-                                    return <li></li>
-                                }
-                            })
-                                
-                        })}
+                            {this.state.episodes.map(episode => {
+                                return episode.map(eps => {
+                                    if (eps.season === el && eps.season === this.state.currentList) {
+                                        let url = eps.id.split('/')[2]
+                                        return (
+                                            <li className="dd-list-item" key={eps.id} onClick={() => { this.props.selectedPoster(url) }} >Ep: {eps.episode} {eps.title}</li>
+                                        )
+                                    } else {
+                                        return <li></li>
+                                    }
+                                })
+
+                            })}
                         </ul>}
                     </div>
                 </li>
@@ -182,12 +182,12 @@ export default class Details extends Component {
             } else if (this.state.titleType === 'tvEpisode') {
                 if (this.state.user_episodes) {
                     let episodeCheck = this.state.user_episodes.find(episode => (episode.imdb_id === this.state.imdb_id))
-                        if (episodeCheck) {
-                            return (
-                                <form onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id, episodeCheck))}>
-                                    <p>Your Rating: {episodeCheck.ratings}</p>
-                                    <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} />
-                                    {(episodeCheck.has_watched) ? <p>{episodeCheck.watched_time}</p> : <input type='radio' name='has_watched' onChange={this.handleChange} />}
+                    if (episodeCheck) {
+                        return (
+                            <form onSubmit={(evt) => (this.props.handleUsersInputSubmit(evt, this.state.has_watched, this.state.user_rating, this.state.titleType, this.state.imdb_id, episodeCheck))}>
+                                <p>Your Rating: {episodeCheck.ratings}</p>
+                                <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} />
+                                {(episodeCheck.has_watched) ? <p>{episodeCheck.watched_time}</p> : <input type='radio' name='has_watched' onChange={this.handleChange} />}
                                 <input type='submit' value='Save Input' />
                             </form>
                         )
@@ -257,7 +257,7 @@ export default class Details extends Component {
                 </section>
                 <section className="show-page2">
                     <article className="seasons-episodes-box">
-                        {(this.state.titleType === 'tvEpisode') ? <span onClick={() => {this.props.selectedPoster(this.state.parentTitle_id)}}>Back to the Main Page</span> : <span></span>}
+                        {(this.state.titleType === 'tvEpisode') ? <span onClick={() => { this.props.selectedPoster(this.state.parentTitle_id) }}>Back to the Main Page</span> : <span></span>}
                         <ul className="single-season">
                             {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
                         </ul>

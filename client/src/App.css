@@ -655,6 +655,22 @@ margin-top:10px
 .single-season{
 
 }
+.expand-episodes .span {
+  display: inline-block;
+}
+
+.collapse-episodes span {
+  display: inline-block;
+}
+.expand-episodes p:hover{
+  background-color: rgb(232,	195,	53);
+
+}
+
+.collapse-episodes p:hover{
+  background-color: rgb(232,	195,	53);
+
+}
 /* SHOW PAGE END */
 
 /* FOOTER START */
