@@ -454,7 +454,7 @@ transform: translateY(4px);
 
 /* ABOUT START */
 .about-box{
-  height: 80vh;
+  min-height: 80vh;
   color:black;
   padding: 0 70px;
 }
