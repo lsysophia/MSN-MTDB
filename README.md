@@ -3,7 +3,7 @@ App with a react in the front end and Express in the backend
 
 Visit us online
 - Staging page: https://evening-basin-19807.herokuapp.com/
-- Production page: 
+- Production page: https://msn-mtdb.herokuapp.com/
 
 ### Description
 

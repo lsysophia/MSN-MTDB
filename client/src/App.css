@@ -183,6 +183,9 @@ header a:visited{
   flex-direction: row;
   justify-content: space-evenly;
   color:black;
+  border:1px solid black;
+  border-radius: 5px;
+
 }
 
 .user-settings h4{
@@ -197,8 +200,12 @@ header a:visited{
 }
 
 .user-page .user-info {
-  margin-top: 30px;
-  text-align:left;
+  background-color: #33333314;
+  margin: 30px;
+  text-align: left;
+  height: 100%;
+  padding:10px;
+  box-shadow: 0px 0 10px -2px #888;
 }
 
 .user-page .user-info p{
@@ -215,8 +222,12 @@ header a:visited{
 }
 
 .user-page .user-saved-list{
-  margin-top: 30px;
+  background-color: #33333314;
+  margin: 30px;
   text-align: center;
+  height: 100%;
+  padding:10px;
+  box-shadow: 0px 0 10px -2px #888;
 }
 
 .user-page .user-saved-list ul li{
@@ -224,7 +235,7 @@ header a:visited{
   cursor: pointer;
 }
 
-.user-page .user-saved-list ul li:hover{
+.user-page .user-saved-list ul li h3:hover{
   background-color: rgb(232,	195,	53	);  
 }
 
@@ -307,17 +318,22 @@ box-shadow: 0px 0px;
 }
 
 .search-page .search-results{
-  padding: 50px;
+  padding: 50px 0 50px 0;
   color:black;
   width: 100%;
+  background-color: #33333314;
+  box-shadow: 0px 0 10px -2px #888;
+
 }
 search-page .search-results ul{
 display: flex;
-flex-wrap: wrap
+flex-wrap: wrap;
+justify-content: center;
 }
 
 .search-page .search-results li{
 margin:10px;
+width: auto;
 cursor: pointer;
 display: flex;
 justify-content: center; 
@@ -326,7 +342,7 @@ justify-content: center;
 
 .search-page .search-results li:hover{
   color: black;
-  /* background-color: rgb(232,	195,	53); */
+  background-color: rgb(232,	195,	53);
 }
 
 .search-page .search-box input{
@@ -336,14 +352,14 @@ justify-content: center;
 
 .search-page .search-box input[type="submit"]{
   padding: 5px;
-  border: 1px solid white;  
-  background-color: black;
-  color: white;
-  box-shadow: 0 9px #999;
+  border: 1px solid black;  
+  background-color: white;
+  color: black;
+  box-shadow: 0 9px rgb(232, 195, 53 );;
 }
 
 .search-page .search-box input[type="submit"]:active{
-box-shadow: 0 5px #666;
+box-shadow: 0 5px rgb(232, 195, 53 );
 transform: translateY(4px);
 }
 .search-titles{
@@ -362,7 +378,7 @@ transform: translateY(4px);
 
 /* SEARCH RESULT START */
 .posterDiv {
-  margin: 5px 5px 30px 5px;
+  /* margin: 5px 5px 30px 5px; */
   border: 1px solid black;
   width: 300px;
   height: 400px;
@@ -550,27 +566,34 @@ font-weight: bold;
   margin:30px auto;
 }
 
-.show-page2 .seasons-episodes-box ul {
+.show-page2 .seasons-episodes-box .single-season {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  background-color:#33333314 ;
 }
 
-.show-page2 .seasons-episodes-box ul li{
-  margin-top:20px;
+.show-page2 .seasons-episodes-box .single-season .season-group{
+  margin-top:50px;
   width: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
+ padding:10px;
 }
 
-.show-page2 .seasons-episodes-box ul li ul li{
+.show-page2 .seasons-episodes-box .single-season .season-group ul{
+margin-top:10px
+}
+
+.show-page2 .seasons-episodes-box .single-season .season-group ul li{
   margin: 5px 0 5px 0;
-  margin-left: 15px;
 }
 
-.show-page2 .seasons-episodes-box ul li ul li:hover{
-  background-color:#333 ;
+.show-page2 .seasons-episodes-box .single-season .season-group ul li:hover{
   color:white;
   cursor: pointer;
+  background-color: rgb(232,	195,	53);
 }
 
 .show-page .summary{
@@ -617,6 +640,14 @@ font-weight: bold;
 .show-page article{
   display: flex;
   flex-direction: column;
+}
+
+.season-group{
+
+}
+
+.single-season{
+
 }
 /* SHOW PAGE END */
 

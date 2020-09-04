@@ -19,6 +19,13 @@ export default class About extends Component {
                     <p>
                         If you would like to register in order to enjoy the full function of our application, please register <Link to='/register'>Here</Link>
                     </p><br></br>
+                    <h2>How to use this app</h2>
+                    <p>
+                        MSN - MTVDB is an app where users can do search about Movies and TV shows, add them to their watchlist and rate them.about
+                    </p>
+                    <h2>Search Functionality</h2>
+                    <h2>Search Functionality</h2>
+
                     <h2>Technologies used for this project</h2>
                     <div className="center">
                         <ul>

@@ -68,7 +68,7 @@ export default class Details extends Component {
     seasonsAndEpisodes() {
         return this.state.seasons.map((el, i) => {
             return (
-                <li key={i}>
+                <li key={i} className="season-group">
                     Season {el}
                     <ul>
                         {this.state.episodes.map(elem => {
@@ -76,7 +76,7 @@ export default class Details extends Component {
                                 if (ele.season === el) {
                                     let url = ele.id.split('/')[2]
                                     return (
-                                        <li key={ele.id} onClick={() => { this.props.selectedPoster(url)}} >{`Ep: ${ele.episode} Title: ${ele.title}`}</li>
+                                        <li key={ele.id} onClick={() => { this.props.selectedPoster(url) }} >{`Ep: ${ele.episode} Title: ${ele.title}`}</li>
                                     )
                                 } else {
                                     return null
@@ -162,15 +162,15 @@ export default class Details extends Component {
                                     <input type='range' name='user_rating' min='0' max='10' value={this.state.user_rating} onChange={this.handleChange} />
                                     {(episodeCheck.has_watched) ? <p>{episodeCheck.watched_time}</p> : <input type='radio' name='has_watched' onChange={this.handleChange} />}
                                 <input type='submit' value='Save Input' />
-                                </form>
-                            )
-                        } else {
-                            return (
-                                <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
-                                    <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
-                                </form>
-                            )
-                        }
+                            </form>
+                        )
+                    } else {
+                        return (
+                            <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
+                                <input type="submit" value="Add to watchlist" className="add-watchlist-button" />
+                            </form>
+                        )
+                    }
                 } else {
                     return (
                         <form className="form-box" onSubmit={(evt) => (this.props.handleFormSubmit(evt, this.state))} >
@@ -191,12 +191,12 @@ export default class Details extends Component {
     conditionalRender() {
         return (
             <div>
-            <section className="show-page">
-                <aside className="image-box">
-                    <img alt='Movie/Show Poster' src={(this.props.selected) ? this.state.image : "https://images.pexels.com/photos/3150553/pexels-photo-3150553.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"}/>
-                </aside>
-                <div className="info-box">
-                    <article className="detail-info">
+                <section className="show-page">
+                    <aside className="image-box">
+                        <img alt='Movie/Show Poster' src={(this.props.selected) ? this.state.image : "https://images.pexels.com/photos/3150553/pexels-photo-3150553.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"} />
+                    </aside>
+                    <div className="info-box">
+                        <article className="detail-info">
                             <h1>
                                 {this.state.title}({this.state.year})
                             </h1>
@@ -204,18 +204,18 @@ export default class Details extends Component {
                                 <h2>
                                     Summary
                                 </h2>
-                                {(this.state.summary && this.state.outline) 
-                                ? 
-                                <div>
-                                    {this.state.summary.text}
-                                    <cite>{this.state.summary.author}</cite>
-                                </div> 
-                                : (!this.state.summary && this.state.outline)
-                                ? 
-                                <div>
-                                    {(this.state.outline)}
-                                </div>
-                                : 'Unavailable'}
+                                {(this.state.summary && this.state.outline)
+                                    ?
+                                    <div>
+                                        {this.state.summary.text}
+                                        <cite>{this.state.summary.author}</cite>
+                                    </div>
+                                    : (!this.state.summary && this.state.outline)
+                                        ?
+                                        <div>
+                                            {(this.state.outline)}
+                                        </div>
+                                        : 'Unavailable'}
                             </div>
                             <div className="info">
                                 <h4><em>Run Time:</em>{this.state.runTime}</h4>
@@ -229,16 +229,16 @@ export default class Details extends Component {
                                 </div> */}
                                 {(this.props.selected) ? this.toggleWatch() : <p>Loading...</p>}
                             </div>
+                        </article>
+                    </div>
+                </section>
+                <section className="show-page2">
+                    <article className="seasons-episodes-box">
+                        <ul className="single-season">
+                            {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
+                        </ul>
                     </article>
-                </div>
-            </section>
-            <section className="show-page2">
-                <article className="seasons-episodes-box">
-                    <ul>
-                        {(this.props.selected.season) ? this.seasonsAndEpisodes() : null}
-                    </ul>
-                </article>
-                <article className="where-to-watch">
+                    <article className="where-to-watch">
                         {(this.state.available_on.length > 0) ? this.state.available_on.map(el => {
                             return (
                                 <div key={el.id}>
@@ -250,8 +250,8 @@ export default class Details extends Component {
                                 </div>
                             )
                         }) : null}
-                </article>
-            </section>
+                    </article>
+                </section>
             </div>
         )
     }
