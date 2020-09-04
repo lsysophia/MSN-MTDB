@@ -233,6 +233,8 @@ header a:visited{
   height: 100%;
   padding:10px;
   box-shadow: 0px 0 10px -2px #888;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .user-page .user-saved-list ul li{
@@ -246,9 +248,34 @@ header a:visited{
 
 .titles{
   margin-top:15px;
-
   font-weight: bold;
+  font-size:1.25em;
 }
+
+.user-saved-list-li{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.user-saved-list-li h3{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+}
+
+.user-saved-list-li p{
+  margin: 5px 0 5px 0; 
+  padding:2px;
+  color: red;
+}
+
+.user-saved-list-li p:hover{
+  background-color: rgb(232,	195,	53	);  
+}
+
+
 /* USER END */
 
 /* HOME PAGE START */
@@ -377,6 +404,7 @@ transform: translateY(4px);
 {
   display: flex;
   flex-wrap:wrap ;
+  justify-content: center;
 }
 
 /* SEARCH PAGE END*/
@@ -571,6 +599,9 @@ font-weight: bold;
   margin:30px auto;
 }
 
+
+
+
 .show-page2 .seasons-episodes-box .single-season {
   display: flex;
   flex-direction: row;
@@ -652,6 +683,22 @@ margin-top:10px
 }
 
 .single-season{
+
+}
+.expand-episodes .span {
+  display: inline-block;
+}
+
+.collapse-episodes .span {
+  display: inline-block;
+}
+.expand-episodes p:hover{
+  background-color: rgb(232,	195,	53);
+
+}
+
+.collapse-episodes p:hover{
+  background-color: rgb(232,	195,	53);
 
 }
 /* SHOW PAGE END */

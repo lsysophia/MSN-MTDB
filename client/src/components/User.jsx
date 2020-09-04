@@ -25,27 +25,27 @@ export default class User extends Component {
     }
 
     renderWatchList() {
-        return <ul>
+        return <ul className="user-saved-list-ul">
             <h3 className="titles">Movies</h3>
             {this.state.watchlist.userMovies.map(eachMovie => {
-                return <li key={eachMovie.imdb_id}>
-                <h3 onClick={() => { this.props.selectedTitle(eachMovie.imdb_id) }} >{eachMovie.title}</h3>
-                <p onClick={() => {this.props.deleteFromWatch(eachMovie.imdb_id, 'movie')}}>X</p>
+                return <li key={eachMovie.imdb_id} className="user-saved-list-li">
+                    <h3 onClick={() => { this.props.selectedTitle(eachMovie.imdb_id) }} >{eachMovie.title}</h3>
+                    <p onClick={() => { this.props.deleteFromWatch(eachMovie.imdb_id, 'movie') }}><span>X</span></p>
                 </li>
             })}
             <h3 className="titles">Shows</h3>
             {this.state.watchlist.userSeries.map(eachSeries => {
-                return <li key={eachSeries.imdb_id}>
-                <h3 onClick={() => { this.props.selectedTitle(eachSeries.imdb_id) }} >{eachSeries.title}</h3>
-                <p onClick={() => {this.props.deleteFromWatch(eachSeries.imdb_id, 'tvSeries')}}>X</p>
+                return <li key={eachSeries.imdb_id} className="user-saved-list-li">
+                    <h3 onClick={() => { this.props.selectedTitle(eachSeries.imdb_id) }} >{eachSeries.title}</h3>
+                    <p onClick={() => { this.props.deleteFromWatch(eachSeries.imdb_id, 'tvSeries') }}><span>X</span></p>
                 </li>
             })}
             <h3 className="titles">Episodes</h3>
             {this.state.watchlist.userEpisodes.map(eachEpisode => {
-                return <li key={eachEpisode.imdb_id}>
+                return <li key={eachEpisode.imdb_id} className="user-saved-list-li">
                     <h3 onClick={() => { this.props.selectedTitle(eachEpisode.imdb_id) }} >{eachEpisode.title}</h3>
-                    <p onClick={() => {this.props.deleteFromWatch(eachEpisode.imdb_id, 'tvEpisodes')}}>X</p>
-                    </li>
+                    <p onClick={() => { this.props.deleteFromWatch(eachEpisode.imdb_id, 'tvEpisodes') }}><span>X</span></p>
+                </li>
             })}
         </ul>
     }
