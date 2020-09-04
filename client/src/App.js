@@ -129,7 +129,7 @@ class App extends Component {
         this.setState({
           selected: jsonRes.data,
           fireRedirect: true,
-          redirectPath: `/details/${jsonRes.data.imdb_id}`,
+          redirectPath: `/details/${id}`,
         })
       })
   }
