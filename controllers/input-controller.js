@@ -8,14 +8,13 @@ inputController.decide = (req, res, next) => {
     if (req.body.titleType === 'movie') {
         User_movies.getOneForUser(req.user.id, req.body.imdb_id)
         .then(movie => {
-            console.log(';lajdfo;ija;slkdhf;asihd;oihjasd;lfjadjf;ljasd;lfhas;dvh;alks')
-            let currentDate = new Date()
-            let date = currentDate.getDate()
-            let month = currentDate.getMonth()
-            let year = currentDate.getFullYear()
-            let timestamp = currentDate.getTime()
-            let dateString = date + "-" +(month + 1) + "-" + year + " / " + timestamp
-            console.log('DATE STRING', dateString)
+            var currentdate = new Date(); 
+            var datetime = currentdate.getDate() + "/"
+                            + (currentdate.getMonth()+1)  + "/" 
+                            + currentdate.getFullYear() + " @ "  
+                            + (currentdate.getHours()+2) + ":"  
+                            + currentdate.getMinutes() + ":" 
+                            + currentdate.getSeconds() + "(EST)"
             if (req.body.check) {
                 return movie.update({
                     ratings: req.body.ratings,
@@ -25,7 +24,7 @@ inputController.decide = (req, res, next) => {
                 return movie.update({
                     ratings: req.body.ratings,
                     has_watched: req.body.has_watched,
-                    watched_time: dateString,
+                    watched_time: datetime,
                 })
             }
         })
@@ -38,14 +37,13 @@ inputController.decide = (req, res, next) => {
     } else if (req.body.titleType === 'tvSeries') {
         User_shows.getOneForUser(req.user.id, req.body.imdb_id)
         .then(show => {
-            console.log(';lajdfo;ija;slkdhf;asihd;oihjasd;lfjadjf;ljasd;lfhas;dvh;alks')
-            let currentDate = new Date()
-            let date = currentDate.getDate()
-            let month = currentDate.getMonth()
-            let year = currentDate.getFullYear()
-            let timestamp = currentDate.getTime()
-            let dateString = date + "-" +(month + 1) + "-" + year + " / " + timestamp
-            console.log('DATE STRING', dateString)
+            var currentdate = new Date(); 
+            var datetime = currentdate.getDate() + "/"
+                            + (currentdate.getMonth()+1)  + "/" 
+                            + currentdate.getFullYear() + " @ "  
+                            + (currentdate.getHours()+2) + ":"  
+                            + currentdate.getMinutes() + ":" 
+                            + currentdate.getSeconds() + "(EST)"
             if (req.body.check) {
                 return show.update({
                     ratings: req.body.ratings,
@@ -55,7 +53,7 @@ inputController.decide = (req, res, next) => {
                 return show.update({
                     ratings: req.body.ratings,
                     has_watched: req.body.has_watched,
-                    watched_time: dateString,
+                    watched_time: datetime,
                 })
             }
         })
@@ -65,17 +63,16 @@ inputController.decide = (req, res, next) => {
             })
         })
         .catch(next)
-    } else if (req.body.titleType === 'tvEpisodes') {
+    } else if (req.body.titleType === 'tvEpisode') {
         User_episodes.getOneForUser(req.user.id, req.body.imdb_id)
         .then(episode => {
-            console.log(';lajdfo;ija;slkdhf;asihd;oihjasd;lfjadjf;ljasd;lfhas;dvh;alks')
-            let currentDate = new Date()
-            let date = currentDate.getDate()
-            let month = currentDate.getMonth()
-            let year = currentDate.getFullYear()
-            let timestamp = currentDate.getTime()
-            let dateString = date + "-" +(month + 1) + "-" + year + " / " + timestamp
-            console.log('DATE STRING', dateString)
+            var currentdate = new Date(); 
+            var datetime = currentdate.getDate() + "/"
+                            + (currentdate.getMonth()+1)  + "/" 
+                            + currentdate.getFullYear() + " @ "  
+                            + (currentdate.getHours()+2) + ":"  
+                            + currentdate.getMinutes() + ":" 
+                            + currentdate.getSeconds() + "(EST)"
             if (req.body.check) {
                 return episode.update({
                     ratings: req.body.ratings,
@@ -85,7 +82,7 @@ inputController.decide = (req, res, next) => {
                 return episode.update({
                     ratings: req.body.ratings,
                     has_watched: req.body.has_watched,
-                    watched_time: dateString,
+                    watched_time: datetime,
                 })
             }
         })
