@@ -85,6 +85,7 @@ class App extends Component {
 
   handleUserEditSubmit(e, data, id) {
     e.preventDefault()
+    this.setState({ fireRedirect: false, })
     fetch(`/api/user/edit/${id}`, {
       method: 'PUT',
       headers: {
@@ -94,6 +95,9 @@ class App extends Component {
     }).then(res => res.json())
       .then(parsedRes => {
         this.setState({
+          fireRedirect: true,
+          redirectPath: '/user',
+          user: parsedRes.data.updatedUser,
           user: parsedRes.data.user,
         })
       }).catch(err => console.log(err))

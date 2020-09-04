@@ -9,12 +9,12 @@ inputController.decide = (req, res, next) => {
         User_movies.getOneForUser(req.user.id, req.body.imdb_id)
         .then(movie => {
             var currentdate = new Date(); 
-            var datetime = currentdate.getDate() + "/"
-                            + (currentdate.getMonth()+1)  + "/" 
+            var datetime = (currentdate.getMonth()+1)  + "/" 
+                            + currentdate.getDate() + "/"
                             + currentdate.getFullYear() + " @ "  
-                            + (currentdate.getHours()+2) + ":"  
+                            + (currentdate.getHours()) + ":"  
                             + currentdate.getMinutes() + ":" 
-                            + currentdate.getSeconds() + "(EST)"
+                            + currentdate.getSeconds()
             if (req.body.check) {
                 return movie.update({
                     ratings: req.body.ratings,
@@ -38,12 +38,12 @@ inputController.decide = (req, res, next) => {
         User_shows.getOneForUser(req.user.id, req.body.imdb_id)
         .then(show => {
             var currentdate = new Date(); 
-            var datetime = currentdate.getDate() + "/"
-                            + (currentdate.getMonth()+1)  + "/" 
+            var datetime = (currentdate.getMonth()+1)  + "/" 
+                            + currentdate.getDate() + "/"
                             + currentdate.getFullYear() + " @ "  
-                            + (currentdate.getHours()+2) + ":"  
+                            + (currentdate.getHours()) + ":"  
                             + currentdate.getMinutes() + ":" 
-                            + currentdate.getSeconds() + "(EST)"
+                            + currentdate.getSeconds()
             if (req.body.check) {
                 return show.update({
                     ratings: req.body.ratings,
