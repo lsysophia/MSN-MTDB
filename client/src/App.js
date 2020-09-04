@@ -98,6 +98,7 @@ class App extends Component {
           fireRedirect: true,
           redirectPath: '/user',
           user: parsedRes.data.updatedUser,
+          user: parsedRes.data.user,
         })
       }).catch(err => console.log(err))
   }
@@ -222,8 +223,6 @@ class App extends Component {
         }
       }
     }
-    console.log('DATA', data)
-    console.log('CHECK', check)
     fetch('/api/input', {
       method: 'POST',
       headers: {

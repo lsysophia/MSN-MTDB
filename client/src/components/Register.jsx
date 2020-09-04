@@ -31,35 +31,40 @@ class Register extends Component {
                         value={this.state.username}
                         placeholder="Username"
                         onChange={this.handleInputChange}
+                        required
                     />
                     <input type="password"
                         name="password"
                         value={this.state.password}
                         placeholder="Password"
                         onChange={this.handleInputChange}
+                        required
+                    />
+                    <input type="text"
+                        name="name"
+                        value={this.state.name}
+                        placeholder="Name"
+                        onChange={this.handleInputChange}
+                        required
                     />
                     <input type="email"
                         name="email"
                         value={this.state.email}
                         placeholder="Email"
                         onChange={this.handleInputChange}
+                        required
                     />
                     <input type="number"
                         name="age"
                         value={this.state.age}
                         placeholder="Age"
                         onChange={this.handleInputChange}
+                        required
                     />
                     <input type="text"
                         name="genres"
                         value={this.state.genres}
                         placeholder="Genres"
-                        onChange={this.handleInputChange}
-                    />
-                    <input type="text"
-                        name="name"
-                        value={this.state.name}
-                        placeholder="Name"
                         onChange={this.handleInputChange}
                     />
                     <input type="submit"
