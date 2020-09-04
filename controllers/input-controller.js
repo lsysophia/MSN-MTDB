@@ -16,7 +16,12 @@ inputController.decide = (req, res, next) => {
             let timestamp = currentDate.getTime()
             let dateString = date + "-" +(month + 1) + "-" + year + " / " + timestamp
             console.log('DATE STRING', dateString)
-            if (req.body.has_watched) {
+            if (req.body.check) {
+                return movie.update({
+                    ratings: req.body.ratings,
+                    has_watched: req.body.has_watched,
+                })
+            } else {
                 return movie.update({
                     ratings: req.body.ratings,
                     has_watched: req.body.has_watched,
@@ -41,7 +46,12 @@ inputController.decide = (req, res, next) => {
             let timestamp = currentDate.getTime()
             let dateString = date + "-" +(month + 1) + "-" + year + " / " + timestamp
             console.log('DATE STRING', dateString)
-            if (req.body.has_watched) {
+            if (req.body.check) {
+                return show.update({
+                    ratings: req.body.ratings,
+                    has_watched: req.body.has_watched,
+                })
+            } else {
                 return show.update({
                     ratings: req.body.ratings,
                     has_watched: req.body.has_watched,
@@ -66,7 +76,12 @@ inputController.decide = (req, res, next) => {
             let timestamp = currentDate.getTime()
             let dateString = date + "-" +(month + 1) + "-" + year + " / " + timestamp
             console.log('DATE STRING', dateString)
-            if (req.body.has_watched) {
+            if (req.body.check) {
+                return episode.update({
+                    ratings: req.body.ratings,
+                    has_watched: req.body.has_watched,
+                })
+            } else {
                 return episode.update({
                     ratings: req.body.ratings,
                     has_watched: req.body.has_watched,
